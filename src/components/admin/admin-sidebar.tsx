@@ -134,8 +134,8 @@ function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavCl
         </Link>
       </div>
 
-      {/* ─── Navigation Groups: Inset Apple Pill Items ─── */}
-      <ScrollArea className="flex-1 py-3 px-2">
+      {/* ─── Navigation Groups: Inset Apple Pill Items with Visible macOS Scrollbar ─── */}
+      <div className="flex-1 min-h-0 overflow-y-auto mac-scrollbar py-3 px-2">
         <nav className="space-y-4">
           {visibleGroups.map((group) => (
             <div key={group.titleKey}>
@@ -181,7 +181,7 @@ function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavCl
             </div>
           ))}
         </nav>
-      </ScrollArea>
+      </div>
 
       {/* ─── Apple User Profile Footer Card ─── */}
       {!collapsed && (
@@ -228,12 +228,12 @@ export function AdminSidebar() {
       {/* Desktop Sidebar (Apple Frosted Glass) */}
       <aside
         className={cn(
-          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 bg-slate-100/70 dark:bg-slate-950/70 backdrop-blur-2xl border-r border-slate-200/70 dark:border-slate-800/70 transition-all duration-300 ease-out shadow-[0_4px_24px_rgba(0,0,0,0.03)]",
+          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 bg-slate-100/70 dark:bg-slate-950/70 backdrop-blur-2xl border-r border-slate-200/70 dark:border-slate-800/70 transition-all duration-300 ease-out shadow-[0_4px_24px_rgba(0,0,0,0.03)] h-screen overflow-hidden",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <SidebarContent collapsed={collapsed} />
-        <div className="border-t border-slate-200/60 dark:border-slate-800/60 p-2 flex justify-center">
+        <div className="border-t border-slate-200/60 dark:border-slate-800/60 p-2 flex justify-center shrink-0">
           <Button
             variant="ghost"
             size="icon"
@@ -255,7 +255,7 @@ export function AdminSidebar() {
         <SheetTrigger className="lg:hidden fixed top-3.5 start-3.5 z-40 inline-flex items-center justify-center rounded-xl h-9 w-9 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-100 transition-all cursor-pointer">
           <Menu className="h-5 w-5" />
         </SheetTrigger>
-        <SheetContent side="left" className="w-64 p-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-2xl border-0 shadow-2xl">
+        <SheetContent side="left" className="w-64 p-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-2xl border-0 shadow-2xl h-screen overflow-hidden flex flex-col">
           <SheetTitle className="sr-only">Admin Navigation</SheetTitle>
           <SidebarContent collapsed={false} />
         </SheetContent>

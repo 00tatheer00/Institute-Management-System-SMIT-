@@ -771,3 +771,29 @@ html {
 img {
   content-visibility: auto;
 }
+
+/* Sleek Apple macOS Sidebar Scrollbar */
+.mac-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.mac-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mac-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+}
+.mac-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.75);
+}
+.dark .mac-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.55);
+}
+.dark .mac-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.85);
+}
+.mac-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}

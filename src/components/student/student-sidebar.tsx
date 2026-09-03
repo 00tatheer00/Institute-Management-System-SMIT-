@@ -106,8 +106,8 @@ function StudentSidebarContent({ collapsed, onNavClick }: { collapsed: boolean; 
         </Link>
       </div>
 
-      {/* ─── Navigation Items ─── */}
-      <ScrollArea className="flex-1 py-3 px-2">
+      {/* ─── Navigation Items with Visible macOS Scrollbar ─── */}
+      <div className="flex-1 min-h-0 overflow-y-auto mac-scrollbar py-3 px-2">
         <nav className="space-y-1">
           {studentNavItems.map((item) => {
             const active = isActive(item.href);
@@ -143,11 +143,11 @@ function StudentSidebarContent({ collapsed, onNavClick }: { collapsed: boolean; 
             );
           })}
         </nav>
-      </ScrollArea>
+      </div>
 
       {/* ─── Bottom Profile Footer Card ─── */}
       {!collapsed && (
-        <div className="p-3 border-t border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-900/30">
+        <div className="p-3 border-t border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-900/30 shrink-0">
           <div className="flex items-center justify-between p-2 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 shadow-2xs">
             <div className="flex items-center gap-2 min-w-0">
               <div className="relative">
@@ -189,12 +189,12 @@ export function StudentSidebar() {
     <>
       <aside
         className={cn(
-          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 bg-slate-100/70 dark:bg-slate-950/70 backdrop-blur-2xl border-r border-slate-200/70 dark:border-slate-800/70 transition-all duration-300 ease-out shadow-[0_4px_24px_rgba(0,0,0,0.03)]",
+          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 bg-slate-100/70 dark:bg-slate-950/70 backdrop-blur-2xl border-r border-slate-200/70 dark:border-slate-800/70 transition-all duration-300 ease-out shadow-[0_4px_24px_rgba(0,0,0,0.03)] h-screen overflow-hidden",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <StudentSidebarContent collapsed={collapsed} />
-        <div className="border-t border-slate-200/60 dark:border-slate-800/60 p-2 flex justify-center">
+        <div className="border-t border-slate-200/60 dark:border-slate-800/60 p-2 flex justify-center shrink-0">
           <Button
             variant="ghost"
             size="icon"
@@ -212,7 +212,7 @@ export function StudentSidebar() {
         <SheetTrigger className="lg:hidden fixed top-3.5 start-3.5 z-40 inline-flex items-center justify-center rounded-xl h-9 w-9 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-100 transition-all cursor-pointer">
           <Menu className="h-5 w-5" />
         </SheetTrigger>
-        <SheetContent side="left" className="w-64 p-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-2xl border-0 shadow-2xl">
+        <SheetContent side="left" className="w-64 p-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-2xl border-0 shadow-2xl h-screen overflow-hidden flex flex-col">
           <SheetTitle className="sr-only">Student Navigation</SheetTitle>
           <StudentSidebarContent collapsed={false} />
         </SheetContent>
