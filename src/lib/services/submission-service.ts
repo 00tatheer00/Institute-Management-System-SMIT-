@@ -6,6 +6,7 @@ import type { PaginatedResult, QueryParams, MutationResult } from "./types";
 import { queryItems } from "./types";
 import { recordAssignmentResult } from "./result-service";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { triggerAssignmentGradedEvent } from "./automation-service";
 
 const submissionStore: AssignmentSubmission[] = [...initialSubmissions];
 
@@ -147,6 +148,15 @@ export function gradeSubmission(
       totalMarks: assignment.totalMarks,
       remarks: feedback,
     });
+
+    triggerAssignmentGradedEvent({
+      studentId: sub.studentId,
+      studentName: student?.name || "Student",
+      studentEmail: student?.email,
+      assignmentTitle: assignment.title,
+      obtainedMarks: marks,
+      totalMarks: assignment.totalMarks,
+    }).catch((e) => console.error("Grading notification trigger error:", e));
   }
 
   if (isSupabaseConfigured()) {

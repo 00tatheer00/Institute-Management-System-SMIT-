@@ -12,6 +12,7 @@ import { getStudentAcademicProgress } from "@/lib/services/academic-progress-ser
 import { calculateGrade } from "@/lib/services/result-service";
 import { queryItems, type PaginatedResult, type QueryParams } from "./types";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { triggerCertificateIssuedEvent } from "./automation-service";
 
 // In-memory certificate ledger
 const certificateStore: Certificate[] = [...initialCertificates];
@@ -194,6 +195,17 @@ export function issueCertificate(data: {
         if (error) console.error("Supabase certificate insert error:", error);
       });
   }
+
+  // Automated notification trigger
+  const student = getStudentById(newCert.studentId);
+  triggerCertificateIssuedEvent({
+    studentId: newCert.studentId,
+    studentName: newCert.studentName,
+    studentEmail: student?.email,
+    studentPhone: student?.phone,
+    courseName: newCert.courseName,
+    certificateNumber: newCert.certificateId,
+  }).catch((e) => console.error("Certificate notification trigger error:", e));
 
   return newCert;
 }

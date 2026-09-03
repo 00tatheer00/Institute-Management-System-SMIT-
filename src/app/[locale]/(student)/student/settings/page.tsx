@@ -126,17 +126,34 @@ export default function StudentSettingsPage() {
 
           <div className="flex items-center justify-between p-3 rounded-lg border bg-muted/20">
             <div>
-              <p className="text-xs font-bold text-foreground">Email Dispatches & Campus Notices</p>
+              <p className="text-xs font-bold text-foreground">WhatsApp Broadcasts & Alerts</p>
               <p className="text-[11px] text-muted-foreground">
-                Receive holiday announcements, hackathon invitations, and job circulars
+                Receive instant schedule changes and attendance notifications via WhatsApp
               </p>
             </div>
             <input
               type="checkbox"
-              checked={emailNotifs}
-              onChange={(e) => setEmailNotifs(e.target.checked)}
-              className="h-4 w-4 rounded accent-blue-600 cursor-pointer"
+              defaultChecked={true}
+              className="h-4 w-4 rounded accent-emerald-600 cursor-pointer"
             />
+          </div>
+
+          <div className="flex items-center justify-between p-3 rounded-lg border bg-muted/20">
+            <div>
+              <p className="text-xs font-bold text-foreground">SMS Urgent Notifications</p>
+              <p className="text-[11px] text-muted-foreground">
+                Critical alerts such as emergency campus closures or examination schedule shifts
+              </p>
+            </div>
+            <input
+              type="checkbox"
+              defaultChecked={true}
+              className="h-4 w-4 rounded accent-amber-600 cursor-pointer"
+            />
+          </div>
+
+          <div className="p-2.5 rounded-lg bg-blue-500/5 border border-blue-500/10 text-[11px] text-muted-foreground">
+            <strong>Mandatory Institutional Notices:</strong> Critical council notices and academic disciplinary warnings cannot be opted out of in accordance with institutional policy.
           </div>
         </CardContent>
       </Card>

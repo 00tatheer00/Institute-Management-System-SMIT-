@@ -14,7 +14,7 @@ import {
   LayoutDashboard, GraduationCap, ClipboardList, BookOpen, Layers,
   Calendar, CheckSquare, FileText, HelpCircle, BarChart3, Award,
   Users, UserCog, DoorOpen, CalendarDays, Image, Megaphone,
-  PieChart, Settings, Menu, ChevronLeft, Upload, History,
+  PieChart, Settings, Menu, ChevronLeft, Upload, History, Send,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -39,6 +39,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Settings: <Settings className="h-4 w-4" />,
   Upload: <Upload className="h-4 w-4" />,
   History: <History className="h-4 w-4" />,
+  Send: <Send className="h-4 w-4" />,
 };
 
 function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavClick?: () => void }) {

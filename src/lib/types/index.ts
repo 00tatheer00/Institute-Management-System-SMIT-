@@ -910,7 +910,10 @@ export type NotificationCategory =
   | "result"
   | "attendance"
   | "certificate"
-  | "system";
+  | "system"
+  | "general"
+  | "admission"
+  | "support";
 
 export interface StudentNotification {
   id: string;
@@ -1174,5 +1177,75 @@ export interface AcademicPolicies {
   autoIssueCertificates: boolean;
 }
 
+// ============================================================
+// PHASE 8 — COMMUNICATION, AUTOMATION & PROVIDER CONTRACTS
+// ============================================================
 
+export interface NotificationTemplate {
+  id: string;
+  code: string;
+  name: string;
+  category: "admission" | "academic" | "attendance" | "certificate" | "event" | "support" | "general";
+  channels: NotificationChannel[];
+  titleEn: string;
+  bodyEn: string;
+  titleUr: string;
+  bodyUr: string;
+  variables: string[];
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
 
+export interface CommunicationLog {
+  id: string;
+  recipientId: string;
+  recipientName: string;
+  recipientContact: string;
+  recipientRole: UserRole;
+  channel: NotificationChannel;
+  templateCode?: string;
+  title: string;
+  body: string;
+  status: "queued" | "sending" | "sent" | "delivered" | "failed" | "cancelled";
+  provider: string;
+  idempotencyKey?: string;
+  errorMessage?: string;
+  retryCount: number;
+  maxRetries: number;
+  deliveredAt?: string;
+  createdAt: string;
+}
+
+export interface NotificationPreference {
+  userId: string;
+  inApp: boolean;
+  email: boolean;
+  whatsapp: boolean;
+  sms: boolean;
+  academicAlerts: boolean;
+  eventReminders: boolean;
+  updatedAt: string;
+}
+
+export interface AutomationRule {
+  id: string;
+  eventName: string;
+  label: string;
+  category: string;
+  isEnabled: boolean;
+  channels: NotificationChannel[];
+  templateCode: string;
+  reminderOffsetHours?: number;
+}
+
+export interface ProviderConfig {
+  channel: NotificationChannel;
+  name: string;
+  isConfigured: boolean;
+  isEnabled: boolean;
+  providerId: string;
+  lastTestStatus?: "success" | "failed";
+  lastTestAt?: string;
+  webhookUrl?: string;
+}

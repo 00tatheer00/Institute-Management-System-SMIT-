@@ -25,6 +25,9 @@ const categoryIconMap: Record<NotificationCategory, React.ReactNode> = {
   academic: <FileText className="h-4 w-4 text-indigo-600" />,
   certificate: <Award className="h-4 w-4 text-amber-500" />,
   system: <Bell className="h-4 w-4 text-muted-foreground" />,
+  general: <Bell className="h-4 w-4 text-slate-600" />,
+  admission: <Award className="h-4 w-4 text-cyan-600" />,
+  support: <HelpCircle className="h-4 w-4 text-teal-600" />,
 };
 
 export default function StudentNotificationsPage() {

@@ -5,6 +5,7 @@ import { courses } from "@/lib/data/courses";
 import type { AttendanceRecord, AttendanceStatus, Student } from "@/lib/types";
 import type { MutationResult } from "./types";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { triggerAttendanceEvent } from "./automation-service";
 
 // In-memory store (mirrors future Supabase table `attendance`)
 const attendanceStore: AttendanceRecord[] = [...initialAttendanceRecords];
@@ -146,6 +147,27 @@ export function markClassAttendance(
         if (error) console.error("Supabase attendance sync error:", error);
       });
   }
+
+  // Trigger automated notification dispatches for absentees
+  savedRecords.forEach((r) => {
+    if (r.status === "absent") {
+      const student = students.find((s) => s.id === r.studentId);
+      const batch = batches.find((b) => b.id === r.batchId);
+      const course = courses.find((c) => c.id === batch?.courseId);
+      const summary = getStudentAttendanceSummary(r.studentId);
+
+      triggerAttendanceEvent({
+        studentId: r.studentId,
+        studentName: student?.name || "Student",
+        studentPhone: student?.phone,
+        studentEmail: student?.email,
+        courseName: course?.name || "Certificate Program",
+        batchName: batch?.name || "Cohort",
+        status: r.status,
+        currentPercentage: summary.percentage,
+      }).catch((e) => console.error("Attendance notification trigger error:", e));
+    }
+  });
 
   return { success: true, data: savedRecords };
 }

@@ -68,6 +68,7 @@ export const adminNavGroups: NavGroup[] = [
       { titleKey: "admin.nav.events", href: "/admin/events", icon: "CalendarDays" },
       { titleKey: "admin.nav.gallery", href: "/admin/gallery", icon: "Image" },
       { titleKey: "admin.nav.announcements", href: "/admin/announcements", icon: "Megaphone" },
+      { titleKey: "admin.nav.communications", href: "/admin/communications", icon: "Send" },
     ],
   },
   {

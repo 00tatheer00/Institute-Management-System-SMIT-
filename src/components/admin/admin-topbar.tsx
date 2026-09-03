@@ -36,7 +36,7 @@ export function AdminTopbar() {
         <LanguageSwitcher />
 
         {/* Notifications */}
-        <Link href="/admin">
+        <Link href="/admin/communications">
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-4.5 w-4.5" />
             <span className="absolute -top-0.5 -end-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[10px] text-white font-medium">

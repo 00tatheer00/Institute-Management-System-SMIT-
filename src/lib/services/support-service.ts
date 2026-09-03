@@ -7,6 +7,7 @@ import type {
 } from "@/lib/types";
 import { initialTickets } from "@/lib/data/support";
 import { queryItems, type PaginatedResult, type QueryParams } from "./types";
+import { triggerSupportReplyEvent } from "./automation-service";
 
 const ticketStore: SupportTicket[] = [...initialTickets];
 
@@ -93,6 +94,13 @@ export function addTicketReply(data: {
     if (ticket.status === "open") {
       ticket.status = "in-progress";
     }
+    triggerSupportReplyEvent({
+      ticketId: ticket.id,
+      ticketNumber: ticket.ticketNumber,
+      studentId: ticket.studentId,
+      studentName: ticket.studentName,
+      studentEmail: ticket.studentEmail,
+    }).catch((e) => console.error("Support reply notification trigger error:", e));
   } else if (data.authorRole === "student") {
     if (ticket.status === "waiting-student") {
       ticket.status = "in-progress";
