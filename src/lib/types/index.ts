@@ -1,0 +1,627 @@
+// ============================================================
+// CORE ENTITY TYPES — Mohsin and Huma IT Center × SMIT
+// ============================================================
+
+// --- Enums & Constants ---
+
+export type UserRole = "admin" | "super-admin" | "trainer" | "student" | "staff";
+
+export type CourseLevel = "beginner" | "intermediate" | "advanced";
+
+export type CourseCategory =
+  | "web-development"
+  | "app-development"
+  | "artificial-intelligence"
+  | "digital-marketing"
+  | "graphic-design"
+  | "video-editing"
+  | "ui-ux"
+  | "cyber-security"
+  | "networking"
+  | "freelancing"
+  | "data-science"
+  | "cloud-computing";
+
+export type BatchStatus =
+  | "upcoming"
+  | "enrolling"
+  | "in-progress"
+  | "completed"
+  | "cancelled";
+
+export type StudentStatus =
+  | "active"
+  | "inactive"
+  | "graduated"
+  | "dropped"
+  | "suspended";
+
+export type ApplicationStatus =
+  | "pending"
+  | "under-review"
+  | "approved"
+  | "rejected"
+  | "waitlisted";
+
+export type AttendanceStatus = "present" | "absent" | "late" | "excused";
+
+export type AssignmentStatus =
+  | "pending"
+  | "submitted"
+  | "graded"
+  | "late"
+  | "missing";
+
+export type QuizStatus = "upcoming" | "active" | "completed" | "cancelled";
+
+export type EventStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
+
+export type CertificateStatus = "issued" | "revoked" | "pending";
+
+export type AnnouncementCategory =
+  | "general"
+  | "academic"
+  | "event"
+  | "admission"
+  | "schedule";
+
+export type NotificationType = "info" | "success" | "warning" | "alert";
+
+export type Gender = "male" | "female" | "other";
+
+// --- Core Entities ---
+
+export interface User {
+  id: string;
+  email: string;
+  role: UserRole;
+  name: string;
+  avatar?: string;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface Course {
+  id: string;
+  slug: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  category: CourseCategory;
+  level: CourseLevel;
+  duration: string;
+  durationWeeks: number;
+  totalClasses: number;
+  image: string;
+  icon: string;
+  skills: string[];
+  learningOutcomes: string[];
+  prerequisites: string[];
+  curriculum: CurriculumModule[];
+  faqs: FAQ[];
+  isFeatured: boolean;
+  isActive: boolean;
+  studentCount: number;
+  batchCount: number;
+}
+
+export interface CurriculumModule {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  topics: string[];
+  order: number;
+}
+
+export interface Trainer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  title: string;
+  bio: string;
+  expertise: string[];
+  courseIds: string[];
+  experience: string;
+  education: string;
+  certifications: string[];
+  socialLinks: {
+    linkedin?: string;
+    github?: string;
+    twitter?: string;
+    website?: string;
+    youtube?: string;
+  };
+  isActive: boolean;
+  joinedAt: string;
+  totalStudents: number;
+  rating: number;
+}
+
+export interface Batch {
+  id: string;
+  name: string;
+  courseId: string;
+  trainerId: string;
+  startDate: string;
+  endDate: string;
+  schedule: ClassSchedule;
+  room: string;
+  campus: string;
+  totalSeats: number;
+  enrolledSeats: number;
+  status: BatchStatus;
+  isActive: boolean;
+}
+
+export interface ClassSchedule {
+  days: string[];
+  startTime: string;
+  endTime: string;
+}
+
+export interface Student {
+  id: string;
+  registrationId: string;
+  name: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  gender: Gender;
+  dateOfBirth: string;
+  cnic: string;
+  address: string;
+  city: string;
+  education: string;
+  courseId: string;
+  batchId: string;
+  status: StudentStatus;
+  enrolledAt: string;
+  attendancePercentage: number;
+  gpa: number;
+  completedAssignments: number;
+  totalAssignments: number;
+}
+
+export interface Application {
+  id: string;
+  applicationId: string;
+  studentName: string;
+  email: string;
+  phone: string;
+  gender: Gender;
+  dateOfBirth: string;
+  cnic: string;
+  address: string;
+  city: string;
+  education: string;
+  courseId: string;
+  preferredBatchId?: string;
+  motivation: string;
+  status: ApplicationStatus;
+  submittedAt: string;
+  reviewedAt?: string;
+  reviewedBy?: string;
+  notes?: string;
+}
+
+export interface ClassSession {
+  id: string;
+  batchId: string;
+  courseId: string;
+  trainerId: string;
+  title: string;
+  description: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  room: string;
+  moduleId: string;
+  topics: string[];
+  isCompleted: boolean;
+}
+
+export interface AttendanceRecord {
+  id: string;
+  classId: string;
+  studentId: string;
+  batchId: string;
+  date: string;
+  status: AttendanceStatus;
+  markedBy: string;
+  markedAt: string;
+}
+
+export interface Assignment {
+  id: string;
+  title: string;
+  description: string;
+  courseId: string;
+  batchId: string;
+  trainerId: string;
+  moduleId: string;
+  dueDate: string;
+  totalMarks: number;
+  publishedAt: string;
+  isPublished: boolean;
+}
+
+export interface AssignmentSubmission {
+  id: string;
+  assignmentId: string;
+  studentId: string;
+  submittedAt: string;
+  status: AssignmentStatus;
+  obtainedMarks?: number;
+  feedback?: string;
+  gradedAt?: string;
+  gradedBy?: string;
+}
+
+export interface Quiz {
+  id: string;
+  title: string;
+  description: string;
+  courseId: string;
+  batchId: string;
+  trainerId: string;
+  moduleId: string;
+  totalMarks: number;
+  totalQuestions: number;
+  duration: number; // minutes
+  date: string;
+  status: QuizStatus;
+}
+
+export interface QuizResult {
+  id: string;
+  quizId: string;
+  studentId: string;
+  obtainedMarks: number;
+  totalMarks: number;
+  percentage: number;
+  completedAt: string;
+}
+
+export interface Result {
+  id: string;
+  studentId: string;
+  courseId: string;
+  batchId: string;
+  assignmentAverage: number;
+  quizAverage: number;
+  projectScore: number;
+  finalScore: number;
+  grade: string;
+  status: "pass" | "fail" | "pending";
+}
+
+export interface Certificate {
+  id: string;
+  certificateId: string;
+  studentId: string;
+  studentName: string;
+  courseId: string;
+  courseName: string;
+  batchId: string;
+  batchName: string;
+  issueDate: string;
+  grade: string;
+  status: CertificateStatus;
+}
+
+export interface Event {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  endDate?: string;
+  time: string;
+  location: string;
+  category: string;
+  image: string;
+  isRegistrationOpen: boolean;
+  maxAttendees?: number;
+  registeredCount: number;
+  status: EventStatus;
+}
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  category: "workshops" | "classes" | "events" | "graduation" | "projects" | "campus";
+  date: string;
+}
+
+export interface StudentProject {
+  id: string;
+  title: string;
+  description: string;
+  studentId: string;
+  studentName: string;
+  courseId: string;
+  courseName: string;
+  batchId: string;
+  technologies: string[];
+  category: string;
+  image: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  completedAt: string;
+}
+
+export interface SuccessStory {
+  id: string;
+  studentName: string;
+  avatar: string;
+  courseId: string;
+  courseName: string;
+  batchName: string;
+  achievement: string;
+  quote: string;
+  currentRole?: string;
+  company?: string;
+}
+
+export interface Announcement {
+  id: string;
+  title: string;
+  content: string;
+  category: AnnouncementCategory;
+  isImportant: boolean;
+  publishedAt: string;
+  publishedBy: string;
+  expiresAt?: string;
+}
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  type: NotificationType;
+  isRead: boolean;
+  createdAt: string;
+  link?: string;
+}
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+  order: number;
+}
+
+export interface Room {
+  id: string;
+  name: string;
+  type: RoomType;
+  capacity: number;
+  floor: string;
+  building: string;
+  equipment: string[];
+  hasProjector: boolean;
+  hasAC: boolean;
+  hasWhiteboard: boolean;
+  isAvailable: boolean;
+  status: "available" | "occupied" | "maintenance" | "reserved";
+  notes?: string;
+}
+
+export type RoomType =
+  | "classroom"
+  | "computer-lab"
+  | "meeting-room"
+  | "training-lab"
+  | "office"
+  | "auditorium"
+  | "other";
+
+// --- Staff ---
+
+export interface Staff {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  avatar?: string;
+  role: StaffRole;
+  department: string;
+  designation: string;
+  joinedAt: string;
+  status: "active" | "inactive" | "on-leave";
+  address?: string;
+  cnic?: string;
+}
+
+export type StaffRole =
+  | "coordinator"
+  | "lab-assistant"
+  | "office-manager"
+  | "receptionist"
+  | "it-support"
+  | "librarian"
+  | "accountant"
+  | "security"
+  | "other";
+
+// --- Dashboard Types ---
+
+export interface DashboardStat {
+  label: string;
+  value: number | string;
+  change?: number;
+  changeLabel?: string;
+  icon: string;
+  trend?: "up" | "down" | "neutral";
+}
+
+export interface ChartDataPoint {
+  name: string;
+  value: number;
+  [key: string]: string | number;
+}
+
+// --- Navigation Types ---
+
+export interface NavItem {
+  titleKey: string;
+  href: string;
+  icon?: string;
+  children?: NavItem[];
+  badge?: string | number;
+}
+
+export interface NavGroup {
+  titleKey: string;
+  items: NavItem[];
+}
+
+// --- RBAC Foundation ---
+
+export type PermissionAction =
+  | "view"
+  | "create"
+  | "edit"
+  | "delete"
+  | "import"
+  | "export"
+  | "manage"
+  | "approve"
+  | "assign";
+
+export type PermissionResource =
+  | "students"
+  | "admissions"
+  | "courses"
+  | "batches"
+  | "trainers"
+  | "staff"
+  | "classes"
+  | "rooms"
+  | "attendance"
+  | "assignments"
+  | "quizzes"
+  | "results"
+  | "certificates"
+  | "events"
+  | "announcements"
+  | "gallery"
+  | "reports"
+  | "settings"
+  | "imports";
+
+export interface Permission {
+  action: PermissionAction;
+  resource: PermissionResource;
+}
+
+/**
+ * Default permissions per role. In Phase 3+, these will be stored in the database
+ * and configurable per-user.
+ */
+export const defaultPermissions: Record<UserRole, Permission[]> = {
+  "super-admin": [], // all permissions — checked via role, not list
+  admin: [
+    { action: "view", resource: "students" },
+    { action: "create", resource: "students" },
+    { action: "edit", resource: "students" },
+    { action: "delete", resource: "students" },
+    { action: "import", resource: "students" },
+    { action: "export", resource: "students" },
+    { action: "view", resource: "admissions" },
+    { action: "manage", resource: "admissions" },
+    { action: "approve", resource: "admissions" },
+    { action: "view", resource: "courses" },
+    { action: "create", resource: "courses" },
+    { action: "edit", resource: "courses" },
+    { action: "view", resource: "batches" },
+    { action: "create", resource: "batches" },
+    { action: "edit", resource: "batches" },
+    { action: "manage", resource: "batches" },
+    { action: "view", resource: "trainers" },
+    { action: "create", resource: "trainers" },
+    { action: "edit", resource: "trainers" },
+    { action: "view", resource: "staff" },
+    { action: "create", resource: "staff" },
+    { action: "edit", resource: "staff" },
+    { action: "view", resource: "classes" },
+    { action: "create", resource: "classes" },
+    { action: "view", resource: "rooms" },
+    { action: "manage", resource: "rooms" },
+    { action: "view", resource: "reports" },
+    { action: "view", resource: "imports" },
+    { action: "import", resource: "imports" },
+    { action: "manage", resource: "settings" },
+  ],
+  trainer: [
+    { action: "view", resource: "students" },
+    { action: "view", resource: "courses" },
+    { action: "view", resource: "batches" },
+    { action: "view", resource: "classes" },
+    { action: "create", resource: "classes" },
+    { action: "manage", resource: "attendance" },
+    { action: "manage", resource: "assignments" },
+    { action: "manage", resource: "quizzes" },
+    { action: "view", resource: "results" },
+  ],
+  student: [
+    { action: "view", resource: "courses" },
+    { action: "view", resource: "classes" },
+    { action: "view", resource: "attendance" },
+    { action: "view", resource: "assignments" },
+    { action: "view", resource: "quizzes" },
+    { action: "view", resource: "results" },
+    { action: "view", resource: "certificates" },
+  ],
+  staff: [
+    { action: "view", resource: "students" },
+    { action: "view", resource: "admissions" },
+    { action: "view", resource: "courses" },
+    { action: "view", resource: "batches" },
+  ],
+};
+
+export function hasPermission(
+  role: UserRole,
+  action: PermissionAction,
+  resource: PermissionResource
+): boolean {
+  if (role === "super-admin") return true;
+  return defaultPermissions[role].some(
+    (p) => p.action === action && p.resource === resource
+  );
+}
+
+// --- Audit Event ---
+
+export type AuditAction =
+  | "created"
+  | "updated"
+  | "deleted"
+  | "imported"
+  | "exported"
+  | "status_changed"
+  | "approved"
+  | "rejected"
+  | "assigned"
+  | "archived";
+
+export interface AuditEvent {
+  id: string;
+  action: AuditAction;
+  resource: PermissionResource;
+  resourceId: string;
+  resourceName: string;
+  performedBy: string;
+  performedByName: string;
+  performedAt: string;
+  details?: Record<string, unknown>;
+  previousValue?: string;
+  newValue?: string;
+}
+

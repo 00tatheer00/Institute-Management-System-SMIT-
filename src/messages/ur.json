@@ -1,0 +1,537 @@
+{
+  "common": {
+    "siteName": "محسن اینڈ حما آئی ٹی سینٹر × SMIT",
+    "siteShortName": "MHIT × SMIT",
+    "tagline": "سب کے لیے مفت ٹیکنالوجی تعلیم",
+    "learnMore": "مزید جانیں",
+    "viewAll": "سب دیکھیں",
+    "applyNow": "ابھی درخواست دیں",
+    "getStarted": "شروع کریں",
+    "search": "تلاش",
+    "filter": "فلٹر",
+    "sort": "ترتیب",
+    "loading": "لوڈ ہو رہا ہے...",
+    "noResults": "کوئی نتائج نہیں ملے",
+    "error": "کچھ غلط ہو گیا",
+    "retry": "دوبارہ کوشش کریں",
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ",
+    "delete": "حذف کریں",
+    "edit": "ترمیم",
+    "view": "دیکھیں",
+    "close": "بند کریں",
+    "submit": "جمع کرائیں",
+    "next": "اگلا",
+    "previous": "پچھلا",
+    "back": "واپس",
+    "confirm": "تصدیق",
+    "yes": "ہاں",
+    "no": "نہیں",
+    "all": "تمام",
+    "active": "فعال",
+    "inactive": "غیر فعال",
+    "status": "حیثیت",
+    "actions": "اقدامات",
+    "details": "تفصیلات",
+    "download": "ڈاؤن لوڈ",
+    "upload": "اپ لوڈ",
+    "showing": "دکھا رہا ہے",
+    "of": "میں سے",
+    "results": "نتائج",
+    "page": "صفحہ",
+    "perPage": "فی صفحہ",
+    "language": "زبان",
+    "english": "English",
+    "urdu": "اردو",
+    "switchLanguage": "زبان تبدیل کریں",
+    "demo": "ڈیمو",
+    "demoMode": "ڈیمو موڈ",
+    "comingSoon": "جلد آ رہا ہے",
+    "preview": "پیش نظارہ"
+  },
+  "nav": {
+    "home": "ہوم",
+    "about": "ہمارے بارے میں",
+    "courses": "کورسز",
+    "trainers": "ٹرینرز",
+    "batches": "بیچز",
+    "admissions": "داخلے",
+    "events": "تقریبات",
+    "gallery": "گیلری",
+    "projects": "طلبہ کے پراجیکٹس",
+    "successStories": "کامیابی کی کہانیاں",
+    "announcements": "اعلانات",
+    "faq": "عام سوالات",
+    "contact": "رابطہ",
+    "verifyCertificate": "سرٹیفکیٹ کی تصدیق",
+    "login": "لاگ ان",
+    "more": "مزید"
+  },
+  "home": {
+    "hero": {
+      "title": "مفت ٹیکنالوجی تعلیم",
+      "subtitle": "اگلی نسل کو عالمی معیار کی ٹیکنالوجی مہارتوں سے بااختیار بنانا — بالکل مفت۔",
+      "description": "محسن اینڈ حما آئی ٹی سینٹر × SMIT جامع ٹیکنالوجی تربیتی پروگرام پیش کرتا ہے تاکہ آپ ٹیک میں کامیاب کیریئر بنا سکیں۔",
+      "cta": "کورسز دیکھیں",
+      "ctaSecondary": "داخلے کے لیے درخواست دیں"
+    },
+    "stats": {
+      "students": "تربیت یافتہ طلبہ",
+      "trainers": "ماہر ٹرینرز",
+      "programs": "پروگرامز",
+      "batches": "مکمل بیچز",
+      "successRate": "کامیابی کی شرح",
+      "placements": "کیریئر پلیسمنٹس"
+    },
+    "featuredCourses": {
+      "title": "نمایاں کورسز",
+      "subtitle": "ہمارے مقبول ترین ٹیکنالوجی پروگرامز دیکھیں"
+    },
+    "whyChoose": {
+      "title": "ہمیں کیوں چنیں",
+      "subtitle": "محسن اینڈ حما آئی ٹی سینٹر × SMIT کو کیا مختلف بناتا ہے",
+      "free": { "title": "مکمل طور پر مفت", "description": "تمام کورسز 100٪ مفت ہیں بغیر کسی پوشیدہ فیس کے۔" },
+      "expert": { "title": "ماہر ٹرینرز", "description": "صنعتی پیشہ ور افراد سے سیکھیں جن کے پاس برسوں کا تجربہ ہے۔" },
+      "practical": { "title": "عملی تعلیم", "description": "پراجیکٹ پر مبنی نصاب جو عملی مہارتوں پر مرکوز ہے۔" },
+      "career": { "title": "کیریئر سپورٹ", "description": "پورٹ فولیو بنانا، کیریئر گائیڈنس، اور صنعتی روابط۔" },
+      "modern": { "title": "جدید نصاب", "description": "جدید ترین ٹیکنالوجیز کے ساتھ اپ ڈیٹ صنعتی نصاب۔" },
+      "community": { "title": "معاون کمیونٹی", "description": "سیکھنے والوں، مینٹرز اور پیشہ ور افراد کے نیٹ ورک میں شامل ہوں۔" }
+    },
+    "howItWorks": {
+      "title": "یہ کیسے کام کرتا ہے",
+      "subtitle": "درخواست سے کیریئر تک آپ کا سفر",
+      "step1": { "title": "درخواست دیں", "description": "ہمارے آسان داخلہ فارم کے ذریعے آن لائن درخواست جمع کرائیں۔" },
+      "step2": { "title": "داخلہ حاصل کریں", "description": "ہماری ٹیم آپ کی درخواست کا جائزہ لے کر آپ کے اندراج کی تصدیق کرتی ہے۔" },
+      "step3": { "title": "سیکھیں", "description": "کلاسز میں شرکت کریں، اسائنمنٹس مکمل کریں، اور حقیقی پراجیکٹس بنائیں۔" },
+      "step4": { "title": "کامیاب ہوں", "description": "مہارتوں، پورٹ فولیو، اور تصدیق شدہ سرٹیفکیٹ کے ساتھ فارغ التحصیل ہوں۔" }
+    },
+    "categories": {
+      "title": "تعلیمی شعبے",
+      "subtitle": "مختلف ٹیکنالوجی شعبوں کی تلاش کریں"
+    },
+    "testimonials": {
+      "title": "طلبہ کی کامیابی کی کہانیاں",
+      "subtitle": "ان فارغ التحصیل طلبہ سے سنیں جنہوں نے اپنے کیریئر کو تبدیل کیا"
+    },
+    "cta": {
+      "title": "اپنا ٹیک سفر شروع کرنے کے لیے تیار ہیں؟",
+      "subtitle": "ان ہزاروں طلبہ میں شامل ہوں جنہوں نے مفت ٹیکنالوجی تعلیم کے ذریعے اپنے کیریئر کو تبدیل کیا ہے۔",
+      "button": "ابھی درخواست دیں — یہ مفت ہے"
+    },
+    "upcomingBatches": {
+      "title": "آنے والے بیچز",
+      "subtitle": "اگلے دستیاب بیچز میں اندراج کریں"
+    }
+  },
+  "about": {
+    "title": "ہمارے بارے میں",
+    "subtitle": "ہمارے مشن، وژن اور اثرات کے بارے میں جانیں",
+    "overview": {
+      "title": "ادارے کا جائزہ",
+      "description": "محسن اینڈ حما آئی ٹی سینٹر × SMIT ایک ٹیکنالوجی تعلیمی ادارہ ہے جو جدید ٹیکنالوجی مہارتوں میں مفت، اعلیٰ معیار کی تربیت فراہم کرنے کے لیے وقف ہے۔"
+    },
+    "mission": {
+      "title": "ہمارا مشن",
+      "description": "قابل رسائی، اعلیٰ معیار کی ٹیکنالوجی تعلیم فراہم کرنا جو افراد کو کامیاب کیریئر بنانے، ڈیجیٹل معیشت میں حصہ ڈالنے، اور اپنی کمیونٹیز میں مثبت اثر پیدا کرنے کے لیے بااختیار بنائے۔"
+    },
+    "vision": {
+      "title": "ہمارا وژن",
+      "description": "ٹیکنالوجی تعلیم کا ایک سرکردہ مرکز بننا جو مفت، عالمی معیار کے تربیتی پروگراموں کے ذریعے زندگیوں کو تبدیل کرے۔"
+    },
+    "smit": {
+      "title": "SMIT کے ساتھ تعاون",
+      "description": "سیلانی ماس آئی ٹی ٹریننگ (SMIT) کے تعاون سے، ہم اپنی کمیونٹی کی خدمت کے لیے منظم، صنعت سے ہم آہنگ نصاب اور ایک ثابت شدہ تعلیمی طریقہ کار لاتے ہیں۔"
+    }
+  },
+  "courses": {
+    "title": "ہمارے کورسز",
+    "subtitle": "ہمارے جامع ٹیکنالوجی تربیتی پروگرامز دیکھیں",
+    "searchPlaceholder": "کورسز تلاش کریں...",
+    "allCategories": "تمام زمرے",
+    "allLevels": "تمام سطحیں",
+    "duration": "مدت",
+    "level": "سطح",
+    "students": "طلبہ",
+    "batches": "بیچز",
+    "skills": "آپ جو مہارتیں سیکھیں گے",
+    "learningOutcomes": "سیکھنے کے نتائج",
+    "prerequisites": "پیش شرائط",
+    "curriculum": "نصاب",
+    "modules": "ماڈیولز",
+    "weeks": "ہفتے",
+    "classes": "کلاسز",
+    "viewCourse": "کورس دیکھیں",
+    "enrollNow": "ابھی اندراج کریں",
+    "availableBatches": "دستیاب بیچز",
+    "trainer": "ٹرینر",
+    "beginner": "ابتدائی",
+    "intermediate": "درمیانی",
+    "advanced": "ایڈوانسڈ",
+    "featured": "نمایاں",
+    "noCourses": "آپ کے معیار سے مطابقت رکھنے والا کوئی کورس نہیں ملا۔"
+  },
+  "trainers": {
+    "title": "ہمارے ٹرینرز",
+    "subtitle": "صنعتی ماہرین اور تجربہ کار پیشہ ور افراد سے سیکھیں",
+    "expertise": "مہارت کے شعبے",
+    "experience": "تجربہ",
+    "education": "تعلیم",
+    "certifications": "سرٹیفیکیشنز",
+    "coursesTaught": "پڑھائے جانے والے کورسز",
+    "totalStudents": "کل طلبہ",
+    "rating": "ریٹنگ",
+    "viewProfile": "پروفائل دیکھیں",
+    "socialLinks": "رابطہ"
+  },
+  "batches": {
+    "title": "بیچز",
+    "subtitle": "دستیاب بیچز تلاش کریں اور اندراج کریں",
+    "course": "کورس",
+    "trainer": "ٹرینر",
+    "startDate": "شروع کی تاریخ",
+    "endDate": "اختتام کی تاریخ",
+    "schedule": "شیڈول",
+    "room": "کمرہ",
+    "seats": "سیٹس",
+    "enrolled": "اندراج شدہ",
+    "available": "دستیاب",
+    "status": "حیثیت",
+    "enrolling": "اندراج جاری",
+    "upcoming": "آنے والا",
+    "inProgress": "جاری",
+    "completed": "مکمل",
+    "apply": "درخواست دیں",
+    "full": "بھرا ہوا",
+    "noBatches": "آپ کے معیار سے مطابقت رکھنے والا کوئی بیچ نہیں ملا۔"
+  },
+  "admissions": {
+    "title": "داخلے کے لیے درخواست دیں",
+    "subtitle": "آج ہی اپنا ٹیکنالوجی تعلیم کا سفر شروع کریں",
+    "steps": {
+      "personal": "ذاتی معلومات",
+      "contact": "رابطے کی تفصیلات",
+      "education": "تعلیم",
+      "course": "کورس کا انتخاب",
+      "additional": "اضافی معلومات",
+      "documents": "دستاویزات",
+      "review": "جائزہ",
+      "confirmation": "تصدیق"
+    },
+    "fields": {
+      "fullName": "مکمل نام",
+      "fatherName": "والد کا نام",
+      "dateOfBirth": "تاریخ پیدائش",
+      "gender": "جنس",
+      "cnic": "شناختی کارڈ نمبر",
+      "email": "ای میل",
+      "phone": "فون نمبر",
+      "address": "پتہ",
+      "city": "شہر",
+      "lastQualification": "آخری تعلیمی قابلیت",
+      "institution": "ادارے کا نام",
+      "yearOfPassing": "سال پاس",
+      "selectCourse": "کورس منتخب کریں",
+      "preferredBatch": "ترجیحی بیچ",
+      "motivation": "آپ اس کورس میں کیوں شامل ہونا چاہتے ہیں؟",
+      "experience": "اس شعبے میں کوئی سابقہ تجربہ؟",
+      "howDidYouHear": "آپ نے ہمارے بارے میں کیسے سنا؟",
+      "uploadPhoto": "تصویر اپ لوڈ کریں",
+      "uploadCnic": "شناختی کارڈ کی کاپی اپ لوڈ کریں",
+      "uploadEducation": "تعلیمی سرٹیفکیٹ اپ لوڈ کریں"
+    },
+    "validation": {
+      "required": "یہ فیلڈ ضروری ہے",
+      "invalidEmail": "براہ کرم درست ای میل ایڈریس درج کریں",
+      "invalidPhone": "براہ کرم درست فون نمبر درج کریں",
+      "invalidCnic": "براہ کرم درست شناختی کارڈ نمبر درج کریں"
+    },
+    "success": {
+      "title": "درخواست کامیابی سے جمع ہو گئی!",
+      "message": "آپ کی درخواست موصول ہو گئی ہے۔ ہم جلد آپ سے رابطہ کریں گے۔",
+      "referenceId": "درخواست کا حوالہ نمبر",
+      "note": "براہ کرم مستقبل کے خط و کتابت کے لیے یہ حوالہ نمبر محفوظ کریں۔",
+      "demoNote": "یہ ایک ڈیمو جمع ہے۔ پروڈکشن میں، یہ ڈیٹا بیس میں محفوظ ہو گا۔"
+    }
+  },
+  "events": {
+    "title": "تقریبات",
+    "subtitle": "ہماری تازہ ترین تقریبات اور سرگرمیوں سے باخبر رہیں",
+    "upcoming": "آنے والی تقریبات",
+    "past": "گزشتہ تقریبات",
+    "date": "تاریخ",
+    "time": "وقت",
+    "location": "مقام",
+    "register": "رجسٹر کریں",
+    "registrationClosed": "رجسٹریشن بند",
+    "attendees": "رجسٹرڈ",
+    "noEvents": "کوئی تقریب نہیں ملی۔"
+  },
+  "gallery": {
+    "title": "گیلری",
+    "subtitle": "محسن اینڈ حما آئی ٹی سینٹر × SMIT میں زندگی کی جھلکیاں",
+    "categories": {
+      "all": "تمام",
+      "workshops": "ورکشاپس",
+      "classes": "کلاسز",
+      "events": "تقریبات",
+      "graduation": "گریجویشن",
+      "projects": "پراجیکٹس",
+      "campus": "کیمپس"
+    }
+  },
+  "projects": {
+    "title": "طلبہ کے پراجیکٹس",
+    "subtitle": "ہمارے باصلاحیت طلبہ کے کام کی نمائش",
+    "technologies": "ٹیکنالوجیز",
+    "viewProject": "پراجیکٹ دیکھیں",
+    "github": "گٹ ہب",
+    "liveDemo": "لائیو ڈیمو",
+    "noProjects": "کوئی پراجیکٹ نہیں ملا۔"
+  },
+  "successStories": {
+    "title": "کامیابی کی کہانیاں",
+    "subtitle": "ہمارے فارغ التحصیل طلبہ ٹیک انڈسٹری میں اثر ڈال رہے ہیں"
+  },
+  "announcements": {
+    "title": "اعلانات",
+    "subtitle": "اہم اپ ڈیٹس اور نوٹسز",
+    "categories": {
+      "all": "تمام",
+      "general": "عمومی",
+      "academic": "تعلیمی",
+      "event": "تقریبات",
+      "admission": "داخلے",
+      "schedule": "شیڈول"
+    },
+    "important": "اہم",
+    "postedBy": "شائع کنندہ",
+    "noAnnouncements": "کوئی اعلان نہیں ملا۔"
+  },
+  "faqPage": {
+    "title": "عام سوالات",
+    "subtitle": "ہمارے پروگراموں کے بارے میں عام سوالات کے جوابات تلاش کریں",
+    "categories": {
+      "all": "تمام",
+      "general": "عمومی",
+      "admissions": "داخلے",
+      "courses": "کورسز",
+      "classes": "کلاسز",
+      "attendance": "حاضری",
+      "certificates": "سرٹیفکیٹس"
+    }
+  },
+  "contact": {
+    "title": "ہم سے رابطہ کریں",
+    "subtitle": "ہم سے رابطہ کریں",
+    "form": {
+      "name": "آپ کا نام",
+      "email": "آپ کی ای میل",
+      "subject": "موضوع",
+      "message": "پیغام",
+      "send": "پیغام بھیجیں",
+      "success": "پیغام کامیابی سے بھیج دیا گیا! ہم جلد آپ سے رابطہ کریں گے۔",
+      "demoNote": "یہ ایک ڈیمو فارم ہے۔ پروڈکشن میں، پیغامات ٹیم کو بھیجے جائیں گے۔"
+    },
+    "info": {
+      "address": "پتہ",
+      "phone": "فون",
+      "email": "ای میل",
+      "hours": "کام کے اوقات"
+    }
+  },
+  "verifyCertificate": {
+    "title": "سرٹیفکیٹ کی تصدیق",
+    "subtitle": "سرٹیفکیٹ کی صداقت کی تصدیق کے لیے سرٹیفکیٹ آئی ڈی درج کریں",
+    "placeholder": "سرٹیفکیٹ آئی ڈی درج کریں (مثلاً MH-WD-2026-00124)",
+    "verify": "تصدیق کریں",
+    "verified": "سرٹیفکیٹ تصدیق شدہ",
+    "invalid": "سرٹیفکیٹ نہیں ملا",
+    "invalidMessage": "اس آئی ڈی کے ساتھ کوئی سرٹیفکیٹ نہیں ملا۔ براہ کرم آئی ڈی چیک کریں اور دوبارہ کوشش کریں۔",
+    "student": "طالب علم",
+    "course": "کورس",
+    "batch": "بیچ",
+    "issueDate": "اجراء کی تاریخ",
+    "grade": "گریڈ"
+  },
+  "auth": {
+    "login": {
+      "title": "خوش آمدید",
+      "subtitle": "اپنے اکاؤنٹ میں سائن ان کریں",
+      "email": "ای میل",
+      "password": "پاس ورڈ",
+      "rememberMe": "مجھے یاد رکھیں",
+      "forgotPassword": "پاس ورڈ بھول گئے؟",
+      "signIn": "سائن ان",
+      "demoAccounts": "ڈیمو اکاؤنٹس",
+      "admin": "ایڈمن",
+      "trainer": "ٹرینر",
+      "student": "طالب علم",
+      "demoNote": "خودکار اسناد کے لیے ڈیمو اکاؤنٹ پر کلک کریں"
+    },
+    "forgotPassword": {
+      "title": "پاس ورڈ بھول گئے",
+      "subtitle": "پاس ورڈ ری سیٹ لنک حاصل کرنے کے لیے اپنا ای میل درج کریں",
+      "send": "ری سیٹ لنک بھیجیں",
+      "success": "پاس ورڈ ری سیٹ لنک آپ کی ای میل پر بھیج دیا گیا ہے۔",
+      "backToLogin": "لاگ ان پر واپس جائیں"
+    }
+  },
+  "admin": {
+    "nav": {
+      "main": "مین",
+      "dashboard": "ڈیش بورڈ",
+      "import": "بلک امپورٹ",
+      "imports": "امپورٹ ہسٹری",
+      "academic": "تعلیمی",
+      "students": "طلبہ",
+      "admissions": "داخلے",
+      "courses": "کورسز",
+      "batches": "بیچز",
+      "classes": "کلاسز",
+      "attendance": "حاضری",
+      "assignments": "اسائنمنٹس",
+      "quizzes": "کوئز",
+      "results": "نتائج",
+      "certificates": "سرٹیفکیٹس",
+      "people": "لوگ",
+      "trainers": "ٹرینرز",
+      "staff": "عملہ",
+      "institute": "ادارہ",
+      "rooms": "کمرے",
+      "events": "تقریبات",
+      "gallery": "گیلری",
+      "announcements": "اعلانات",
+      "analytics": "تجزیات",
+      "reports": "رپورٹس",
+      "system": "سسٹم",
+      "settings": "ترتیبات"
+    },
+    "dashboard": {
+      "title": "ایڈمن ڈیش بورڈ",
+      "welcome": "خوش آمدید",
+      "totalStudents": "کل طلبہ",
+      "activeStudents": "فعال طلبہ",
+      "totalTrainers": "ٹرینرز",
+      "totalCourses": "کورسز",
+      "activeBatches": "فعال بیچز",
+      "pendingApplications": "زیر التوا درخواستیں",
+      "todaysClasses": "آج کی کلاسز",
+      "recentAdmissions": "حالیہ داخلے",
+      "attendanceAlerts": "حاضری الرٹس",
+      "recentActivity": "حالیہ سرگرمی",
+      "upcomingEvents": "آنے والی تقریبات",
+      "quickActions": "فوری اقدامات",
+      "studentGrowth": "طلبہ کی نمو",
+      "attendanceTrend": "حاضری کا رجحان",
+      "courseDistribution": "کورس کی تقسیم",
+      "batchPerformance": "بیچ کی کارکردگی"
+    },
+    "students": {
+      "title": "طلبہ کا انتظام",
+      "addStudent": "طالب علم شامل کریں",
+      "searchPlaceholder": "طلبہ تلاش کریں...",
+      "registrationId": "رجسٹریشن نمبر",
+      "name": "نام",
+      "course": "کورس",
+      "batch": "بیچ",
+      "status": "حیثیت",
+      "attendance": "حاضری",
+      "profile": "طالب علم کا پروفائل",
+      "tabs": {
+        "overview": "جائزہ",
+        "academic": "تعلیمی",
+        "attendance": "حاضری",
+        "assignments": "اسائنمنٹس",
+        "results": "نتائج",
+        "projects": "پراجیکٹس",
+        "certificates": "سرٹیفکیٹس",
+        "documents": "دستاویزات",
+        "activity": "سرگرمی"
+      }
+    }
+  },
+  "trainer": {
+    "nav": {
+      "dashboard": "ڈیش بورڈ",
+      "courses": "میرے کورسز",
+      "batches": "میرے بیچز",
+      "students": "طلبہ",
+      "classes": "کلاسز",
+      "attendance": "حاضری",
+      "assignments": "اسائنمنٹس",
+      "quizzes": "کوئز",
+      "results": "نتائج",
+      "materials": "مواد",
+      "announcements": "اعلانات",
+      "profile": "پروفائل"
+    },
+    "dashboard": {
+      "title": "ٹرینر ڈیش بورڈ",
+      "welcome": "خوش آمدید",
+      "assignedBatches": "تفویض شدہ بیچز",
+      "totalStudents": "کل طلبہ",
+      "todaysClasses": "آج کی کلاسز",
+      "attendanceAvg": "اوسط حاضری",
+      "pendingSubmissions": "زیر التوا جمع کرانے",
+      "upcomingClasses": "آنے والی کلاسز",
+      "studentPerformance": "طلبہ کی کارکردگی"
+    }
+  },
+  "student": {
+    "nav": {
+      "dashboard": "ڈیش بورڈ",
+      "course": "میرا کورس",
+      "schedule": "شیڈول",
+      "attendance": "حاضری",
+      "assignments": "اسائنمنٹس",
+      "quizzes": "کوئز",
+      "results": "نتائج",
+      "materials": "مواد",
+      "projects": "پراجیکٹس",
+      "certificates": "سرٹیفکیٹس",
+      "announcements": "اعلانات",
+      "profile": "پروفائل",
+      "settings": "ترتیبات"
+    },
+    "dashboard": {
+      "title": "طالب علم ڈیش بورڈ",
+      "welcome": "خوش آمدید",
+      "myCourse": "میرا کورس",
+      "myBatch": "میرا بیچ",
+      "progress": "پیش رفت",
+      "attendance": "حاضری",
+      "upcomingClass": "آنے والی کلاس",
+      "pendingAssignments": "زیر التوا اسائنمنٹس",
+      "upcomingQuiz": "آنے والا کوئز",
+      "recentResults": "حالیہ نتائج",
+      "announcements": "اعلانات"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "صفحہ نہیں ملا",
+      "message": "جس صفحے کی آپ تلاش کر رہے ہیں وہ موجود نہیں ہے یا منتقل ہو گیا ہے۔",
+      "goHome": "ہوم پیج پر جائیں"
+    },
+    "unauthorized": {
+      "title": "رسائی سے انکار",
+      "message": "آپ کو اس صفحے تک رسائی کی اجازت نہیں ہے۔",
+      "goBack": "واپس جائیں",
+      "goLogin": "لاگ ان پر جائیں"
+    },
+    "serverError": {
+      "title": "کچھ غلط ہو گیا",
+      "message": "ایک غیر متوقع خرابی پیش آئی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔",
+      "retry": "دوبارہ کوشش کریں"
+    }
+  },
+  "footer": {
+    "description": "اگلی نسل کے ٹیک پیشہ ور افراد کو بااختیار بنانے کے لیے مفت ٹیکنالوجی تعلیم فراہم کرنا۔",
+    "quickLinks": "فوری لنکس",
+    "programs": "پروگرامز",
+    "support": "سپورٹ",
+    "contact": "رابطہ کریں",
+    "rights": "تمام حقوق محفوظ ہیں۔",
+    "madeWith": "بنایا گیا"
+  }
+}

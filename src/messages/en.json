@@ -1,0 +1,537 @@
+{
+  "common": {
+    "siteName": "Mohsin and Huma IT Center × SMIT",
+    "siteShortName": "MHIT × SMIT",
+    "tagline": "Free Technology Education for Everyone",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "applyNow": "Apply Now",
+    "getStarted": "Get Started",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "loading": "Loading...",
+    "noResults": "No results found",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "close": "Close",
+    "submit": "Submit",
+    "next": "Next",
+    "previous": "Previous",
+    "back": "Back",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "status": "Status",
+    "actions": "Actions",
+    "details": "Details",
+    "download": "Download",
+    "upload": "Upload",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "page": "Page",
+    "perPage": "Per page",
+    "language": "Language",
+    "english": "English",
+    "urdu": "اردو",
+    "switchLanguage": "Switch Language",
+    "demo": "Demo",
+    "demoMode": "Demo Mode",
+    "comingSoon": "Coming Soon",
+    "preview": "Preview"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "courses": "Courses",
+    "trainers": "Trainers",
+    "batches": "Batches",
+    "admissions": "Admissions",
+    "events": "Events",
+    "gallery": "Gallery",
+    "projects": "Student Projects",
+    "successStories": "Success Stories",
+    "announcements": "Announcements",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "verifyCertificate": "Verify Certificate",
+    "login": "Login",
+    "more": "More"
+  },
+  "home": {
+    "hero": {
+      "title": "Free Technology Education",
+      "subtitle": "Empowering the next generation with world-class technology skills — completely free.",
+      "description": "Mohsin and Huma IT Center × SMIT offers comprehensive technology training programs to help you build a successful career in tech.",
+      "cta": "Explore Courses",
+      "ctaSecondary": "Apply for Admission"
+    },
+    "stats": {
+      "students": "Students Trained",
+      "trainers": "Expert Trainers",
+      "programs": "Programs Offered",
+      "batches": "Batches Conducted",
+      "successRate": "Success Rate",
+      "placements": "Career Placements"
+    },
+    "featuredCourses": {
+      "title": "Featured Courses",
+      "subtitle": "Explore our most popular technology programs"
+    },
+    "whyChoose": {
+      "title": "Why Choose Us",
+      "subtitle": "What makes Mohsin and Huma IT Center × SMIT different",
+      "free": { "title": "Completely Free", "description": "All courses are 100% free with no hidden charges or fees." },
+      "expert": { "title": "Expert Trainers", "description": "Learn from industry professionals with years of real-world experience." },
+      "practical": { "title": "Hands-On Learning", "description": "Project-based curriculum focused on practical, employable skills." },
+      "career": { "title": "Career Support", "description": "Portfolio building, career guidance, and industry connections." },
+      "modern": { "title": "Modern Curriculum", "description": "Industry-aligned courses updated with the latest technologies." },
+      "community": { "title": "Supportive Community", "description": "Join a network of learners, mentors, and industry professionals." }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Your journey from application to career",
+      "step1": { "title": "Apply", "description": "Submit your application online through our simple admission form." },
+      "step2": { "title": "Get Admitted", "description": "Our team reviews your application and confirms your enrollment." },
+      "step3": { "title": "Learn", "description": "Attend classes, complete assignments, and build real projects." },
+      "step4": { "title": "Succeed", "description": "Graduate with skills, a portfolio, and a verified certificate." }
+    },
+    "categories": {
+      "title": "Learning Categories",
+      "subtitle": "Explore diverse technology disciplines"
+    },
+    "testimonials": {
+      "title": "Student Success Stories",
+      "subtitle": "Hear from our graduates who have transformed their careers"
+    },
+    "cta": {
+      "title": "Ready to Start Your Tech Journey?",
+      "subtitle": "Join thousands of students who have transformed their careers through free technology education.",
+      "button": "Apply Now — It's Free"
+    },
+    "upcomingBatches": {
+      "title": "Upcoming Batches",
+      "subtitle": "Enroll in our next available batches"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn about our mission, vision, and impact",
+    "overview": {
+      "title": "Institute Overview",
+      "description": "Mohsin and Huma IT Center × SMIT is a technology education institute dedicated to providing free, high-quality training in modern technology skills. Our mission is to empower individuals with the knowledge and tools they need to succeed in the digital economy."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide accessible, high-quality technology education that empowers individuals to build successful careers, contribute to the digital economy, and create positive impact in their communities."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be a leading center of technology education that transforms lives through free, world-class training programs, creating a skilled workforce ready for the challenges of the digital age."
+    },
+    "smit": {
+      "title": "Collaboration with SMIT",
+      "description": "In collaboration with Saylani Mass IT Training (SMIT), we bring structured, industry-aligned curriculum and a proven education methodology to serve our community."
+    }
+  },
+  "courses": {
+    "title": "Our Courses",
+    "subtitle": "Explore our comprehensive technology training programs",
+    "searchPlaceholder": "Search courses...",
+    "allCategories": "All Categories",
+    "allLevels": "All Levels",
+    "duration": "Duration",
+    "level": "Level",
+    "students": "Students",
+    "batches": "Batches",
+    "skills": "Skills You'll Learn",
+    "learningOutcomes": "Learning Outcomes",
+    "prerequisites": "Prerequisites",
+    "curriculum": "Curriculum",
+    "modules": "Modules",
+    "weeks": "weeks",
+    "classes": "classes",
+    "viewCourse": "View Course",
+    "enrollNow": "Enroll Now",
+    "availableBatches": "Available Batches",
+    "trainer": "Trainer",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "featured": "Featured",
+    "noCourses": "No courses found matching your criteria."
+  },
+  "trainers": {
+    "title": "Our Trainers",
+    "subtitle": "Learn from industry experts and experienced professionals",
+    "expertise": "Areas of Expertise",
+    "experience": "Experience",
+    "education": "Education",
+    "certifications": "Certifications",
+    "coursesTaught": "Courses Taught",
+    "totalStudents": "Total Students",
+    "rating": "Rating",
+    "viewProfile": "View Profile",
+    "socialLinks": "Connect"
+  },
+  "batches": {
+    "title": "Batches",
+    "subtitle": "Find and enroll in available batches",
+    "course": "Course",
+    "trainer": "Trainer",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "schedule": "Schedule",
+    "room": "Room",
+    "seats": "Seats",
+    "enrolled": "Enrolled",
+    "available": "Available",
+    "status": "Status",
+    "enrolling": "Enrolling",
+    "upcoming": "Upcoming",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "apply": "Apply",
+    "full": "Full",
+    "noBatches": "No batches found matching your criteria."
+  },
+  "admissions": {
+    "title": "Apply for Admission",
+    "subtitle": "Start your technology education journey today",
+    "steps": {
+      "personal": "Personal Information",
+      "contact": "Contact Details",
+      "education": "Education",
+      "course": "Course Selection",
+      "additional": "Additional Info",
+      "documents": "Documents",
+      "review": "Review",
+      "confirmation": "Confirmation"
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "fatherName": "Father's Name",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "cnic": "CNIC Number",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "address": "Address",
+      "city": "City",
+      "lastQualification": "Last Qualification",
+      "institution": "Institution Name",
+      "yearOfPassing": "Year of Passing",
+      "selectCourse": "Select Course",
+      "preferredBatch": "Preferred Batch",
+      "motivation": "Why do you want to join this course?",
+      "experience": "Any prior experience in this field?",
+      "howDidYouHear": "How did you hear about us?",
+      "uploadPhoto": "Upload Photo",
+      "uploadCnic": "Upload CNIC Copy",
+      "uploadEducation": "Upload Education Certificate"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidPhone": "Please enter a valid phone number",
+      "invalidCnic": "Please enter a valid CNIC number"
+    },
+    "success": {
+      "title": "Application Submitted Successfully!",
+      "message": "Your application has been received. We will review it and get back to you soon.",
+      "referenceId": "Application Reference",
+      "note": "Please save this reference number for future correspondence.",
+      "demoNote": "This is a demo submission. In production, this would be saved to the database."
+    }
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Stay updated with our latest events and activities",
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "register": "Register",
+    "registrationClosed": "Registration Closed",
+    "attendees": "Registered",
+    "noEvents": "No events found."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Glimpses of life at Mohsin and Huma IT Center × SMIT",
+    "categories": {
+      "all": "All",
+      "workshops": "Workshops",
+      "classes": "Classes",
+      "events": "Events",
+      "graduation": "Graduation",
+      "projects": "Projects",
+      "campus": "Campus"
+    }
+  },
+  "projects": {
+    "title": "Student Projects",
+    "subtitle": "Showcasing the work of our talented students",
+    "technologies": "Technologies",
+    "viewProject": "View Project",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "noProjects": "No projects found."
+  },
+  "successStories": {
+    "title": "Success Stories",
+    "subtitle": "Our graduates are making an impact in the tech industry"
+  },
+  "announcements": {
+    "title": "Announcements",
+    "subtitle": "Important updates and notices",
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "academic": "Academic",
+      "event": "Events",
+      "admission": "Admission",
+      "schedule": "Schedule"
+    },
+    "important": "Important",
+    "postedBy": "Posted by",
+    "noAnnouncements": "No announcements found."
+  },
+  "faqPage": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our programs",
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "admissions": "Admissions",
+      "courses": "Courses",
+      "classes": "Classes",
+      "attendance": "Attendance",
+      "certificates": "Certificates"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "demoNote": "This is a demo form. In production, messages would be sent to the team."
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Working Hours"
+    }
+  },
+  "verifyCertificate": {
+    "title": "Verify Certificate",
+    "subtitle": "Enter the certificate ID to verify its authenticity",
+    "placeholder": "Enter Certificate ID (e.g., MH-WD-2026-00124)",
+    "verify": "Verify",
+    "verified": "Certificate Verified",
+    "invalid": "Certificate Not Found",
+    "invalidMessage": "No certificate found with this ID. Please check the ID and try again.",
+    "student": "Student",
+    "course": "Course",
+    "batch": "Batch",
+    "issueDate": "Issue Date",
+    "grade": "Grade"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account",
+      "email": "Email Address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot Password?",
+      "signIn": "Sign In",
+      "demoAccounts": "Demo Accounts",
+      "admin": "Admin",
+      "trainer": "Trainer",
+      "student": "Student",
+      "demoNote": "Click a demo account to auto-fill credentials"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email to receive a password reset link",
+      "send": "Send Reset Link",
+      "success": "Password reset link has been sent to your email.",
+      "backToLogin": "Back to Login"
+    }
+  },
+  "admin": {
+    "nav": {
+      "main": "Main",
+      "dashboard": "Dashboard",
+      "import": "Bulk Import",
+      "imports": "Import History",
+      "academic": "Academic",
+      "students": "Students",
+      "admissions": "Admissions",
+      "courses": "Courses",
+      "batches": "Batches",
+      "classes": "Classes",
+      "attendance": "Attendance",
+      "assignments": "Assignments",
+      "quizzes": "Quizzes",
+      "results": "Results",
+      "certificates": "Certificates",
+      "people": "People",
+      "trainers": "Trainers",
+      "staff": "Staff",
+      "institute": "Institute",
+      "rooms": "Rooms",
+      "events": "Events",
+      "gallery": "Gallery",
+      "announcements": "Announcements",
+      "analytics": "Analytics",
+      "reports": "Reports",
+      "system": "System",
+      "settings": "Settings"
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "welcome": "Welcome back",
+      "totalStudents": "Total Students",
+      "activeStudents": "Active Students",
+      "totalTrainers": "Trainers",
+      "totalCourses": "Courses",
+      "activeBatches": "Active Batches",
+      "pendingApplications": "Pending Applications",
+      "todaysClasses": "Today's Classes",
+      "recentAdmissions": "Recent Admissions",
+      "attendanceAlerts": "Attendance Alerts",
+      "recentActivity": "Recent Activity",
+      "upcomingEvents": "Upcoming Events",
+      "quickActions": "Quick Actions",
+      "studentGrowth": "Student Growth",
+      "attendanceTrend": "Attendance Trend",
+      "courseDistribution": "Course Distribution",
+      "batchPerformance": "Batch Performance"
+    },
+    "students": {
+      "title": "Student Management",
+      "addStudent": "Add Student",
+      "searchPlaceholder": "Search students...",
+      "registrationId": "Reg. ID",
+      "name": "Name",
+      "course": "Course",
+      "batch": "Batch",
+      "status": "Status",
+      "attendance": "Attendance",
+      "profile": "Student Profile",
+      "tabs": {
+        "overview": "Overview",
+        "academic": "Academic",
+        "attendance": "Attendance",
+        "assignments": "Assignments",
+        "results": "Results",
+        "projects": "Projects",
+        "certificates": "Certificates",
+        "documents": "Documents",
+        "activity": "Activity"
+      }
+    }
+  },
+  "trainer": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "courses": "My Courses",
+      "batches": "My Batches",
+      "students": "Students",
+      "classes": "Classes",
+      "attendance": "Attendance",
+      "assignments": "Assignments",
+      "quizzes": "Quizzes",
+      "results": "Results",
+      "materials": "Materials",
+      "announcements": "Announcements",
+      "profile": "Profile"
+    },
+    "dashboard": {
+      "title": "Trainer Dashboard",
+      "welcome": "Welcome",
+      "assignedBatches": "Assigned Batches",
+      "totalStudents": "Total Students",
+      "todaysClasses": "Today's Classes",
+      "attendanceAvg": "Avg. Attendance",
+      "pendingSubmissions": "Pending Submissions",
+      "upcomingClasses": "Upcoming Classes",
+      "studentPerformance": "Student Performance"
+    }
+  },
+  "student": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "course": "My Course",
+      "schedule": "Schedule",
+      "attendance": "Attendance",
+      "assignments": "Assignments",
+      "quizzes": "Quizzes",
+      "results": "Results",
+      "materials": "Materials",
+      "projects": "Projects",
+      "certificates": "Certificates",
+      "announcements": "Announcements",
+      "profile": "Profile",
+      "settings": "Settings"
+    },
+    "dashboard": {
+      "title": "Student Dashboard",
+      "welcome": "Welcome back",
+      "myCourse": "My Course",
+      "myBatch": "My Batch",
+      "progress": "Progress",
+      "attendance": "Attendance",
+      "upcomingClass": "Upcoming Class",
+      "pendingAssignments": "Pending Assignments",
+      "upcomingQuiz": "Upcoming Quiz",
+      "recentResults": "Recent Results",
+      "announcements": "Announcements"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist or has been moved.",
+      "goHome": "Go to Homepage"
+    },
+    "unauthorized": {
+      "title": "Access Denied",
+      "message": "You don't have permission to access this page.",
+      "goBack": "Go Back",
+      "goLogin": "Go to Login"
+    },
+    "serverError": {
+      "title": "Something Went Wrong",
+      "message": "An unexpected error occurred. Please try again later.",
+      "retry": "Try Again"
+    }
+  },
+  "footer": {
+    "description": "Providing free technology education to empower the next generation of tech professionals.",
+    "quickLinks": "Quick Links",
+    "programs": "Programs",
+    "support": "Support",
+    "contact": "Contact Us",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with"
+  }
+}
