@@ -32,7 +32,13 @@ export default function LoginPage() {
     setIsLoading(false);
 
     if (res.success) {
-      router.push("/student");
+      if (res.role === "super-admin" || res.role === "admin" || res.role === "staff") {
+        router.push("/admin");
+      } else if (res.role === "trainer") {
+        router.push("/trainer");
+      } else {
+        router.push("/student");
+      }
     } else {
       setErrorMessage(res.error || "Invalid credentials. Please verify your email and password.");
     }

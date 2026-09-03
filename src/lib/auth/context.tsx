@@ -20,7 +20,7 @@ interface AuthState {
 }
 
 interface AuthContextType extends AuthState {
-  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  login: (email: string, password: string) => Promise<{ success: boolean; role?: UserRole; error?: string }>;
   loginAsDemo: (role: UserRole) => void;
   logout: () => Promise<void>;
 }
@@ -173,7 +173,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const login = useCallback(async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
+  const login = useCallback(async (email: string, password: string): Promise<{ success: boolean; role?: UserRole; error?: string }> => {
     setState((prev) => ({ ...prev, isLoading: true }));
 
     if (!isSupabaseConfigured()) {
@@ -194,7 +194,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading: false,
         isSupabaseConnected: false,
       });
-      return { success: true };
+      return { success: true, role: user.role };
     }
 
     try {
@@ -206,8 +206,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error) {
         setState((prev) => ({ ...prev, isLoading: false }));
-        return { success: false, error: error.message };
+        let friendlyMessage = "Invalid credentials. Please verify your email and password.";
+        if (error.message.toLowerCase().includes("email not confirmed")) {
+          friendlyMessage = "Your email address is not yet confirmed. Please check your inbox.";
+        } else if (error.message.toLowerCase().includes("rate limit") || error.message.toLowerCase().includes("too many")) {
+          friendlyMessage = "Too many login attempts. Please wait a moment before trying again.";
+        }
+        return { success: false, error: friendlyMessage };
       }
+
+      let userRole: UserRole = "student";
 
       if (data.user) {
         const { data: profile } = (await supabase
@@ -216,12 +224,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           .eq("id", data.user.id)
           .single()) as { data: any; error: any };
 
+        userRole = (profile?.role as UserRole) || "student";
+
         setState({
           user: {
             id: data.user.id,
             name: profile?.name || data.user.email?.split("@")[0] || "User",
             email: data.user.email || "",
-            role: (profile?.role as UserRole) || "student",
+            role: userRole,
             avatar: profile?.avatar_url || undefined,
           },
           isAuthenticated: true,
@@ -230,12 +240,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         });
       }
 
-      return { success: true };
+      return { success: true, role: userRole };
     } catch (err) {
       setState((prev) => ({ ...prev, isLoading: false }));
       return {
         success: false,
-        error: err instanceof Error ? err.message : "Authentication failed",
+        error: "Unable to sign in due to a network or server issue. Please try again shortly.",
       };
     }
   }, []);
