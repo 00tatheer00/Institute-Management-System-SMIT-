@@ -49,7 +49,7 @@ export function StudentTopbar() {
         <LanguageSwitcher />
 
         {/* Notifications */}
-        <Link href="/student">
+        <Link href="/student/notifications">
           <Button variant="ghost" size="icon" className="relative h-8 w-8">
             <Bell className="h-4 w-4" />
             <span className="absolute -top-0.5 -end-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-[10px] text-white font-medium">
@@ -92,6 +92,11 @@ export function StudentTopbar() {
             <DropdownMenuItem>
               <Link href="/student/profile" className="flex items-center w-full">
                 <User className="h-4 w-4 me-2 text-muted-foreground" /> Student Profile
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/student/settings" className="flex items-center w-full">
+                <User className="h-4 w-4 me-2 text-muted-foreground" /> Account Settings
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

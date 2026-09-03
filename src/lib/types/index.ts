@@ -216,6 +216,7 @@ export interface Student {
   batchId: string;
   status: StudentStatus;
   enrolledAt: string;
+  joinedAt?: string;
   attendancePercentage: number;
   gpa: number;
   completedAssignments: number;
@@ -494,8 +495,11 @@ export interface GalleryItem {
   date: string;
 }
 
+export type ProjectStatus = "idea" | "in-progress" | "completed" | "published";
+
 export interface StudentProject {
   id: string;
+  slug?: string;
   title: string;
   description: string;
   studentId: string;
@@ -506,8 +510,13 @@ export interface StudentProject {
   technologies: string[];
   category: string;
   image: string;
+  screenshots?: string[];
   githubUrl?: string;
   liveUrl?: string;
+  moduleName?: string;
+  status?: ProjectStatus;
+  isPublished?: boolean;
+  isFeatured?: boolean;
   completedAt: string;
 }
 
@@ -781,4 +790,165 @@ export interface AuditEvent {
   previousValue?: string;
   newValue?: string;
 }
+
+// ============================================================
+// PHASE 4 — STUDENT EXPERIENCE, CERTIFICATES & OPERATIONS TYPES
+// ============================================================
+
+// --- Documents ---
+export type DocumentType =
+  | "cnic"
+  | "b-form"
+  | "matric"
+  | "intermediate"
+  | "degree"
+  | "admission-slip"
+  | "certificate"
+  | "other";
+
+export type DocumentStatus = "pending" | "verified" | "rejected" | "archived";
+
+export interface StudentDocument {
+  id: string;
+  studentId: string;
+  studentName: string;
+  courseName?: string;
+  batchName?: string;
+  title: string;
+  type: DocumentType;
+  fileUrl: string;
+  fileSize?: string;
+  status: DocumentStatus;
+  uploadedAt: string;
+  verifiedBy?: string;
+  verifiedAt?: string;
+  notes?: string;
+}
+
+// --- Support & Helpdesk ---
+export type SupportCategory =
+  | "academic"
+  | "attendance"
+  | "technical"
+  | "certificate"
+  | "admission"
+  | "general";
+
+export type SupportPriority = "low" | "medium" | "high" | "urgent";
+
+export type SupportStatus =
+  | "open"
+  | "in-progress"
+  | "waiting-student"
+  | "resolved"
+  | "closed";
+
+export interface SupportReply {
+  id: string;
+  ticketId: string;
+  authorId: string;
+  authorName: string;
+  authorRole: "student" | "admin" | "trainer";
+  message: string;
+  createdAt: string;
+  attachmentUrl?: string;
+}
+
+export interface SupportTicket {
+  id: string;
+  ticketNumber: string;
+  studentId: string;
+  studentName: string;
+  studentEmail?: string;
+  courseName?: string;
+  batchName?: string;
+  category: SupportCategory;
+  subject: string;
+  description: string;
+  priority: SupportPriority;
+  status: SupportStatus;
+  assignedTo?: string;
+  createdAt: string;
+  updatedAt: string;
+  resolvedAt?: string;
+  replies: SupportReply[];
+}
+
+// --- Student Feedback ---
+export type FeedbackCategory =
+  | "course"
+  | "trainer"
+  | "class"
+  | "facilities"
+  | "management";
+
+export interface StudentFeedback {
+  id: string;
+  studentId: string;
+  studentName: string;
+  isAnonymous: boolean;
+  category: FeedbackCategory;
+  targetId: string; // courseId or trainerId
+  targetName: string;
+  rating: number; // 1 to 5 stars
+  comment: string;
+  createdAt: string;
+  status?: "published" | "pending" | "hidden";
+}
+
+// --- Student Notifications ---
+export type NotificationCategory =
+  | "academic"
+  | "announcement"
+  | "assignment"
+  | "quiz"
+  | "result"
+  | "attendance"
+  | "certificate"
+  | "system";
+
+export interface StudentNotification {
+  id: string;
+  studentId: string;
+  title: string;
+  message: string;
+  category: NotificationCategory;
+  isRead: boolean;
+  linkUrl?: string;
+  createdAt: string;
+}
+
+// --- Certificate Eligibility ---
+export interface CertificateEligibility {
+  studentId: string;
+  studentName: string;
+  courseId: string;
+  courseName: string;
+  batchId: string;
+  batchName: string;
+  attendanceRate: number;
+  attendanceRequired: number; // usually 75%
+  isAttendanceMet: boolean;
+  assignmentCompletionRate: number;
+  assignmentRequired: number; // usually 80%
+  isAssignmentMet: boolean;
+  quizzesPassedRate: number;
+  isQuizzesMet: boolean;
+  gpa: number;
+  grade: string;
+  isEligible: boolean;
+  unmetCriteria: string[];
+}
+
+// --- Logical Storage Bucket Names for Future Supabase Storage ---
+export type StorageBucketName =
+  | "profile-images"
+  | "student-documents"
+  | "course-materials"
+  | "project-files"
+  | "certificates"
+  | "gallery"
+  | "event-images"
+  | "support-attachments";
+
 

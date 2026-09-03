@@ -60,6 +60,10 @@ export const adminNavGroups: NavGroup[] = [
   {
     titleKey: "admin.nav.institute",
     items: [
+      { titleKey: "admin.nav.projects", href: "/admin/projects", icon: "Rocket" },
+      { titleKey: "admin.nav.documents", href: "/admin/documents", icon: "FileCheck" },
+      { titleKey: "admin.nav.support", href: "/admin/support", icon: "LifeBuoy" },
+      { titleKey: "admin.nav.feedback", href: "/admin/feedback", icon: "HeartHandshake" },
       { titleKey: "admin.nav.rooms", href: "/admin/rooms", icon: "DoorOpen" },
       { titleKey: "admin.nav.events", href: "/admin/events", icon: "CalendarDays" },
       { titleKey: "admin.nav.gallery", href: "/admin/gallery", icon: "Image" },
@@ -99,8 +103,7 @@ export const trainerNavItems: NavItem[] = [
 // --- Student Navigation ---
 export const studentNavItems: NavItem[] = [
   { titleKey: "student.nav.dashboard", href: "/student", icon: "LayoutDashboard" },
-  { titleKey: "student.nav.course", href: "/student/course", icon: "BookOpen" },
-  { titleKey: "student.nav.schedule", href: "/student/schedule", icon: "Calendar" },
+  { titleKey: "student.nav.course", href: "/student/progress", icon: "BookOpen" },
   { titleKey: "student.nav.attendance", href: "/student/attendance", icon: "CheckSquare" },
   { titleKey: "student.nav.assignments", href: "/student/assignments", icon: "FileText" },
   { titleKey: "student.nav.quizzes", href: "/student/quizzes", icon: "HelpCircle" },
@@ -108,7 +111,10 @@ export const studentNavItems: NavItem[] = [
   { titleKey: "student.nav.materials", href: "/student/materials", icon: "FolderOpen" },
   { titleKey: "student.nav.projects", href: "/student/projects", icon: "Rocket" },
   { titleKey: "student.nav.certificates", href: "/student/certificates", icon: "Award" },
-  { titleKey: "student.nav.announcements", href: "/student/announcements", icon: "Megaphone" },
+  { titleKey: "student.nav.documents", href: "/student/documents", icon: "FileText" },
+  { titleKey: "student.nav.support", href: "/student/support", icon: "LifeBuoy" },
+  { titleKey: "student.nav.feedback", href: "/student/feedback", icon: "HeartHandshake" },
+  { titleKey: "student.nav.notifications", href: "/student/notifications", icon: "Bell" },
   { titleKey: "student.nav.profile", href: "/student/profile", icon: "UserCircle" },
   { titleKey: "student.nav.settings", href: "/student/settings", icon: "Settings" },
 ];

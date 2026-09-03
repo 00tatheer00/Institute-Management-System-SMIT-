@@ -346,28 +346,40 @@ export default async function StudentDashboardPage({
             </CardContent>
           </Card>
 
-          {/* Quick Learning Shortcuts */}
+          {/* Quick Learning & Operations Shortcuts */}
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-semibold">Student Shortcuts</CardTitle>
+              <CardTitle className="text-sm font-semibold">Essential Shortcuts</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Link href="/student/attendance">
+              <Link href="/student/projects">
                 <Button variant="outline" className="w-full justify-start text-xs h-9 gap-2">
-                  <CheckSquare className="h-3.5 w-3.5 text-emerald-600" />
-                  My Attendance Timeline
+                  <Award className="h-3.5 w-3.5 text-indigo-600" />
+                  My Academic Projects
                 </Button>
               </Link>
-              <Link href="/student/progress">
+              <Link href="/student/certificates">
                 <Button variant="outline" className="w-full justify-start text-xs h-9 gap-2">
-                  <Award className="h-3.5 w-3.5 text-purple-600" />
-                  Curriculum Module Roadmap
+                  <Award className="h-3.5 w-3.5 text-amber-600" />
+                  Earned Certificates & Eligibility
                 </Button>
               </Link>
-              <Link href="/student/materials">
+              <Link href="/student/documents">
                 <Button variant="outline" className="w-full justify-start text-xs h-9 gap-2">
-                  <BookOpen className="h-3.5 w-3.5 text-blue-600" />
-                  Download Handouts & Slides
+                  <FileText className="h-3.5 w-3.5 text-teal-600" />
+                  Verification Documents Vault
+                </Button>
+              </Link>
+              <Link href="/student/support">
+                <Button variant="outline" className="w-full justify-start text-xs h-9 gap-2">
+                  <AlertCircle className="h-3.5 w-3.5 text-rose-600" />
+                  Student Helpdesk & Support
+                </Button>
+              </Link>
+              <Link href="/student/feedback">
+                <Button variant="outline" className="w-full justify-start text-xs h-9 gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" />
+                  Course & Trainer Feedback
                 </Button>
               </Link>
             </CardContent>
