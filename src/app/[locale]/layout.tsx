@@ -8,6 +8,7 @@ import { AuthProvider } from "@/lib/auth/context";
 import { CustomCursor } from "@/components/shared/custom-cursor";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { BackToTop } from "@/components/shared/back-to-top";
+import { AppleToastProvider } from "@/components/shared/apple-toast";
 import { getDirection } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
             <TooltipProvider>
               <ScrollProgress />
               <CustomCursor />
+              <AppleToastProvider />
               {children}
               <BackToTop />
             </TooltipProvider>
