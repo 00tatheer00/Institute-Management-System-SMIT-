@@ -22,7 +22,7 @@ interface AuthState {
 interface AuthContextType extends AuthState {
   login: (email: string, password: string) => Promise<{ success: boolean; role?: UserRole; error?: string }>;
   loginAsDemo: (role: UserRole) => void;
-  logout: () => Promise<void>;
+  logout: (customRedirect?: string) => Promise<void>;
 }
 
 const demoUsers: Record<UserRole, AuthUser> = {
@@ -267,7 +267,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const logout = useCallback(async () => {
+  const logout = useCallback(async (customRedirect?: string) => {
     if (isSupabaseConfigured()) {
       try {
         const supabase = getSupabaseBrowserClient();
@@ -278,6 +278,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     if (typeof window !== "undefined") {
       localStorage.removeItem("mhit_demo_user");
+      sessionStorage.clear();
+      document.cookie = "mhit_demo_user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
     }
     setState({
       user: null,
@@ -285,6 +287,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isLoading: false,
       isSupabaseConnected: isSupabaseConfigured(),
     });
+
+    if (typeof window !== "undefined") {
+      // Trigger floating Apple Toast notification
+      window.dispatchEvent(
+        new CustomEvent("apple-toast", {
+          detail: {
+            title: "Signed Out Successfully",
+            description: "You have been logged out of the portal.",
+            variant: "info",
+          },
+        })
+      );
+
+      // Determine redirect path with active locale
+      const pathSegments = window.location.pathname.split("/").filter(Boolean);
+      const currentLocale = pathSegments[0] === "ur" ? "ur" : "en";
+      const targetUrl = customRedirect || `/${currentLocale}/login`;
+
+      // Full browser reload to clean in-memory states and navigate to login
+      setTimeout(() => {
+        window.location.replace(targetUrl);
+      }, 100);
+    }
   }, []);
 
   return (

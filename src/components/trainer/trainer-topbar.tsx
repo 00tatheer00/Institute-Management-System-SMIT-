@@ -121,7 +121,10 @@ export function TrainerTopbar() {
             </DropdownMenuItem>
             <DropdownMenuSeparator className="my-1 bg-slate-100 dark:bg-slate-800" />
             <DropdownMenuItem
-              onClick={logout}
+              onClick={async (e) => {
+                e.preventDefault();
+                await logout();
+              }}
               className="rounded-xl cursor-pointer text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 p-2 text-xs font-semibold flex items-center gap-2"
             >
               <LogOut className="h-3.5 w-3.5" />

@@ -169,7 +169,11 @@ function StudentSidebarContent({ collapsed, onNavClick }: { collapsed: boolean; 
             <Button
               variant="ghost"
               size="icon"
-              onClick={logout}
+              onClick={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                await logout();
+              }}
               className="h-7 w-7 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors cursor-pointer"
               title="Sign Out"
             >
