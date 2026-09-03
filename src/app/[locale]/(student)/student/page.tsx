@@ -91,47 +91,45 @@ export default async function StudentDashboardPage({
         </div>
       </div>
 
-      {/* ─── Progress & Attendance Metrics Bar ─── */}
+      {/* ─── Progress & Attendance Metrics Bar (Apple UI Soft Light Gradients) ─── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Course Progress */}
-        <Card className="border-0 shadow-float hover-lift relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600" />
+        <Card className="rounded-2xl border border-sky-200/70 dark:border-sky-800/40 bg-gradient-to-br from-sky-500/10 via-white to-blue-500/5 dark:from-sky-950/40 dark:via-slate-900/60 dark:to-slate-900 shadow-xs hover-lift transition-all duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <CardTitle className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Course Progress
             </CardTitle>
-            <div className="h-9 w-9 rounded-xl bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-blue-600 shadow-xs">
+            <div className="h-10 w-10 rounded-2xl bg-sky-500/15 text-[#0071e3] dark:text-sky-400 flex items-center justify-center ring-1 ring-sky-500/20 shadow-2xs">
               <BookOpen className="h-4.5 w-4.5" />
             </div>
           </CardHeader>
           <CardContent className="space-y-2.5">
-            <div className="text-3xl font-extrabold tracking-tight">{progress.overallProgressPercentage}%</div>
-            <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+            <div className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-sans">{progress.overallProgressPercentage}%</div>
+            <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-1000"
+                className="bg-gradient-to-r from-[#0071e3] to-blue-500 h-2 rounded-full transition-all duration-1000"
                 style={{ width: `${progress.overallProgressPercentage}%` }}
               />
             </div>
-            <p className="text-[11px] text-muted-foreground font-medium">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
               Module 5 of 6 in progress
             </p>
           </CardContent>
         </Card>
 
         {/* Attendance Rate */}
-        <Card className="border-0 shadow-float hover-lift relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-600" />
+        <Card className="rounded-2xl border border-emerald-200/70 dark:border-emerald-800/40 bg-gradient-to-br from-emerald-500/10 via-white to-teal-500/5 dark:from-emerald-950/40 dark:via-slate-900/60 dark:to-slate-900 shadow-xs hover-lift transition-all duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <CardTitle className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Attendance Standing
             </CardTitle>
-            <div className="h-9 w-9 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 shadow-xs">
+            <div className="h-10 w-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center ring-1 ring-emerald-500/20 shadow-2xs">
               <CheckSquare className="h-4.5 w-4.5" />
             </div>
           </CardHeader>
           <CardContent className="space-y-2.5">
-            <div className="text-3xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400">{attendance.percentage}%</div>
-            <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+            <div className="text-2xl sm:text-3xl font-black tracking-tight text-emerald-600 dark:text-emerald-400 font-sans">{attendance.percentage}%</div>
+            <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
               <div
                 className="bg-gradient-to-r from-teal-500 to-emerald-600 h-2 rounded-full transition-all duration-1000"
                 style={{ width: `${attendance.percentage}%` }}
@@ -144,42 +142,40 @@ export default async function StudentDashboardPage({
         </Card>
 
         {/* Current Standing / GPA */}
-        <Card className="border-0 shadow-float hover-lift relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-violet-600" />
+        <Card className="rounded-2xl border border-purple-200/70 dark:border-purple-800/40 bg-gradient-to-br from-purple-500/10 via-white to-violet-500/5 dark:from-purple-950/40 dark:via-slate-900/60 dark:to-slate-900 shadow-xs hover-lift transition-all duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <CardTitle className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Academic Grade
             </CardTitle>
-            <div className="h-9 w-9 rounded-xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center text-purple-600 shadow-xs">
+            <div className="h-10 w-10 rounded-2xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center ring-1 ring-purple-500/20 shadow-2xs">
               <Award className="h-4.5 w-4.5" />
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-extrabold tracking-tight text-purple-700 dark:text-purple-400">
-              {progress.letterGrade} <span className="text-sm font-semibold text-muted-foreground font-mono">({progress.currentGpa.toFixed(1)} GPA)</span>
+            <div className="text-2xl sm:text-3xl font-black tracking-tight text-purple-700 dark:text-purple-400 font-sans">
+              {progress.letterGrade} <span className="text-sm font-semibold text-slate-400 font-mono">({progress.currentGpa.toFixed(1)} GPA)</span>
             </div>
-            <p className="text-[11px] text-muted-foreground pt-1">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-medium">
               Assignment &amp; Quiz aggregate
             </p>
           </CardContent>
         </Card>
 
         {/* Active Tasks */}
-        <Card className="border-0 shadow-float hover-lift relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-600" />
+        <Card className="rounded-2xl border border-amber-200/70 dark:border-amber-800/40 bg-gradient-to-br from-amber-500/10 via-white to-orange-500/5 dark:from-amber-950/40 dark:via-slate-900/60 dark:to-slate-900 shadow-xs hover-lift transition-all duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <CardTitle className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Active Assessments
             </CardTitle>
-            <div className="h-9 w-9 rounded-xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-600 shadow-xs">
+            <div className="h-10 w-10 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center ring-1 ring-amber-500/20 shadow-2xs">
               <Clock className="h-4.5 w-4.5" />
             </div>
           </CardHeader>
           <CardContent className="space-y-1">
-            <div className="text-3xl font-extrabold tracking-tight text-amber-700 dark:text-amber-400">
+            <div className="text-2xl sm:text-3xl font-black tracking-tight text-amber-600 dark:text-amber-400 font-sans">
               {assignments.length + quizzes.filter((q) => q.status === "open").length}
             </div>
-            <p className="text-[11px] text-muted-foreground pt-1">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-medium">
               Open tasks and live assessments
             </p>
           </CardContent>
@@ -191,37 +187,38 @@ export default async function StudentDashboardPage({
         {/* Left 2 Cols: Upcoming Class, Assignments & Quizzes */}
         <div className="lg:col-span-2 space-y-6">
           {/* Next Lecture Session */}
+          {/* Next Lecture Session (Apple UI Soft Light Gradient) */}
           {upcomingClass && (
-            <Card className="border-0 shadow-float hover-lift overflow-hidden relative bg-gradient-to-br from-blue-50/70 via-card to-card dark:from-blue-950/20 dark:to-card">
-              <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-indigo-600" />
+            <Card className="rounded-2xl border border-sky-200/70 dark:border-sky-800/40 bg-gradient-to-br from-sky-500/10 via-white to-blue-500/5 dark:from-sky-950/40 dark:via-slate-900/60 dark:to-slate-900 shadow-xs hover-lift overflow-hidden relative">
+              <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-[#0071e3] to-blue-500" />
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0071e3] dark:text-sky-400">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-500 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500" />
                     </span>
                     Next Scheduled Lecture
                   </span>
                   <StatusBadge status={upcomingClass.status || "scheduled"} />
                 </div>
-                <CardTitle className="text-lg font-bold">
+                <CardTitle className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                   {upcomingClass.title}
                 </CardTitle>
-                <CardDescription className="text-xs">
+                <CardDescription className="text-xs text-slate-500">
                   {upcomingClass.description}
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-2">
-                <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground border-t border-border/60 pt-3">
-                  <span className="flex items-center gap-1.5 font-semibold text-foreground">
-                    <Calendar className="h-4 w-4 text-blue-600" /> {upcomingClass.date}
+                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 border-t border-slate-200/60 dark:border-slate-800/60 pt-3">
+                  <span className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-white">
+                    <Calendar className="h-4 w-4 text-[#0071e3]" /> {upcomingClass.date}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Clock className="h-4 w-4 text-muted-foreground" /> {upcomingClass.startTime} - {upcomingClass.endTime}
+                    <Clock className="h-4 w-4 text-slate-400" /> {upcomingClass.startTime} - {upcomingClass.endTime}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <MapPin className="h-4 w-4 text-muted-foreground" /> Room: <span className="font-semibold text-foreground">{upcomingClass.room}</span>
+                    <MapPin className="h-4 w-4 text-slate-400" /> Room: <span className="font-bold text-slate-900 dark:text-white">{upcomingClass.room}</span>
                   </span>
                 </div>
               </CardContent>
@@ -229,16 +226,16 @@ export default async function StudentDashboardPage({
           )}
 
           {/* Pending / Active Assignments */}
-          <Card className="border-0 shadow-float">
+          <Card className="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-gradient-to-br from-slate-50/80 via-white to-slate-50/40 dark:from-slate-900/80 dark:via-slate-900/50 dark:to-slate-950 shadow-xs">
             <CardHeader className="flex flex-row items-center justify-between pb-3">
               <div>
-                <CardTitle className="text-base font-semibold">My Assignments</CardTitle>
-                <CardDescription className="text-xs">
+                <CardTitle className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">My Assignments</CardTitle>
+                <CardDescription className="text-xs text-slate-400">
                   Review deadlines and submit your coursework
                 </CardDescription>
               </div>
               <Link href="/student/assignments">
-                <Button variant="ghost" size="sm" className="text-xs gap-1 hover:bg-brand/5">
+                <Button variant="ghost" size="sm" className="text-xs gap-1 hover:bg-[#0071e3]/10 text-[#0071e3] font-bold rounded-xl">
                   View All <ArrowRight className="h-3 w-3" />
                 </Button>
               </Link>

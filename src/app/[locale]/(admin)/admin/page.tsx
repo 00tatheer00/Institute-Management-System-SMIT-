@@ -175,38 +175,38 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
         </Card>
       </div>
 
-      {/* ─── KPI Cards Grid ─── */}
+      {/* ─── KPI Cards Grid (Apple UI Soft Light Gradients) ─── */}
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
-        <StatCard title={t("totalStudents")} value={stats.totalStudents} icon={<GraduationCap className="h-5 w-5" />} change={12} trend="up" changeLabel="vs last month" accentColor="bg-gradient-to-r from-blue-500 to-indigo-600" />
-        <StatCard title={t("activeStudents")} value={stats.activeStudents} icon={<Users className="h-5 w-5" />} change={8} trend="up" changeLabel="vs last month" accentColor="bg-gradient-to-r from-teal-500 to-emerald-600" />
-        <StatCard title={t("activeBatches")} value={stats.activeBatches} icon={<Layers className="h-5 w-5" />} change={2} trend="up" changeLabel="new cohorts" accentColor="bg-gradient-to-r from-violet-500 to-purple-600" />
-        <StatCard title="Avg. Attendance" value={`${stats.avgAttendance}%`} icon={<TrendingUp className="h-5 w-5" />} change={3} trend="up" changeLabel="pass benchmark" accentColor="bg-gradient-to-r from-amber-500 to-orange-600" />
+        <StatCard title={t("totalStudents")} value={stats.totalStudents} icon={<GraduationCap className="h-5 w-5" />} change={12} trend="up" changeLabel="vs last month" variant="blue" />
+        <StatCard title={t("activeStudents")} value={stats.activeStudents} icon={<Users className="h-5 w-5" />} change={8} trend="up" changeLabel="vs last month" variant="emerald" />
+        <StatCard title={t("activeBatches")} value={stats.activeBatches} icon={<Layers className="h-5 w-5" />} change={2} trend="up" changeLabel="new cohorts" variant="purple" />
+        <StatCard title="Avg. Attendance" value={`${stats.avgAttendance}%`} icon={<TrendingUp className="h-5 w-5" />} change={3} trend="up" changeLabel="pass benchmark" variant="amber" />
       </div>
 
-      {/* ─── Financial Health Summary Row ─── */}
+      {/* ─── Financial Health Summary Row (Apple UI Soft Light Gradients) ─── */}
       <div className="grid gap-4 sm:grid-cols-3">
-        <Card className="p-5 space-y-2 relative overflow-hidden border-0 shadow-sm hover-lift">
+        <Card className="p-5 space-y-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-sky-500/10 via-white to-cyan-500/5 dark:from-sky-950/40 dark:via-slate-900/60 dark:to-slate-900 border border-sky-200/70 dark:border-sky-800/40 shadow-xs hover-lift">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500" />
-          <p className="text-xs text-muted-foreground uppercase font-semibold tracking-wider">Total Endowment &amp; Grants</p>
-          <p className="text-2xl lg:text-3xl font-extrabold tracking-tight text-foreground">PKR {(financeSummary.totalFunding / 1000000).toFixed(1)}M</p>
-          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-500" /> 100% Free subsidized tech education
+          <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Total Endowment &amp; Grants</p>
+          <p className="text-2xl lg:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-sans">PKR {(financeSummary.totalFunding / 1000000).toFixed(1)}M</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium">
+            <span className="h-2 w-2 rounded-full bg-blue-500" /> 100% Free subsidized tech education
           </p>
         </Card>
-        <Card className="p-5 space-y-2 relative overflow-hidden border-0 shadow-sm hover-lift">
+        <Card className="p-5 space-y-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500/10 via-white to-emerald-500/5 dark:from-teal-950/40 dark:via-slate-900/60 dark:to-slate-900 border border-teal-200/70 dark:border-teal-800/40 shadow-xs hover-lift">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-500" />
-          <p className="text-xs text-muted-foreground uppercase font-semibold tracking-wider">Disbursed Operations</p>
-          <p className="text-2xl lg:text-3xl font-extrabold tracking-tight text-teal-600 dark:text-teal-400">PKR {(financeSummary.totalExpenses / 1000000).toFixed(1)}M</p>
-          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> Modern labs, faculty &amp; solar grid
+          <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Disbursed Operations</p>
+          <p className="text-2xl lg:text-3xl font-black tracking-tight text-teal-600 dark:text-teal-400 font-sans">PKR {(financeSummary.totalExpenses / 1000000).toFixed(1)}M</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium">
+            <span className="h-2 w-2 rounded-full bg-teal-500" /> Modern labs, faculty &amp; solar grid
           </p>
         </Card>
-        <Card className="p-5 space-y-2 relative overflow-hidden border-0 shadow-sm hover-lift">
+        <Card className="p-5 space-y-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-500/10 via-white to-green-500/5 dark:from-emerald-950/40 dark:via-slate-900/60 dark:to-slate-900 border border-emerald-200/70 dark:border-emerald-800/40 shadow-xs hover-lift">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-green-600" />
-          <p className="text-xs text-muted-foreground uppercase font-semibold tracking-wider">Operating Reserve</p>
-          <p className="text-2xl lg:text-3xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400">PKR {(financeSummary.remainingBalance / 1000000).toFixed(1)}M</p>
-          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Healthy institutional cash buffer
+          <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Operating Reserve</p>
+          <p className="text-2xl lg:text-3xl font-black tracking-tight text-emerald-600 dark:text-emerald-400 font-sans">PKR {(financeSummary.remainingBalance / 1000000).toFixed(1)}M</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" /> Healthy institutional cash buffer
           </p>
         </Card>
       </div>
@@ -221,18 +221,18 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
         <AdmissionsFunnelChart data={funnelData} />
       </div>
 
-      {/* ─── Operational Triad ─── */}
+      {/* ─── Operational Triad (Apple UI Soft Light Gradient Cards) ─── */}
       <div className="grid gap-5 lg:grid-cols-3">
         {/* Today's Classes */}
-        <Card className="border-0 shadow-float hover-lift">
+        <Card className="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-gradient-to-br from-slate-50/80 via-white to-sky-50/20 dark:from-slate-900/80 dark:via-slate-900/50 dark:to-slate-950 shadow-xs hover-lift">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-base font-semibold">{t("todaysClasses")}</CardTitle>
-                <CardDescription className="text-xs">Live schedule &amp; rooms</CardDescription>
+                <CardTitle className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">{t("todaysClasses")}</CardTitle>
+                <CardDescription className="text-xs text-slate-400">Live schedule &amp; rooms</CardDescription>
               </div>
               <Link href="/admin/classes">
-                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-brand/5">
+                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-[#0071e3]/10 text-[#0071e3] font-bold rounded-xl">
                   View All <ArrowRight className="h-3 w-3 ms-1" />
                 </Button>
               </Link>
@@ -240,19 +240,19 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
           </CardHeader>
           <CardContent className="space-y-3">
             {todaysClasses.length === 0 ? (
-              <p className="text-sm text-muted-foreground py-6 text-center">No classes scheduled today</p>
+              <p className="text-sm text-slate-400 py-6 text-center">No classes scheduled today</p>
             ) : (
               todaysClasses.map((cls) => {
                 const trainer = getTrainerById(cls.trainerId);
                 return (
-                  <div key={cls.id} className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-muted/50 transition-colors">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 shadow-xs">
+                  <div key={cls.id} className="flex items-start gap-3 p-2.5 rounded-xl bg-white/70 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-100/80 transition-colors">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-50 dark:bg-sky-950/60 text-[#0071e3] shadow-xs">
                       <Clock className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold truncate">{cls.title}</p>
-                      <p className="text-xs text-muted-foreground">{cls.startTime} – {cls.endTime} · <span className="font-medium text-foreground">{cls.room}</span></p>
-                      {trainer && <p className="text-xs text-brand font-medium mt-0.5">{trainer.name}</p>}
+                      <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{cls.title}</p>
+                      <p className="text-[11px] text-slate-500">{cls.startTime} – {cls.endTime} · <span className="font-semibold text-slate-700 dark:text-slate-300">{cls.room}</span></p>
+                      {trainer && <p className="text-[10px] text-[#0071e3] font-bold mt-0.5">{trainer.name}</p>}
                     </div>
                   </div>
                 );
@@ -262,15 +262,15 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
         </Card>
 
         {/* Recent Admissions */}
-        <Card className="border-0 shadow-float hover-lift">
+        <Card className="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-gradient-to-br from-slate-50/80 via-white to-blue-50/20 dark:from-slate-900/80 dark:via-slate-900/50 dark:to-slate-950 shadow-xs hover-lift">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-base font-semibold">{t("recentAdmissions")}</CardTitle>
-                <CardDescription className="text-xs">Latest online applicants</CardDescription>
+                <CardTitle className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">{t("recentAdmissions")}</CardTitle>
+                <CardDescription className="text-xs text-slate-400">Latest online applicants</CardDescription>
               </div>
               <Link href="/admin/admissions">
-                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-brand/5">
+                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-[#0071e3]/10 text-[#0071e3] font-bold rounded-xl">
                   Review <ArrowRight className="h-3 w-3 ms-1" />
                 </Button>
               </Link>
@@ -278,10 +278,10 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
           </CardHeader>
           <CardContent className="space-y-2.5">
             {recentApps.map((app) => (
-              <div key={app.id} className="flex items-center justify-between p-2.5 rounded-xl hover:bg-muted/50 transition-colors">
+              <div key={app.id} className="flex items-center justify-between p-2.5 rounded-xl bg-white/70 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-100/80 transition-colors">
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold truncate">{app.studentName}</p>
-                  <p className="text-xs text-muted-foreground">{app.applicationId} · {app.city}</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{app.studentName}</p>
+                  <p className="text-[10px] text-slate-400 font-mono">{app.applicationId} · {app.city}</p>
                 </div>
                 <StatusBadge status={app.status} />
               </div>
@@ -289,16 +289,16 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
           </CardContent>
         </Card>
 
-        {/* Enrolling Batches */}
-        <Card className="border-0 shadow-float hover-lift">
+        {/* Upcoming Batches */}
+        <Card className="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-gradient-to-br from-slate-50/80 via-white to-emerald-50/20 dark:from-slate-900/80 dark:via-slate-900/50 dark:to-slate-950 shadow-xs hover-lift">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-base font-semibold">Upcoming Batches</CardTitle>
-                <CardDescription className="text-xs">Active enrollment intake</CardDescription>
+                <CardTitle className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Upcoming Batches</CardTitle>
+                <CardDescription className="text-xs text-slate-400">Active enrollment intake</CardDescription>
               </div>
               <Link href="/admin/batches">
-                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-brand/5">
+                <Button variant="ghost" size="sm" className="text-xs h-8 hover:bg-emerald-500/10 text-emerald-600 font-bold rounded-xl">
                   Batches <ArrowRight className="h-3 w-3 ms-1" />
                 </Button>
               </Link>
@@ -306,15 +306,15 @@ export default async function AdminDashboardPage({ params }: { params: Promise<{
           </CardHeader>
           <CardContent className="space-y-3">
             {enrollingBatches.map((batch) => (
-              <div key={batch.id} className="p-3 rounded-xl border border-border/60 bg-muted/20 space-y-2 hover:border-brand/30 transition-all duration-200">
-                <div className="flex items-center justify-between text-xs font-semibold">
-                  <span>{batch.name}</span>
-                  <span className="text-brand font-bold">{batch.enrolledSeats}/{batch.totalSeats} seats</span>
+              <div key={batch.id} className="p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-800/50 space-y-2 hover:border-[#0071e3]/30 transition-all duration-200">
+                <div className="flex items-center justify-between text-xs font-bold">
+                  <span className="text-slate-800 dark:text-slate-200">{batch.name}</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-mono">{batch.enrolledSeats}/{batch.totalSeats} seats</span>
                 </div>
-                <div className="w-full bg-muted rounded-full h-1.5 overflow-hidden">
-                  <div className="bg-gradient-to-r from-brand to-teal-400 h-1.5 rounded-full transition-all duration-500" style={{ width: `${Math.round((batch.enrolledSeats / batch.totalSeats) * 100)}%` }} />
+                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#0071e3] to-teal-400 h-1.5 rounded-full transition-all duration-500" style={{ width: `${Math.round((batch.enrolledSeats / batch.totalSeats) * 100)}%` }} />
                 </div>
-                <p className="text-[11px] text-muted-foreground">{batch.schedule?.days?.join(", ")} · {batch.room}</p>
+                <p className="text-[10.5px] text-slate-400 font-medium">{batch.schedule?.days?.join(", ")} · {batch.room}</p>
               </div>
             ))}
           </CardContent>
