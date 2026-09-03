@@ -44,17 +44,17 @@ function TrainerSidebarContent({ collapsed, onNavClick }: { collapsed: boolean; 
   return (
     <div className="flex flex-col h-full">
       {/* Brand Header */}
-      <div className={cn("flex items-center h-16 px-4 border-b border-sidebar-border shrink-0", collapsed && "justify-center px-2")}>
-        <Link href="/trainer" className="flex items-center gap-2.5" onClick={onNavClick}>
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
-            <BookOpen className="h-4 w-4" />
+      <div className={cn("flex items-center h-16 px-4 border-b border-sidebar-border/50 shrink-0", collapsed && "justify-center px-2")}>
+        <Link href="/trainer" className="flex items-center gap-2.5 group" onClick={onNavClick}>
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-105">
+            <BookOpen className="h-4.5 w-4.5" />
           </div>
           {!collapsed && (
             <div className="overflow-hidden">
               <p className="text-xs font-bold text-sidebar-foreground leading-tight truncate">
                 MHIT × SMIT
               </p>
-              <p className="text-[10px] text-sidebar-foreground/60 leading-tight">
+              <p className="text-[10px] text-sidebar-foreground/50 leading-tight">
                 Trainer Portal
               </p>
             </div>
@@ -73,15 +73,21 @@ function TrainerSidebarContent({ collapsed, onNavClick }: { collapsed: boolean; 
                 href={item.href}
                 onClick={onNavClick}
                 className={cn(
-                  "flex items-center gap-2.5 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "group/item flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 relative",
                   active
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-xs"
-                    : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-sm nav-active-indicator"
+                    : "text-sidebar-foreground/60 hover:bg-sidebar-accent/40 hover:text-sidebar-foreground",
                   collapsed && "justify-center px-2"
                 )}
                 title={collapsed ? t(item.titleKey) : undefined}
               >
-                {item.icon && iconMap[item.icon]}
+                <span className={cn(
+                  "transition-all duration-200",
+                  active ? "text-sidebar-primary" : "group-hover/item:text-sidebar-primary",
+                  !active && "group-hover/item:scale-110"
+                )}>
+                  {item.icon && iconMap[item.icon]}
+                </span>
                 {!collapsed && <span className="truncate">{t(item.titleKey)}</span>}
               </Link>
             );
@@ -100,37 +106,37 @@ export function TrainerSidebar() {
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 bg-sidebar text-sidebar-foreground border-e border-sidebar-border transition-all duration-200",
+          "hidden lg:flex flex-col fixed inset-y-0 start-0 z-30 glass-sidebar text-sidebar-foreground border-e border-sidebar-border/30 transition-all duration-300 ease-out",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <TrainerSidebarContent collapsed={collapsed} />
         {/* Collapse Toggle */}
-        <div className="border-t border-sidebar-border p-2">
+        <div className="border-t border-sidebar-border/30 p-2">
           <Button
             variant="ghost"
             size="icon"
-            className="w-full h-8 text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent/50"
+            className="w-full h-8 text-sidebar-foreground/40 hover:text-sidebar-foreground hover:bg-sidebar-accent/40 transition-all duration-200"
             onClick={() => setCollapsed(!collapsed)}
           >
-            <ChevronLeft className={cn("h-4 w-4 transition-transform", collapsed && "rotate-180")} />
+            <ChevronLeft className={cn("h-4 w-4 transition-transform duration-300", collapsed && "rotate-180")} />
           </Button>
         </div>
       </aside>
 
       {/* Mobile Drawer */}
       <Sheet>
-        <SheetTrigger className="lg:hidden fixed top-3 start-3 z-40 inline-flex items-center justify-center rounded-lg h-8 w-8 hover:bg-muted">
+        <SheetTrigger className="lg:hidden fixed top-3 start-3 z-40 inline-flex items-center justify-center rounded-lg h-9 w-9 bg-background/80 backdrop-blur-sm shadow-sm hover:bg-muted transition-all">
           <Menu className="h-5 w-5" />
         </SheetTrigger>
-        <SheetContent side="left" className="w-64 p-0 bg-sidebar text-sidebar-foreground">
+        <SheetContent side="left" className="w-64 p-0 glass-sidebar text-sidebar-foreground border-0 shadow-depth">
           <SheetTitle className="sr-only">Trainer Navigation</SheetTitle>
           <TrainerSidebarContent collapsed={false} />
         </SheetContent>
       </Sheet>
 
       {/* Spacer */}
-      <div className={cn("hidden lg:block shrink-0 transition-all duration-200", collapsed ? "w-16" : "w-64")} />
+      <div className={cn("hidden lg:block shrink-0 transition-all duration-300", collapsed ? "w-16" : "w-64")} />
     </>
   );
 }

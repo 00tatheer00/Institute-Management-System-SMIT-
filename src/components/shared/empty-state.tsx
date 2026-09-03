@@ -15,8 +15,8 @@ interface EmptyStateProps {
 
 export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
   return (
-    <div className={cn("flex flex-col items-center justify-center py-16 text-center", className)}>
-      <div className="rounded-2xl bg-muted p-4 mb-4">
+    <div className={cn("flex flex-col items-center justify-center py-16 text-center animate-fade-in", className)}>
+      <div className="rounded-2xl bg-gradient-to-br from-muted to-muted/50 p-5 mb-4 animate-float-slow shadow-sm">
         {icon || <FolderOpen className="h-10 w-10 text-muted-foreground" />}
       </div>
       <h3 className="text-lg font-semibold">{title}</h3>
@@ -24,7 +24,7 @@ export function EmptyState({ icon, title, description, action, className }: Empt
         <p className="mt-1.5 text-sm text-muted-foreground max-w-sm">{description}</p>
       )}
       {action && (
-        <Button onClick={action.onClick} className="mt-4" size="sm">
+        <Button onClick={action.onClick} variant="glow" className="mt-4" size="sm">
           {action.label}
         </Button>
       )}

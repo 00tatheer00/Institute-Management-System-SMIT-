@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { GraduationCap, Heart } from "lucide-react";
+import { GraduationCap, Heart, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -84,25 +84,32 @@ export function PublicFooter() {
   ];
 
   return (
-    <footer className="bg-foreground text-background/80">
-      <div className="container-custom section-padding">
+    <footer className="relative overflow-hidden">
+      {/* Gradient mesh background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground via-foreground to-foreground" />
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-brand blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-info blur-[100px]" />
+      </div>
+
+      <div className="container-custom section-padding relative z-10 text-background/80">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand shadow-brand">
                 <GraduationCap className="h-5 w-5 text-white" />
               </div>
-              <span className="font-bold text-background">{tCommon("siteShortName")}</span>
+              <span className="font-bold text-lg text-background">{tCommon("siteShortName")}</span>
             </div>
-            <p className="text-sm leading-relaxed">{t("description")}</p>
-            <div className="flex items-center gap-3">
+            <p className="text-sm leading-relaxed text-background/60">{t("description")}</p>
+            <div className="flex items-center gap-2.5">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-background/10 transition-colors hover:bg-brand hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-background/8 transition-all duration-300 hover:bg-brand hover:text-white hover:shadow-brand hover:scale-110 hover:-translate-y-0.5"
                 >
                   <social.icon className="h-4 w-4" />
                 </a>
@@ -112,15 +119,16 @@ export function PublicFooter() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-background mb-4">{t("quickLinks")}</h3>
+            <h3 className="font-semibold text-background mb-4 text-sm">{t("quickLinks")}</h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-brand"
+                    className="group text-sm transition-all duration-200 hover:text-brand inline-flex items-center gap-1"
                   >
                     {link.label}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
                   </Link>
                 </li>
               ))}
@@ -129,15 +137,16 @@ export function PublicFooter() {
 
           {/* Programs */}
           <div>
-            <h3 className="font-semibold text-background mb-4">{t("programs")}</h3>
+            <h3 className="font-semibold text-background mb-4 text-sm">{t("programs")}</h3>
             <ul className="space-y-2.5">
               {programLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-brand"
+                    className="group text-sm transition-all duration-200 hover:text-brand inline-flex items-center gap-1"
                   >
                     {link.label}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
                   </Link>
                 </li>
               ))}
@@ -146,15 +155,16 @@ export function PublicFooter() {
 
           {/* Support */}
           <div>
-            <h3 className="font-semibold text-background mb-4">{t("support")}</h3>
+            <h3 className="font-semibold text-background mb-4 text-sm">{t("support")}</h3>
             <ul className="space-y-2.5">
               {supportLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-brand"
+                    className="group text-sm transition-all duration-200 hover:text-brand inline-flex items-center gap-1"
                   >
                     {link.label}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
                   </Link>
                 </li>
               ))}
@@ -162,14 +172,15 @@ export function PublicFooter() {
           </div>
         </div>
 
-        <Separator className="my-8 bg-background/10" />
+        {/* Animated separator */}
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-background/15 to-transparent" />
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm">
+          <p className="text-sm text-background/50">
             © {new Date().getFullYear()} {tCommon("siteName")}. {t("rights")}
           </p>
-          <p className="text-sm flex items-center gap-1">
-            {t("madeWith")} <Heart className="h-3.5 w-3.5 text-red-400 fill-red-400" />
+          <p className="text-sm flex items-center gap-1.5 text-background/50">
+            {t("madeWith")} <Heart className="h-3.5 w-3.5 text-red-400 fill-red-400 animate-bounce-subtle" />
           </p>
         </div>
       </div>

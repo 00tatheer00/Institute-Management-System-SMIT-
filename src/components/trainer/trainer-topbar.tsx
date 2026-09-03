@@ -28,20 +28,20 @@ export function TrainerTopbar() {
     .slice(0, 2);
 
   return (
-    <header className="sticky top-0 z-20 h-16 bg-background/95 backdrop-blur-sm border-b flex items-center justify-between px-4 lg:px-6">
+    <header className="sticky top-0 z-20 h-16 glass-header flex items-center justify-between px-4 lg:px-6">
       {/* Mobile spacer */}
       <div className="lg:hidden w-10" />
 
       {/* Quick Action Badges */}
       <div className="hidden md:flex items-center gap-3">
         <Link href="/trainer/attendance">
-          <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs">
+          <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs hover:shadow-sm transition-all duration-200">
             <CheckSquare className="h-3.5 w-3.5 text-emerald-600" />
             Take Attendance
           </Button>
         </Link>
         <Link href="/trainer/assignments">
-          <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs">
+          <Button variant="outline" size="sm" className="h-8 gap-1.5 text-xs hover:shadow-sm transition-all duration-200">
             <Plus className="h-3.5 w-3.5 text-blue-600" />
             New Assignment
           </Button>
@@ -56,19 +56,20 @@ export function TrainerTopbar() {
 
         {/* Notifications */}
         <Link href="/trainer">
-          <Button variant="ghost" size="icon" className="relative h-8 w-8">
-            <Bell className="h-4 w-4" />
-            <span className="absolute -top-0.5 -end-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-600 text-[10px] text-white font-medium">
-              4
+          <Button variant="ghost" size="icon" className="relative h-8 w-8 group transition-all duration-200 hover:bg-emerald-50">
+            <Bell className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+            <span className="absolute -top-0.5 -end-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-600 text-[10px] text-white font-medium shadow-sm">
+              <span className="absolute inset-0 rounded-full bg-emerald-600 animate-ping opacity-30" />
+              <span className="relative">4</span>
             </span>
           </Button>
         </Link>
 
         {/* User Dropdown */}
         <DropdownMenu>
-          <DropdownMenuTrigger render={<Button variant="ghost" className="gap-2 px-2 h-8" />}>
-            <Avatar className="h-7 w-7">
-              <AvatarFallback className="text-[10px] font-bold bg-emerald-600 text-white">
+          <DropdownMenuTrigger render={<Button variant="ghost" className="gap-2 px-2 h-8 hover:bg-emerald-50 transition-all duration-200" />}>
+            <Avatar className="h-8 w-8 ring-2 ring-emerald-200 transition-all duration-200 hover:ring-emerald-400">
+              <AvatarFallback className="text-[10px] font-bold bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
                 {initials}
               </AvatarFallback>
             </Avatar>
@@ -76,27 +77,27 @@ export function TrainerTopbar() {
               {trainerName}
             </span>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
-            <div className="px-3 py-2">
-              <p className="text-sm font-medium">{trainerName}</p>
+          <DropdownMenuContent align="end" className="w-52 glass-card border-0 shadow-depth">
+            <div className="px-3 py-2.5">
+              <p className="text-sm font-semibold">{trainerName}</p>
               <p className="text-xs text-muted-foreground">{user?.email || "ahmed.hassan@mhit.edu.pk"}</p>
-              <div className="mt-1 inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700 border border-emerald-200">
+              <div className="mt-1.5 inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700 border border-emerald-100">
                 Senior Faculty Trainer
               </div>
             </div>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="transition-colors hover:bg-emerald-50/50">
               <Link href="/trainer" className="flex items-center w-full">
                 <BookOpen className="h-4 w-4 me-2 text-muted-foreground" /> My Assigned Batches
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="transition-colors hover:bg-emerald-50/50">
               <Link href="/trainer/profile" className="flex items-center w-full">
                 <User className="h-4 w-4 me-2 text-muted-foreground" /> Faculty Profile
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive">
+            <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive transition-colors">
               <LogOut className="h-4 w-4 me-2" /> Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
