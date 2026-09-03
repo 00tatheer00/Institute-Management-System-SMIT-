@@ -236,6 +236,61 @@
     background-clip: text;
   }
 
+  /* ─── Shimmer & Tech Grid Utilities ─────────── */
+  .shimmer-cyan {
+    background: linear-gradient(
+      90deg,
+      #0284c7 0%,
+      #38bdf8 25%,
+      #ffffff 50%,
+      #38bdf8 75%,
+      #0284c7 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-slow 3.5s linear infinite;
+  }
+
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 70%
+    );
+    transform: rotate(25deg) translateX(-160%);
+    animation: shimmer-sweep 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-faded-grid {
+    background-size: 44px 44px;
+    background-image:
+      linear-gradient(to right, rgba(2, 132, 199, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(2, 132, 199, 0.08) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 35%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 35%, transparent 100%);
+  }
+
+  .hero-faded-dots {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(16, 185, 129, 0.18) 1.2px, transparent 1.2px);
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, #000 40%, transparent 100%);
+  }
+
   /* ─── Glassmorphism ─────────────────────── */
   .glass {
     background: oklch(1 0 0 / 70%);
@@ -453,6 +508,16 @@
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes shimmer-slow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: rotate(25deg) translateX(-160%); }
+  100% { transform: rotate(25deg) translateX(160%); }
 }
 
 @keyframes gradient-shift {
