@@ -12,7 +12,7 @@ import { successStories, galleryItems } from "@/lib/data/misc";
 import { AnimatedCounter } from "@/components/public/animated-counter";
 import { TestimonialCarousel } from "@/components/public/testimonial-carousel";
 import { InteractiveHero } from "@/components/public/interactive-hero";
-import { ThreeParticleMesh } from "@/components/public/three-particle-mesh";
+import { ParticleConstellation } from "@/components/public/particle-constellation";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/shared/animated-section";
 import {
   GraduationCap, Users, BookOpen, Layers, ArrowRight,
@@ -457,11 +457,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ═══════════════════════════════════════════
-          CTA — Interactive 3D Particle Mesh
+          CTA — Interactive Particle Constellation
           ═══════════════════════════════════════════ */}
       <section className="gradient-mesh text-white section-padding relative overflow-hidden">
-        {/* Three.js interactive wave grid */}
-        <ThreeParticleMesh color="#06b6d4" className="absolute inset-0 w-full h-full pointer-events-none opacity-40" />
+        {/* Interactive canvas particle constellation */}
+        <ParticleConstellation
+          color="rgba(6, 182, 212, "
+          particleCount={40}
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+        />
 
         {/* Decorative shapes */}
         <div className="hero-shape hero-shape-1" style={{ opacity: 0.1 }} />
