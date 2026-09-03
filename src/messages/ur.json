@@ -549,5 +549,26 @@
     "contact": "رابطہ کریں",
     "rights": "تمام حقوق محفوظ ہیں۔",
     "madeWith": "بنایا گیا"
+  },
+  "student": {
+    "nav": {
+      "dashboard": "ڈیش بورڈ",
+      "idCard": "اسٹوڈنٹ شناختی کارڈ",
+      "course": "میرا کورس",
+      "attendance": "حاضری",
+      "assignments": "اسائنمنٹس",
+      "quizzes": "کوئز",
+      "results": "نتائج",
+      "materials": "مواد",
+      "projects": "پروجیکٹس",
+      "career": "کیریئر",
+      "certificates": "سرٹیفکیٹس",
+      "documents": "دستاویزات",
+      "support": "سپورٹ",
+      "feedback": "فیڈ بیک",
+      "notifications": "اطلاعات",
+      "profile": "پروفائل",
+      "settings": "ترتیبات"
+    }
   }
 }

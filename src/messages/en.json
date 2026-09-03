@@ -549,5 +549,26 @@
     "contact": "Contact Us",
     "rights": "All rights reserved.",
     "madeWith": "Made with"
+  },
+  "student": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "idCard": "Student ID Card",
+      "course": "My Course",
+      "attendance": "Attendance",
+      "assignments": "Assignments",
+      "quizzes": "Quizzes",
+      "results": "Results",
+      "materials": "Materials",
+      "projects": "Projects",
+      "career": "Career",
+      "certificates": "Certificates",
+      "documents": "Documents",
+      "support": "Support",
+      "feedback": "Feedback",
+      "notifications": "Notifications",
+      "profile": "Profile",
+      "settings": "Settings"
+    }
   }
 }

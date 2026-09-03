@@ -13,7 +13,7 @@ import {
   LayoutDashboard, BookOpen, Calendar, CheckSquare,
   FileText, HelpCircle, BarChart3, FolderOpen, Rocket,
   Award, Megaphone, UserCircle, Settings, Menu, ChevronLeft,
-  GraduationCap
+  GraduationCap, CreditCard
 } from "lucide-react";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -21,6 +21,7 @@ const iconMap: Record<string, React.ReactNode> = {
   BookOpen: <BookOpen className="h-4 w-4" />,
   Calendar: <Calendar className="h-4 w-4" />,
   CheckSquare: <CheckSquare className="h-4 w-4" />,
+  CreditCard: <CreditCard className="h-4 w-4" />,
   FileText: <FileText className="h-4 w-4" />,
   HelpCircle: <HelpCircle className="h-4 w-4" />,
   BarChart3: <BarChart3 className="h-4 w-4" />,

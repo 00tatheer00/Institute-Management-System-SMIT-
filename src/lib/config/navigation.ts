@@ -110,6 +110,7 @@ export const trainerNavItems: NavItem[] = [
 // --- Student Navigation ---
 export const studentNavItems: NavItem[] = [
   { titleKey: "student.nav.dashboard", href: "/student", icon: "LayoutDashboard" },
+  { titleKey: "student.nav.idCard", href: "/student/card", icon: "CreditCard" },
   { titleKey: "student.nav.course", href: "/student/progress", icon: "BookOpen" },
   { titleKey: "student.nav.attendance", href: "/student/attendance", icon: "CheckSquare" },
   { titleKey: "student.nav.assignments", href: "/student/assignments", icon: "FileText" },
