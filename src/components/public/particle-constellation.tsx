@@ -35,16 +35,16 @@ export function ParticleConstellation({
     }
 
     const particles: Particle[] = [];
-    const count = Math.min(particleCount, Math.floor(width / 22));
+    const count = Math.min(particleCount, Math.floor(width / 18));
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2 + 1.2,
-        baseAlpha: Math.random() * 0.4 + 0.3,
+        vx: (Math.random() - 0.5) * 0.75,
+        vy: (Math.random() - 0.5) * 0.75,
+        radius: Math.random() * 2.2 + 1.6,
+        baseAlpha: Math.random() * 0.35 + 0.65,
       });
     }
 
@@ -79,8 +79,8 @@ export function ParticleConstellation({
       animationId = requestAnimationFrame(draw);
       ctx.clearRect(0, 0, width, height);
 
-      const maxDist = 110;
-      const mouseDist = 140;
+      const maxDist = 130;
+      const mouseDist = 160;
 
       // Update and draw particles
       for (let i = 0; i < particles.length; i++) {
@@ -100,28 +100,28 @@ export function ParticleConstellation({
         const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
         if (distMouse < mouseDist) {
-          p.x += (dxMouse / distMouse) * 0.5;
-          p.y += (dyMouse / distMouse) * 0.5;
+          p.x += (dxMouse / distMouse) * 0.6;
+          p.y += (dyMouse / distMouse) * 0.6;
 
           // Connect laser line to mouse
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouseX, mouseY);
-          ctx.strokeStyle = `${color}${0.4 * (1 - distMouse / mouseDist)})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = `${color}${0.65 * (1 - distMouse / mouseDist)})`;
+          ctx.lineWidth = 1.4;
           ctx.stroke();
         }
 
-        // Draw node
+        // Draw node with glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${color}${p.baseAlpha})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `${color}0.8)`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `${color}0.9)`;
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Connect nearby nodes
+        // Connect nearby nodes (2D prominent net)
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
@@ -132,8 +132,8 @@ export function ParticleConstellation({
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `${color}${0.25 * (1 - dist / maxDist)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `${color}${0.45 * (1 - dist / maxDist)})`;
+            ctx.lineWidth = 1.1;
             ctx.stroke();
           }
         }
