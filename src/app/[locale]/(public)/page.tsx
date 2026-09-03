@@ -11,6 +11,7 @@ import { getTrainerById } from "@/lib/data/trainers";
 import { successStories, galleryItems } from "@/lib/data/misc";
 import { AnimatedCounter } from "@/components/public/animated-counter";
 import { TestimonialCarousel } from "@/components/public/testimonial-carousel";
+import { InteractiveHero } from "@/components/public/interactive-hero";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/shared/animated-section";
 import {
   GraduationCap, Users, BookOpen, Layers, ArrowRight,
@@ -60,158 +61,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       {/* ═══════════════════════════════════════════
-          HERO SECTION — Premium Two-Column Layout
+          INTERACTIVE 3D HERO SECTION (Three.js + Live Code + Track Switcher)
           ═══════════════════════════════════════════ */}
-      <section className="relative gradient-mesh text-white overflow-hidden min-h-[680px] flex items-center">
-        {/* Decorative animated shapes */}
-        <div className="hero-shape hero-shape-1" />
-        <div className="hero-shape hero-shape-2" />
-        <div className="hero-shape hero-shape-3" />
-
-        {/* Dot grid & noise overlays */}
-        <div className="absolute inset-0 dot-grid opacity-35" />
-        <div className="absolute inset-0 noise-overlay" />
-
-        <div className="container-custom relative z-10 py-16 md:py-24 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Col: Hero Copy */}
-            <div className="lg:col-span-7 space-y-6">
-              <AnimatedSection delay={0}>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white border border-white/20 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg shadow-black/10">
-                  <Sparkles className="h-4 w-4 text-amber-300 animate-pulse" />
-                  <span>{tCommon("tagline")}</span>
-                  <span className="text-white/40">•</span>
-                  <span className="text-emerald-300 font-medium">100% Free Tuition</span>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.12}>
-                <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl text-balance leading-[1.08]">
-                  {t("hero.title")}
-                </h1>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.24}>
-                <p className="text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed">
-                  {t("hero.subtitle")}
-                </p>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.36}>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <Link href="/courses">
-                    <Button size="lg" className="bg-white text-primary hover:bg-white/95 font-bold px-7 shadow-depth hover:shadow-lifted transition-all duration-300 hover:-translate-y-0.5 text-sm h-11">
-                      {t("hero.cta")} <ArrowRight className="ms-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Link href="/admissions">
-                    <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/15 font-semibold px-7 backdrop-blur-md text-sm h-11">
-                      {t("hero.ctaSecondary")}
-                    </Button>
-                  </Link>
-                </div>
-              </AnimatedSection>
-
-              {/* Trust Indicators */}
-              <AnimatedSection delay={0.48}>
-                <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/15 text-xs text-white/70">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span>Saylani Tech Partner</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span>Verified Certifications</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span>Hands-on Live Labs</span>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-
-            {/* Right Col: Interactive Visual Hero Card */}
-            <div className="lg:col-span-5 relative">
-              <AnimatedSection delay={0.2} direction="left">
-                <div className="relative mx-auto max-w-md lg:max-w-none">
-                  {/* Outer Glow Halo */}
-                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand/40 to-teal-400/30 blur-2xl opacity-60 animate-pulse-glow" />
-
-                  {/* Glass Card Container */}
-                  <div className="relative rounded-2xl overflow-hidden border border-white/20 bg-white/10 backdrop-blur-xl shadow-depth">
-                    {/* Main Image */}
-                    <div className="relative h-72 sm:h-80 w-full overflow-hidden">
-                      <img
-                        src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
-                        alt="Students collaborating at MHIT Center"
-                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                        loading="eager"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      
-                      {/* Live Badge */}
-                      <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-xs font-semibold text-white">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-                        </span>
-                        <span>Lab Batch WD-01 Live</span>
-                      </div>
-                    </div>
-
-                    {/* Card Content Footer */}
-                    <div className="p-5 space-y-3 bg-card/90 dark:bg-card/95 text-foreground backdrop-blur-md">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs font-semibold text-brand uppercase tracking-wider">Campus Overview</p>
-                          <h4 className="text-base font-bold">State-of-the-Art Labs &amp; Solar Grid</h4>
-                        </div>
-                        <div className="flex items-center gap-1 text-amber-500 font-bold text-xs bg-amber-500/10 px-2 py-1 rounded-md">
-                          <Star className="h-3.5 w-3.5 fill-amber-500" /> 4.9/5.0
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        Equipped with high-performance computing hardware, uninterrupted solar energy backup, and certified faculty mentors.
-                      </p>
-                      <div className="flex items-center justify-between pt-1 border-t border-border/50 text-[11px] text-muted-foreground font-medium">
-                        <span>5,000+ Alumni</span>
-                        <span>12 Free Programs</span>
-                        <span>Karachi, PK</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Floating Stat Chip */}
-                  <div className="absolute -bottom-5 -left-5 hidden sm:flex items-center gap-3 p-3 rounded-2xl bg-card border border-border/70 shadow-depth text-foreground animate-float-slow">
-                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md shrink-0">
-                      <Award className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold leading-tight">100% Free</p>
-                      <p className="text-[10px] text-muted-foreground">Certified Programs</p>
-                    </div>
-                  </div>
-
-                  {/* Floating Trainee Chip */}
-                  <div className="absolute -top-5 -right-5 hidden sm:flex items-center gap-3 p-3 rounded-2xl bg-card border border-border/70 shadow-depth text-foreground animate-float">
-                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
-                      <Users className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold leading-tight">12+ Trainers</p>
-                      <p className="text-[10px] text-muted-foreground">Industry Experts</p>
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-background to-transparent" />
-      </section>
+      <InteractiveHero
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        ctaText={t("hero.cta")}
+        ctaSecondaryText={t("hero.ctaSecondary")}
+        tagline={tCommon("tagline")}
+      />
 
       {/* ═══════════════════════════════════════════
           STATS SECTION — Floating Glass Cards
