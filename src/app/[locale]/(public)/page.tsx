@@ -11,7 +11,7 @@ import { getTrainerById } from "@/lib/data/trainers";
 import { successStories, galleryItems } from "@/lib/data/misc";
 import { AnimatedCounter } from "@/components/public/animated-counter";
 import { TestimonialCarousel } from "@/components/public/testimonial-carousel";
-import { InteractiveHero } from "@/components/public/interactive-hero";
+import { SmitHeroSection } from "@/components/public/smit-hero-section";
 import { ParticleConstellation } from "@/components/public/particle-constellation";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/shared/animated-section";
 import {
@@ -62,20 +62,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       {/* ═══════════════════════════════════════════
-          INTERACTIVE 3D HERO SECTION (Three.js + Live Code + Track Switcher)
+          SMIT HERO SECTION (Building Pakistan's Tech Future)
           ═══════════════════════════════════════════ */}
-      <InteractiveHero
-        title={t("hero.title")}
-        subtitle={t("hero.subtitle")}
-        ctaText={t("hero.cta")}
-        ctaSecondaryText={t("hero.ctaSecondary")}
-        tagline={tCommon("tagline")}
-      />
+      <SmitHeroSection />
 
       {/* ═══════════════════════════════════════════
           STATS SECTION — Floating Glass Cards
           ═══════════════════════════════════════════ */}
-      <section className="relative z-20 -mt-14">
+      <section className="relative z-20 py-8 sm:py-10 bg-slate-50/60 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800/60">
         <div className="container-custom">
           <StaggerContainer className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-5" staggerDelay={0.1}>
             {[
