@@ -159,9 +159,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
   html {
     @apply font-sans scroll-smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
   /* Urdu RTL font */
   html[dir="rtl"] {

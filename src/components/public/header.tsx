@@ -136,23 +136,23 @@ export function PublicHeader() {
             : "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-slate-200/60 dark:border-slate-800/60 shadow-2xs py-3.5"
         )}
       >
-        <div className="container-custom flex items-center justify-between gap-4">
+        <div className="container-custom flex items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group cursor-pointer">
-            <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0284c7] via-[#0ea5e9] to-[#10b981] shadow-md shadow-[#0284c7]/20 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg">
-              <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-              <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-950" />
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 group cursor-pointer">
+            <div className="relative flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0284c7] via-[#0ea5e9] to-[#10b981] shadow-md shadow-[#0284c7]/20 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg">
+              <GraduationCap className="h-4.5 w-4.5 sm:h-6 sm:w-6 text-white" />
+              <div className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-950" />
             </div>
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-1.5">
-                <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">
+                <span className="text-base sm:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">
                   SMIT
                 </span>
-                <span className="text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
+                <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
                   SAYLANI
                 </span>
               </div>
-              <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight pt-0.5 hidden xs:block">
+              <p className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight pt-0.5 hidden xs:block">
                 Mass IT Training Program
               </p>
             </div>
@@ -237,7 +237,7 @@ export function PublicHeader() {
           </nav>
 
           {/* Right Actions Suite */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             {/* Language Switcher */}
             <div className="cursor-pointer">
               <LanguageSwitcher />
@@ -248,7 +248,7 @@ export function PublicHeader() {
               <Button
                 variant="outline"
                 size="sm"
-                className="font-bold text-xs rounded-full h-9 px-4 border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs transition-all cursor-pointer flex items-center gap-1.5"
+                className="font-bold text-xs rounded-full h-8 sm:h-9 px-3.5 sm:px-4 border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <LogIn className="h-3.5 w-3.5 text-slate-500" />
                 <span>{t("login")}</span>
@@ -256,8 +256,8 @@ export function PublicHeader() {
             </Link>
 
             {/* High-Impact Enroll Now Pill Button */}
-            <Link href="/admissions" className="cursor-pointer">
-              <button className="btn-shimmer bg-[#0284c7] hover:bg-[#0369a1] active:scale-95 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-full h-9 px-5 shadow-md shadow-[#0284c7]/25 hover:shadow-lg hover:shadow-[#0284c7]/35 transition-all duration-200 cursor-pointer flex items-center gap-1.5">
+            <Link href="/admissions" className="cursor-pointer hidden xs:block">
+              <button className="btn-shimmer bg-[#0284c7] hover:bg-[#0369a1] active:scale-95 text-white font-extrabold text-xs uppercase tracking-wider rounded-full h-8 sm:h-9 px-3.5 sm:px-5 shadow-md shadow-[#0284c7]/25 hover:shadow-lg hover:shadow-[#0284c7]/35 transition-all duration-200 cursor-pointer flex items-center gap-1.5">
                 <span>Enroll Now</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
               </button>
@@ -265,7 +265,7 @@ export function PublicHeader() {
 
             {/* Mobile Menu Trigger */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="lg:hidden inline-flex items-center justify-center rounded-xl h-9 w-9 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+              <SheetTrigger className="lg:hidden inline-flex items-center justify-center rounded-xl h-8.5 w-8.5 sm:h-9 sm:w-9 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 <span className="sr-only">Toggle navigation</span>
               </SheetTrigger>
