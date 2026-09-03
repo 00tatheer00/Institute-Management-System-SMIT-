@@ -5,6 +5,7 @@ import type { AssignmentSubmission } from "@/lib/types";
 import type { PaginatedResult, QueryParams, MutationResult } from "./types";
 import { queryItems } from "./types";
 import { recordAssignmentResult } from "./result-service";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 const submissionStore: AssignmentSubmission[] = [...initialSubmissions];
 
@@ -79,6 +80,26 @@ export function submitAssignment(
   };
 
   submissionStore.unshift(newSubmission);
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("assignment_submissions")
+      .upsert({
+        id: newSubmission.id,
+        assignment_id: newSubmission.assignmentId,
+        student_id: newSubmission.studentId,
+        deployed_url: newSubmission.fileUrl || newSubmission.submissionText || "https://deployed-app.vercel.app",
+        github_url: newSubmission.submissionText || null,
+        notes: newSubmission.fileName || null,
+        status: newSubmission.status as any,
+        submitted_at: newSubmission.submittedAt,
+      } as any)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase submission insert error:", error);
+      });
+  }
+
   return { success: true, data: newSubmission };
 }
 
@@ -126,6 +147,23 @@ export function gradeSubmission(
       totalMarks: assignment.totalMarks,
       remarks: feedback,
     });
+  }
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("assignment_submissions")
+      .update({
+        marks,
+        feedback: feedback || null,
+        graded_by: gradedBy,
+        graded_at: updated.gradedAt,
+        status: "graded",
+      } as any)
+      .eq("id", submissionId)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase grade update error:", error);
+      });
   }
 
   return { success: true, data: updated };

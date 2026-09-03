@@ -1,6 +1,7 @@
 import type { StudentDocument, DocumentType, DocumentStatus } from "@/lib/types";
 import { initialDocuments } from "@/lib/data/documents";
 import { queryItems, type PaginatedResult, type QueryParams } from "./types";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 const documentStore: StudentDocument[] = [...initialDocuments];
 
@@ -50,6 +51,25 @@ export function uploadDocument(data: {
   };
 
   documentStore.unshift(newDoc);
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("student_documents")
+      .insert({
+        id: newDoc.id,
+        student_id: newDoc.studentId,
+        document_type: newDoc.type as any,
+        file_name: newDoc.title,
+        file_url: newDoc.fileUrl,
+        status: "pending",
+        uploaded_at: new Date().toISOString(),
+      } as any)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase document upload sync error:", error);
+      });
+  }
+
   return newDoc;
 }
 
@@ -65,6 +85,21 @@ export function verifyDocument(
   doc.verifiedBy = verifiedBy;
   doc.verifiedAt = new Date().toISOString().split("T")[0];
   if (notes) doc.notes = notes;
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("student_documents")
+      .update({
+        status: "verified",
+        verified_at: new Date().toISOString(),
+      } as any)
+      .eq("id", id)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase document verify error:", error);
+      });
+  }
+
   return true;
 }
 
@@ -74,5 +109,20 @@ export function rejectDocument(id: string, reason: string): boolean {
 
   doc.status = "rejected";
   doc.notes = reason;
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("student_documents")
+      .update({
+        status: "rejected",
+        rejection_reason: reason,
+      } as any)
+      .eq("id", id)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase document reject error:", error);
+      });
+  }
+
   return true;
 }

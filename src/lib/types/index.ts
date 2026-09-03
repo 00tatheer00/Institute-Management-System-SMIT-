@@ -658,7 +658,8 @@ export type PermissionAction =
   | "export"
   | "manage"
   | "approve"
-  | "assign";
+  | "assign"
+  | "publish";
 
 export type PermissionResource =
   | "students"
@@ -679,7 +680,11 @@ export type PermissionResource =
   | "gallery"
   | "reports"
   | "settings"
-  | "imports";
+  | "imports"
+  | "documents"
+  | "finance"
+  | "roles"
+  | "career";
 
 export interface Permission {
   action: PermissionAction;
@@ -949,6 +954,225 @@ export type StorageBucketName =
   | "certificates"
   | "gallery"
   | "event-images"
-  | "support-attachments";
+  | "support-attachments"
+  | "receipts-finance";
+
+// ============================================================
+// PHASE 5 — ENTERPRISE MANAGEMENT, ANALYTICS & SYSTEM TYPES
+// ============================================================
+
+// --- Finance & Funding ---
+export type FundingStatus =
+  | "planned"
+  | "received"
+  | "partially-received"
+  | "completed"
+  | "cancelled";
+
+export type FundingSourceType =
+  | "government"
+  | "corporate-csr"
+  | "philanthropic"
+  | "individual";
+
+export interface FundingSource {
+  id: string;
+  name: string;
+  type: FundingSourceType;
+  contactPerson?: string;
+  email?: string;
+  phone?: string;
+  totalAllocated: number;
+}
+
+export interface FundingGrant {
+  id: string;
+  grantNumber: string;
+  sourceId: string;
+  sourceName: string;
+  amount: number;
+  receivedDate: string;
+  purpose: string;
+  reference: string;
+  status: FundingStatus;
+  notes?: string;
+}
+
+export type ExpenseCategory =
+  | "equipment"
+  | "utilities"
+  | "maintenance"
+  | "events"
+  | "training"
+  | "operations"
+  | "software"
+  | "other";
+
+export type ExpenseStatus = "approved" | "pending" | "paid" | "reimbursed";
+
+export interface ExpenseRecord {
+  id: string;
+  title: string;
+  category: ExpenseCategory;
+  amount: number;
+  date: string;
+  fundingSourceId?: string;
+  fundingSourceName?: string;
+  reference: string;
+  description: string;
+  status: ExpenseStatus;
+  recordedBy: string;
+  receiptUrl?: string;
+}
+
+export interface FinancialSummary {
+  totalFunding: number;
+  totalExpenses: number;
+  remainingBalance: number;
+  monthlyExpenses: { month: string; amount: number }[];
+  expensesByCategory: { category: ExpenseCategory; label: string; amount: number; percentage: number }[];
+}
+
+// --- Career & Placement Foundation ---
+export type InternshipStatus =
+  | "not-started"
+  | "applied"
+  | "interviewing"
+  | "placed"
+  | "completed";
+
+export type EmploymentStatus =
+  | "looking"
+  | "internship"
+  | "employed"
+  | "freelancing"
+  | "further-study";
+
+export interface StudentCareerProfile {
+  studentId: string;
+  studentName: string;
+  courseName: string;
+  batchName: string;
+  skills: string[];
+  portfolioReadinessScore: number; // 0-100
+  internshipStatus: InternshipStatus;
+  employmentStatus: EmploymentStatus;
+  targetRoles: string[];
+  cvStatus: "draft" | "submitted" | "verified";
+  cvFileUrl?: string;
+  portfolioUrl?: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
+  placedCompany?: string;
+  placedRole?: string;
+  notes?: string;
+  updatedAt: string;
+}
+
+export type PlacementType = "internship" | "full-time" | "freelance-contract";
+
+export interface PlacementRecord {
+  id: string;
+  studentId: string;
+  studentName: string;
+  courseName: string;
+  companyName: string;
+  roleTitle: string;
+  placementType: PlacementType;
+  startDate: string;
+  monthlyStipend?: number;
+  isVerified: boolean;
+}
+
+// --- Data Health & Diagnostics ---
+export type DataHealthSeverity = "critical" | "warning" | "info";
+
+export interface DataHealthIssue {
+  id: string;
+  entity: string;
+  entityId: string;
+  title: string;
+  description: string;
+  remediationNote: string;
+}
+
+export interface DataHealthCheck {
+  id: string;
+  name: string;
+  category: "relationships" | "unassigned" | "duplicates" | "integrity";
+  description: string;
+  severity: DataHealthSeverity;
+  affectedCount: number;
+  issues: DataHealthIssue[];
+}
+
+export interface DataHealthSummary {
+  overallStatus: "healthy" | "attention-needed" | "critical";
+  checksRun: number;
+  totalIssues: number;
+  criticalIssues: number;
+  lastScannedAt: string;
+}
+
+// --- Communication Architecture & Provider Contracts ---
+export type NotificationChannel = "in-app" | "email" | "sms" | "whatsapp";
+
+export interface NotificationDispatchJob {
+  id: string;
+  recipientId: string;
+  recipientRole: UserRole;
+  channel: NotificationChannel;
+  title: string;
+  body: string;
+  status: "queued" | "dispatched" | "delivered" | "failed";
+  providerName: string;
+  dispatchedAt?: string;
+  metadata?: Record<string, unknown>;
+}
+
+// --- AI-Ready Architecture & Boundary Contracts ---
+export type AiContextScope =
+  | "student-learning"
+  | "trainer-copilot"
+  | "admin-analytics"
+  | "career-advisory";
+
+export interface AiContextRequest {
+  scope: AiContextScope;
+  requesterRole: UserRole;
+  requesterId: string;
+  query: string;
+  filters?: Record<string, unknown>;
+}
+
+export interface AiDataBlock {
+  blockType: string;
+  title: string;
+  contentSummary: string;
+  safeData: Record<string, unknown>;
+}
+
+export interface AiSanitizedContext {
+  contextId: string;
+  scope: AiContextScope;
+  requesterRole: UserRole;
+  generatedAt: string;
+  dataBlocks: AiDataBlock[];
+  redactedPiiFields: string[];
+  complianceCertified: boolean;
+}
+
+// --- Centralized Academic Policies ---
+export interface AcademicPolicies {
+  minAttendancePercentage: number;
+  minAssignmentCompletionRate: number;
+  minQuizAverageScore: number;
+  passingGpaThreshold: number;
+  latePenaltyPerDayPercentage: number;
+  maxLateDaysAllowed: number;
+  maxQuizAttempts: number;
+  autoIssueCertificates: boolean;
+}
+
 
 

@@ -405,10 +405,14 @@
       "rooms": "کمرے",
       "events": "تقریبات",
       "gallery": "گیلری",
-      "announcements": "اعلانات",
       "analytics": "تجزیات",
       "reports": "رپورٹس",
+      "finance": "مالیات اور گرانٹس",
+      "career": "کیریئر اور تقرریاں",
       "system": "سسٹم",
+      "roles": "کردار اور اجازتیں",
+      "audit": "آڈٹ لاگز",
+      "dataManagement": "ڈیٹا کا انتظام",
       "settings": "ترتیبات"
     },
     "dashboard": {
@@ -493,6 +497,7 @@
       "results": "نتائج",
       "materials": "مواد",
       "projects": "پراجیکٹس",
+      "career": "کیریئر پروفائل",
       "certificates": "سرٹیفکیٹس",
       "documents": "دستاویزات",
       "support": "مدد اور سپورٹ",

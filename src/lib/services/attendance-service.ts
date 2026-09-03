@@ -4,6 +4,7 @@ import { batches } from "@/lib/data/batches";
 import { courses } from "@/lib/data/courses";
 import type { AttendanceRecord, AttendanceStatus, Student } from "@/lib/types";
 import type { MutationResult } from "./types";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 // In-memory store (mirrors future Supabase table `attendance`)
 const attendanceStore: AttendanceRecord[] = [...initialAttendanceRecords];
@@ -124,6 +125,27 @@ export function markClassAttendance(
       savedRecords.push(newRecord);
     }
   });
+
+  // If Supabase is configured, upsert into Supabase attendance_records table
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    const rows = savedRecords.map((r) => ({
+      id: r.id,
+      class_session_id: r.classId,
+      batch_id: r.batchId,
+      student_id: r.studentId,
+      attendance_date: r.date,
+      status: r.status,
+      marked_by: r.markedBy,
+    }));
+
+    supabase
+      .from("attendance_records")
+      .upsert(rows as any)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase attendance sync error:", error);
+      });
+  }
 
   return { success: true, data: savedRecords };
 }

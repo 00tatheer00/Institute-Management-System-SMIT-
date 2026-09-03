@@ -405,10 +405,14 @@
       "rooms": "Rooms",
       "events": "Events",
       "gallery": "Gallery",
-      "announcements": "Announcements",
       "analytics": "Analytics",
       "reports": "Reports",
+      "finance": "Finance & Grants",
+      "career": "Career & Placements",
       "system": "System",
+      "roles": "Roles & Permissions",
+      "audit": "Audit Logs",
+      "dataManagement": "Data Management",
       "settings": "Settings"
     },
     "dashboard": {
@@ -493,6 +497,7 @@
       "results": "Results",
       "materials": "Materials",
       "projects": "Projects",
+      "career": "Career Profile",
       "certificates": "Certificates",
       "documents": "Documents",
       "support": "Help & Support",

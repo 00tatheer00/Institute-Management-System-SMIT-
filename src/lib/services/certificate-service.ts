@@ -11,6 +11,7 @@ import { getStudentAttendanceSummary } from "@/lib/services/attendance-service";
 import { getStudentAcademicProgress } from "@/lib/services/academic-progress-service";
 import { calculateGrade } from "@/lib/services/result-service";
 import { queryItems, type PaginatedResult, type QueryParams } from "./types";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 // In-memory certificate ledger
 const certificateStore: Certificate[] = [...initialCertificates];
@@ -171,5 +172,28 @@ export function issueCertificate(data: {
   };
 
   certificateStore.unshift(newCert);
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("certificates")
+      .insert({
+        id: newCert.id,
+        certificate_number: newCert.certificateId,
+        student_id: newCert.studentId,
+        student_name: newCert.studentName,
+        course_id: newCert.courseId,
+        course_name: newCert.courseName,
+        batch_id: newCert.batchId,
+        issue_date: newCert.issueDate,
+        verification_hash: `${newCert.certificateId}-${Date.now().toString(16)}`,
+        status: newCert.status as any,
+        grade: newCert.grade,
+      } as any)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase certificate insert error:", error);
+      });
+  }
+
   return newCert;
 }

@@ -16,6 +16,7 @@ import type {
   QueryParams,
 } from "./types";
 import { queryItems } from "./types";
+import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
 
 // ============================================================
 // FIELD DEFINITIONS PER ENTITY TYPE
@@ -478,6 +479,27 @@ export async function executeImport(
   };
 
   importHistory.unshift(record);
+
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabaseBrowserClient();
+    supabase
+      .from("import_jobs")
+      .insert({
+        id: record.id,
+        file_name: record.fileName,
+        file_size: record.fileSize,
+        data_type: record.dataType,
+        total_rows: record.totalRows,
+        imported_rows: record.importedRows,
+        failed_rows: record.failedRows,
+        status: record.status as any,
+        imported_by: record.importedBy,
+      } as any)
+      .then(({ error }: { error: any }) => {
+        if (error) console.error("Supabase import_jobs insert error:", error);
+      });
+  }
+
   return record;
 }
 

@@ -24,3 +24,6 @@ export { initialProjects } from "./projects";
 export { initialTickets } from "./support";
 export { initialFeedback } from "./feedback";
 export { initialNotifications } from "./notifications";
+export { initialFundingSources, initialGrants, initialExpenses } from "./finance";
+export { initialCareerProfiles, initialPlacements } from "./career";
+export { initialAuditLogs } from "./audit-logs";

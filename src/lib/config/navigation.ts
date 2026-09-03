@@ -73,12 +73,18 @@ export const adminNavGroups: NavGroup[] = [
   {
     titleKey: "admin.nav.analytics",
     items: [
+      { titleKey: "admin.nav.analytics", href: "/admin/analytics", icon: "TrendingUp" },
       { titleKey: "admin.nav.reports", href: "/admin/reports", icon: "PieChart" },
+      { titleKey: "admin.nav.finance", href: "/admin/finance", icon: "DollarSign" },
+      { titleKey: "admin.nav.career", href: "/admin/career", icon: "Briefcase" },
     ],
   },
   {
     titleKey: "admin.nav.system",
     items: [
+      { titleKey: "admin.nav.roles", href: "/admin/roles", icon: "Shield" },
+      { titleKey: "admin.nav.audit", href: "/admin/audit-logs", icon: "History" },
+      { titleKey: "admin.nav.dataManagement", href: "/admin/data-management", icon: "Database" },
       { titleKey: "admin.nav.settings", href: "/admin/settings", icon: "Settings" },
     ],
   },
@@ -110,6 +116,7 @@ export const studentNavItems: NavItem[] = [
   { titleKey: "student.nav.results", href: "/student/results", icon: "BarChart3" },
   { titleKey: "student.nav.materials", href: "/student/materials", icon: "FolderOpen" },
   { titleKey: "student.nav.projects", href: "/student/projects", icon: "Rocket" },
+  { titleKey: "student.nav.career", href: "/student/career", icon: "Briefcase" },
   { titleKey: "student.nav.certificates", href: "/student/certificates", icon: "Award" },
   { titleKey: "student.nav.documents", href: "/student/documents", icon: "FileText" },
   { titleKey: "student.nav.support", href: "/student/support", icon: "LifeBuoy" },
