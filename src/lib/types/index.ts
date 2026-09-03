@@ -43,16 +43,53 @@ export type ApplicationStatus =
   | "rejected"
   | "waitlisted";
 
+export type ClassStatus =
+  | "scheduled"
+  | "in-progress"
+  | "completed"
+  | "cancelled"
+  | "rescheduled";
+
 export type AttendanceStatus = "present" | "absent" | "late" | "excused";
 
+export type AssignmentState = "draft" | "published" | "closed" | "archived";
+
+export type SubmissionStatus =
+  | "not-submitted"
+  | "submitted"
+  | "late"
+  | "graded"
+  | "returned";
+
+// Legacy alias for compatibility
 export type AssignmentStatus =
   | "pending"
   | "submitted"
   | "graded"
   | "late"
-  | "missing";
+  | "missing"
+  | SubmissionStatus;
 
-export type QuizStatus = "upcoming" | "active" | "completed" | "cancelled";
+export type QuizStatus =
+  | "draft"
+  | "published"
+  | "open"
+  | "closed"
+  | "archived"
+  | "upcoming"
+  | "active"
+  | "completed"
+  | "cancelled";
+
+export type QuizQuestionType = "multiple-choice" | "true-false" | "short-answer";
+
+export type QuizAttemptStatus = "in-progress" | "submitted" | "graded";
+
+export type AssessmentType = "quiz" | "assignment" | "exam" | "final";
+
+export type MaterialType = "pdf" | "document" | "link" | "video" | "presentation";
+
+export type MaterialVisibility = "published" | "draft" | "archived";
 
 export type EventStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
 
@@ -212,14 +249,17 @@ export interface ClassSession {
   batchId: string;
   courseId: string;
   trainerId: string;
+  roomId?: string;
+  room: string;
   title: string;
   description: string;
   date: string;
   startTime: string;
   endTime: string;
-  room: string;
   moduleId: string;
   topics: string[];
+  notes?: string;
+  status?: ClassStatus;
   isCompleted: boolean;
 }
 
@@ -230,21 +270,30 @@ export interface AttendanceRecord {
   batchId: string;
   date: string;
   status: AttendanceStatus;
+  checkInTime?: string;
+  remarks?: string;
   markedBy: string;
   markedAt: string;
+  updatedBy?: string;
+  updatedAt?: string;
+  originalStatus?: AttendanceStatus;
 }
 
 export interface Assignment {
   id: string;
   title: string;
   description: string;
+  instructions?: string;
   courseId: string;
   batchId: string;
   trainerId: string;
   moduleId: string;
+  issueDate?: string;
   dueDate: string;
   totalMarks: number;
+  submissionType?: "file" | "link" | "text" | "all";
   publishedAt: string;
+  status?: AssignmentState;
   isPublished: boolean;
 }
 
@@ -253,26 +302,59 @@ export interface AssignmentSubmission {
   assignmentId: string;
   studentId: string;
   submittedAt: string;
-  status: AssignmentStatus;
+  status: SubmissionStatus | AssignmentStatus;
+  submissionText?: string;
+  fileUrl?: string;
+  fileName?: string;
+  fileSize?: string;
   obtainedMarks?: number;
   feedback?: string;
   gradedAt?: string;
   gradedBy?: string;
 }
 
+export interface QuizQuestion {
+  id: string;
+  quizId: string;
+  question: string;
+  type: QuizQuestionType;
+  options?: string[];
+  correctAnswer: string; // Isolated from student-facing payloads
+  marks: number;
+  order: number;
+}
+
 export interface Quiz {
   id: string;
   title: string;
   description: string;
+  instructions?: string;
   courseId: string;
   batchId: string;
   trainerId: string;
   moduleId: string;
   totalMarks: number;
   totalQuestions: number;
+  passingMarks?: number;
   duration: number; // minutes
   date: string;
+  availableFrom?: string;
+  availableUntil?: string;
   status: QuizStatus;
+  questions?: QuizQuestion[];
+}
+
+export interface QuizAttempt {
+  id: string;
+  quizId: string;
+  studentId: string;
+  startedAt: string;
+  submittedAt?: string;
+  score?: number;
+  totalMarks: number;
+  percentage?: number;
+  answers?: Record<string, string>; // questionId -> selected answer
+  status: QuizAttemptStatus;
 }
 
 export interface QuizResult {
@@ -285,6 +367,81 @@ export interface QuizResult {
   completedAt: string;
 }
 
+export interface UnifiedResult {
+  id: string;
+  studentId: string;
+  studentName?: string;
+  courseId: string;
+  courseName?: string;
+  batchId: string;
+  batchName?: string;
+  assessmentId: string;
+  assessmentTitle: string;
+  assessmentType: AssessmentType;
+  obtainedMarks: number;
+  totalMarks: number;
+  percentage: number;
+  grade: string;
+  remarks?: string;
+  date: string;
+}
+
+export interface LearningMaterial {
+  id: string;
+  title: string;
+  description: string;
+  courseId: string;
+  batchId?: string; // empty means all batches in this course
+  moduleId?: string;
+  trainerId: string;
+  trainerName?: string;
+  type: MaterialType;
+  url: string;
+  fileName?: string;
+  fileSize?: string;
+  visibility: MaterialVisibility;
+  publishedAt: string;
+}
+
+export interface ModuleProgress {
+  moduleId: string;
+  moduleName: string;
+  totalHours: number;
+  completedHours: number;
+  isCompleted: boolean;
+}
+
+export interface AtRiskIndicator {
+  studentId: string;
+  isAtRisk: boolean;
+  reasons: string[];
+  severity: "high" | "medium" | "low";
+}
+
+export interface AcademicProgress {
+  studentId: string;
+  courseId: string;
+  batchId: string;
+  overallProgressPercentage: number;
+  attendanceRate: number;
+  assignmentCompletionRate: number;
+  quizAverageScore: number;
+  currentGpa: number;
+  letterGrade: string;
+  modules: ModuleProgress[];
+  atRisk?: AtRiskIndicator;
+}
+
+export interface GradeDefinition {
+  grade: string;
+  minPercentage: number;
+  maxPercentage: number;
+  gpaPoint: number;
+  description: string;
+  isPassing: boolean;
+}
+
+// Legacy Result model for backward compatibility
 export interface Result {
   id: string;
   studentId: string;

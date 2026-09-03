@@ -1,0 +1,102 @@
+import type { AssignmentSubmission } from "@/lib/types";
+
+export const initialSubmissions: AssignmentSubmission[] = [
+  // Submissions for Assignment 1 (Portfolio Website, Batch 1)
+  {
+    id: "sub-1-1",
+    assignmentId: "asgn-1",
+    studentId: "student-1", // Muhammad Khan (Demo Student)
+    submittedAt: "2026-09-02T16:30:00Z",
+    status: "graded",
+    submissionText: "Live portfolio deployed on Vercel: https://muhammadkhan-portfolio.vercel.app\nGitHub repository: https://github.com/mkhan/portfolio-2026\nFeatures fully responsive grid layouts and custom CSS dark mode.",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-1-1/portfolio-bundle.zip",
+    fileName: "portfolio-bundle.zip",
+    fileSize: "2.4 MB",
+    obtainedMarks: 94,
+    feedback: "Exceptional semantic markup and clean responsive CSS. Great choice of OKLCH color palettes and accessible contrast ratios. Excellent work!",
+    gradedAt: "2026-09-03T08:30:00Z",
+    gradedBy: "trainer-1",
+  },
+  {
+    id: "sub-1-2",
+    assignmentId: "asgn-1",
+    studentId: "student-2",
+    submittedAt: "2026-09-03T10:15:00Z",
+    status: "graded",
+    submissionText: "Portfolio submitted with GitHub repository and live Netlify demo link: https://ali-ahmed-dev.netlify.app",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-1-2/ali-portfolio.zip",
+    fileName: "ali-portfolio.zip",
+    fileSize: "3.1 MB",
+    obtainedMarks: 86,
+    feedback: "Good layout structure. Recommended: improve keyboard tab navigation focus indicators on interactive card elements.",
+    gradedAt: "2026-09-03T11:00:00Z",
+    gradedBy: "trainer-1",
+  },
+  {
+    id: "sub-1-3",
+    assignmentId: "asgn-1",
+    studentId: "student-3",
+    submittedAt: "2026-09-03T18:45:00Z",
+    status: "submitted",
+    submissionText: "GitHub repo: https://github.com/hassan-web/my-portfolio\nLive demo link provided in the README file.",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-1-3/hassan-source.zip",
+    fileName: "hassan-source.zip",
+    fileSize: "1.8 MB",
+    // Not graded yet (Trainer grading queue demo)
+  },
+  {
+    id: "sub-1-4",
+    assignmentId: "asgn-1",
+    studentId: "student-4",
+    submittedAt: "2026-09-09T02:00:00Z", // Submitted past due date (2026-09-08)
+    status: "late",
+    submissionText: "Late submission due to power outage in Gulshan area. Project code is committed on GitHub.",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-1-4/project-late.zip",
+    fileName: "project-late.zip",
+    fileSize: "4.2 MB",
+    // Awaiting grading with late flag
+  },
+  {
+    id: "sub-1-5",
+    assignmentId: "asgn-1",
+    studentId: "student-5",
+    submittedAt: "2026-09-02T14:00:00Z",
+    status: "graded",
+    submissionText: "Live site: https://fatima-designs.vercel.app\nCode is fully validated with W3C HTML/CSS validators.",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-1-5/portfolio.zip",
+    fileName: "portfolio.zip",
+    fileSize: "2.8 MB",
+    obtainedMarks: 98,
+    feedback: "Masterful visual hierarchy and responsive behavior across phone and tablet screens. Top tier submission.",
+    gradedAt: "2026-09-03T09:15:00Z",
+    gradedBy: "trainer-1",
+  },
+
+  // Submissions for Assignment 2 (Vanilla JS Todo App, Batch 1)
+  {
+    id: "sub-2-1",
+    assignmentId: "asgn-2",
+    studentId: "student-1", // Muhammad Khan
+    submittedAt: "2026-09-03T11:20:00Z",
+    status: "submitted",
+    submissionText: "Todo app built using native ES6 modules, custom event dispatchers, and localStorage sync. Live preview: https://mkhan-todo.vercel.app",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-2-1/todo-es6.zip",
+    fileName: "todo-es6.zip",
+    fileSize: "1.2 MB",
+  },
+  {
+    id: "sub-2-2",
+    assignmentId: "asgn-2",
+    studentId: "student-2",
+    submittedAt: "2026-09-02T20:00:00Z",
+    status: "graded",
+    submissionText: "Vanilla JS Todo app with category filtering and deadline notifications.",
+    fileUrl: "https://storage.mhit.edu.pk/submissions/sub-2-2/todo-app.zip",
+    fileName: "todo-app.zip",
+    fileSize: "1.5 MB",
+    obtainedMarks: 88,
+    feedback: "Clean state management using pure JS objects. Good separation of DOM manipulation functions.",
+    gradedAt: "2026-09-03T10:00:00Z",
+    gradedBy: "trainer-1",
+  },
+];

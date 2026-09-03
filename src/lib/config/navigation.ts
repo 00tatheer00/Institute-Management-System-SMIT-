@@ -46,6 +46,7 @@ export const adminNavGroups: NavGroup[] = [
       { titleKey: "admin.nav.assignments", href: "/admin/assignments", icon: "FileText" },
       { titleKey: "admin.nav.quizzes", href: "/admin/quizzes", icon: "HelpCircle" },
       { titleKey: "admin.nav.results", href: "/admin/results", icon: "BarChart3" },
+      { titleKey: "admin.nav.materials", href: "/admin/materials", icon: "FolderOpen" },
       { titleKey: "admin.nav.certificates", href: "/admin/certificates", icon: "Award" },
     ],
   },
