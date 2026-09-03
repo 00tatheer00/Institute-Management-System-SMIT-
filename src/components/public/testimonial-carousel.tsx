@@ -12,6 +12,7 @@ interface Testimonial {
   quote: string;
   courseName: string;
   batchName: string;
+  avatar?: string;
 }
 
 interface TestimonialCarouselProps {
@@ -94,11 +95,20 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
 
                   {/* Author */}
                   <div className="flex items-center gap-3 pt-2 border-t border-border/50">
-                    <div className="h-10 w-10 rounded-full gradient-brand flex items-center justify-center text-white text-sm font-bold shadow-brand">
-                      {story.studentName.charAt(0)}
-                    </div>
+                    {story.avatar ? (
+                      <img
+                        src={story.avatar}
+                        alt={story.studentName}
+                        className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/30 shadow-brand shrink-0"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="h-11 w-11 rounded-full gradient-brand flex items-center justify-center text-white text-sm font-bold shadow-brand shrink-0">
+                        {story.studentName.charAt(0)}
+                      </div>
+                    )}
                     <div>
-                      <p className="text-sm font-semibold">{story.studentName}</p>
+                      <p className="text-sm font-semibold text-foreground">{story.studentName}</p>
                       <p className="text-xs text-muted-foreground">
                         {story.courseName} — {story.batchName}
                       </p>

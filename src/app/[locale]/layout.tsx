@@ -5,6 +5,9 @@ import { Inter } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/lib/auth/context";
+import { CustomCursor } from "@/components/shared/custom-cursor";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { BackToTop } from "@/components/shared/back-to-top";
 import { getDirection } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 
@@ -63,7 +66,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <TooltipProvider>
+              <ScrollProgress />
+              <CustomCursor />
               {children}
+              <BackToTop />
             </TooltipProvider>
           </AuthProvider>
         </NextIntlClientProvider>

@@ -48,7 +48,7 @@ export const courses: Course[] = [
     duration: "4 Months",
     durationWeeks: 16,
     totalClasses: 64,
-    image: "/images/courses/web-development.jpg",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
     icon: "Globe",
     skills: ["HTML5", "CSS3", "JavaScript", "React.js", "Node.js", "Git", "MongoDB", "REST APIs"],
     learningOutcomes: [
@@ -81,7 +81,7 @@ export const courses: Course[] = [
     duration: "4 Months",
     durationWeeks: 14,
     totalClasses: 56,
-    image: "/images/courses/app-development.jpg",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80",
     icon: "Smartphone",
     skills: ["Dart", "Flutter", "Firebase", "REST APIs", "State Management", "App Deployment"],
     learningOutcomes: [
@@ -111,7 +111,7 @@ export const courses: Course[] = [
     duration: "5 Months",
     durationWeeks: 20,
     totalClasses: 60,
-    image: "/images/courses/artificial-intelligence.jpg",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
     icon: "Brain",
     skills: ["Python", "Machine Learning", "Deep Learning", "TensorFlow", "NLP", "Computer Vision", "Generative AI"],
     learningOutcomes: [
@@ -139,7 +139,7 @@ export const courses: Course[] = [
     duration: "3 Months",
     durationWeeks: 12,
     totalClasses: 48,
-    image: "/images/courses/digital-marketing.jpg",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
     icon: "TrendingUp",
     skills: ["SEO", "Google Ads", "Social Media Marketing", "Content Strategy", "Email Marketing", "Analytics"],
     learningOutcomes: [
@@ -167,7 +167,7 @@ export const courses: Course[] = [
     duration: "3 Months",
     durationWeeks: 12,
     totalClasses: 48,
-    image: "/images/courses/graphic-design.jpg",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",
     icon: "Palette",
     skills: ["Adobe Photoshop", "Adobe Illustrator", "Canva", "Typography", "Brand Design", "Print Design"],
     learningOutcomes: [
@@ -195,7 +195,7 @@ export const courses: Course[] = [
     duration: "3 Months",
     durationWeeks: 12,
     totalClasses: 48,
-    image: "/images/courses/video-editing.jpg",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80",
     icon: "Video",
     skills: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve", "Motion Graphics", "Color Grading", "Audio Editing"],
     learningOutcomes: [
@@ -223,7 +223,7 @@ export const courses: Course[] = [
     duration: "3 Months",
     durationWeeks: 12,
     totalClasses: 48,
-    image: "/images/courses/ui-ux-design.jpg",
+    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80",
     icon: "Layout",
     skills: ["Figma", "User Research", "Wireframing", "Prototyping", "Design Systems", "Usability Testing"],
     learningOutcomes: [
@@ -251,7 +251,7 @@ export const courses: Course[] = [
     duration: "4 Months",
     durationWeeks: 16,
     totalClasses: 64,
-    image: "/images/courses/cyber-security.jpg",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
     icon: "Shield",
     skills: ["Network Security", "Ethical Hacking", "Penetration Testing", "Kali Linux", "SIEM", "Incident Response"],
     learningOutcomes: [
@@ -279,7 +279,7 @@ export const courses: Course[] = [
     duration: "3 Months",
     durationWeeks: 12,
     totalClasses: 48,
-    image: "/images/courses/networking.jpg",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
     icon: "Network",
     skills: ["TCP/IP", "Routing & Switching", "Network Administration", "CCNA Prep", "Linux", "Network Security"],
     learningOutcomes: [
@@ -307,7 +307,7 @@ export const courses: Course[] = [
     duration: "2 Months",
     durationWeeks: 8,
     totalClasses: 32,
-    image: "/images/courses/freelancing.jpg",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
     icon: "Briefcase",
     skills: ["Client Management", "Proposal Writing", "Portfolio Building", "Upwork", "Fiverr", "Business Development"],
     learningOutcomes: [
@@ -335,7 +335,7 @@ export const courses: Course[] = [
     duration: "4 Months",
     durationWeeks: 16,
     totalClasses: 64,
-    image: "/images/courses/data-science.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     icon: "Database",
     skills: ["Python", "SQL", "Power BI", "Tableau", "Statistical Analysis", "Data Visualization"],
     learningOutcomes: [
@@ -363,7 +363,7 @@ export const courses: Course[] = [
     duration: "4 Months",
     durationWeeks: 16,
     totalClasses: 64,
-    image: "/images/courses/cloud-computing.jpg",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     icon: "Cloud",
     skills: ["AWS", "Azure", "Docker", "Kubernetes", "CI/CD", "Infrastructure as Code"],
     learningOutcomes: [

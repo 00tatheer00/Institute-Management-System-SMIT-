@@ -91,12 +91,23 @@ export default function PublicProjectsPage() {
               key={p.id}
               className="flex flex-col justify-between overflow-hidden hover:shadow-lg hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 group"
             >
-              <div className="h-44 bg-gradient-to-br from-indigo-900 via-slate-900 to-sky-950 flex items-center justify-center p-6 text-white relative">
-                <div className="text-center space-y-1">
+              <div className="relative h-48 w-full overflow-hidden bg-muted">
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-gradient-to-br from-indigo-900 via-slate-900 to-sky-950" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 text-white space-y-0.5">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-300">
                     {p.courseName}
                   </span>
-                  <h3 className="font-bold text-base line-clamp-2 px-2">
+                  <h3 className="font-bold text-base line-clamp-1">
                     {p.title}
                   </h3>
                 </div>

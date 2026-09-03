@@ -84,10 +84,16 @@ export default function PublicGalleryPage() {
               key={item.id}
               className="overflow-hidden hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-900 transition-all group"
             >
-              <div className="h-52 bg-gradient-to-br from-purple-950 via-slate-900 to-indigo-950 flex items-center justify-center text-white relative">
-                <ImageIcon className="h-12 w-12 text-purple-400/40 group-hover:scale-110 transition-transform" />
+              <div className="relative h-56 w-full overflow-hidden bg-muted">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-3 end-3">
-                  <Badge variant="outline" className="capitalize text-[10px] bg-background/90 font-semibold shadow-xs">
+                  <Badge className="capitalize text-[10px] bg-black/60 text-white backdrop-blur-md border border-white/15 font-semibold shadow-xs">
                     {item.category}
                   </Badge>
                 </div>

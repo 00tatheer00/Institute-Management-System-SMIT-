@@ -72,23 +72,37 @@ export default function PublicEventsPage() {
               key={ev.id}
               className="flex flex-col justify-between overflow-hidden hover:shadow-md hover:border-blue-300 dark:hover:border-blue-900 transition-all"
             >
-              <div className="p-6 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 text-white space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-blue-300 uppercase font-semibold">
+              <div className="relative h-48 w-full overflow-hidden bg-muted">
+                {ev.image ? (
+                  <img
+                    src={ev.image}
+                    alt={ev.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+                
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs">
+                  <span className="font-mono text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded text-[10px] uppercase font-semibold border border-white/10">
                     {ev.category}
                   </span>
                   {ev.isRegistrationOpen ? (
-                    <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                    <span className="bg-emerald-500/90 text-white px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs">
                       Open for Registration
                     </span>
                   ) : (
-                    <span className="bg-white/10 text-white/70 px-2 py-0.5 rounded-full text-[10px]">
+                    <span className="bg-black/60 text-white/80 px-2 py-0.5 rounded-full text-[10px] backdrop-blur-md">
                       {ev.status === "completed" ? "Concluded" : "Closed"}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-lg font-bold line-clamp-2 pt-1">{ev.title}</h3>
+                <div className="absolute bottom-3 left-4 right-4">
+                  <h3 className="text-base font-bold line-clamp-2 text-white">{ev.title}</h3>
+                </div>
               </div>
 
               <CardContent className="p-5 space-y-4 flex-1 flex flex-col justify-between">

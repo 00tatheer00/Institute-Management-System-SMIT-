@@ -643,3 +643,18 @@
   right: 20%;
   animation-delay: -5s;
 }
+
+/* Smooth scrolling & image performance */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+img {
+  content-visibility: auto;
+}
