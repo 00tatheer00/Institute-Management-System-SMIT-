@@ -189,6 +189,20 @@
     scrollbar-width: thin;
     scrollbar-color: oklch(0.75 0.02 250) transparent;
   }
+
+  /* ═══════════════════════════════════════════
+     INTERACTIVE CURSORS
+     ═══════════════════════════════════════════ */
+  button,
+  a,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  select,
+  summary,
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════
