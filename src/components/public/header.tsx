@@ -101,19 +101,11 @@ export function PublicHeader() {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <LanguageSwitcher />
-          <Link href="/login" className="hidden md:block">
-            <Button variant="outline" size="sm" className="font-semibold text-xs rounded-full h-8 px-3.5 border-slate-300 dark:border-slate-700">
+          <Link href="/login" className="hidden sm:block">
+            <Button variant="glow" size="sm" className="font-semibold shadow-sm hover:shadow-brand transition-all duration-300">
               {t("login")}
-            </Button>
-          </Link>
-          <Link href="/admissions">
-            <Button
-              size="sm"
-              className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-xs rounded-full h-8 px-4 shadow-sm hover:shadow-md transition-all duration-200"
-            >
-              Enroll Now →
             </Button>
           </Link>
 

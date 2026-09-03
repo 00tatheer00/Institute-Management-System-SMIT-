@@ -5,283 +5,487 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/config/site";
-import { SmitHero } from "@/components/public/smit-hero";
-import { SmitCourseTabs } from "@/components/public/smit-course-tabs";
-import { SmitVideoTestimonials } from "@/components/public/smit-video-testimonials";
-import { PakistanCampusMap } from "@/components/public/pakistan-campus-map";
-import { AlumniMosaic } from "@/components/public/alumni-mosaic";
+import { getFeaturedCourses, courses } from "@/lib/data/courses";
+import { getEnrollingBatches } from "@/lib/data/batches";
+import { getTrainerById } from "@/lib/data/trainers";
+import { successStories, galleryItems } from "@/lib/data/misc";
 import { AnimatedCounter } from "@/components/public/animated-counter";
+import { TestimonialCarousel } from "@/components/public/testimonial-carousel";
+import { InteractiveHero } from "@/components/public/interactive-hero";
+import { ParticleConstellation } from "@/components/public/particle-constellation";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/shared/animated-section";
 import {
   GraduationCap, Users, BookOpen, Layers, ArrowRight,
   CheckCircle2, Star, Award, Briefcase, Monitor, Code,
-  Globe, Sparkles, TrendingUp, ShieldCheck, HeartHandshake,
-  Lightbulb, Network, Building2, ChevronRight, DollarSign
+  Globe, Smartphone, Brain, TrendingUp, Palette, Video,
+  Layout, Shield, Network, Cloud, Database, Sparkles, Zap,
+  Check, Camera, Compass
 } from "lucide-react";
+
+// Icon map for courses
+const categoryIcons: Record<string, React.ReactNode> = {
+  "web-development": <Globe className="h-5 w-5" />,
+  "app-development": <Smartphone className="h-5 w-5" />,
+  "artificial-intelligence": <Brain className="h-5 w-5" />,
+  "digital-marketing": <TrendingUp className="h-5 w-5" />,
+  "graphic-design": <Palette className="h-5 w-5" />,
+  "video-editing": <Video className="h-5 w-5" />,
+  "ui-ux": <Layout className="h-5 w-5" />,
+  "cyber-security": <Shield className="h-5 w-5" />,
+  "networking": <Network className="h-5 w-5" />,
+  "freelancing": <Briefcase className="h-5 w-5" />,
+  "data-science": <Database className="h-5 w-5" />,
+  "cloud-computing": <Cloud className="h-5 w-5" />,
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home.hero" });
   return {
-    title: "SMIT — Building Pakistan's Tech Future | Saylani Mass IT Training",
-    description: "Changing Lives, Building Careers, Shaping the Future. 100% Free IT training and institutional technology education across Pakistan.",
+    title: `${t("title")} | Mohsin and Huma IT Center × SMIT`,
+    description: t("description"),
   };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("home");
+  const tCommon = await getTranslations("common");
+  const tCourses = await getTranslations("courses");
+
+  const featured = getFeaturedCourses();
+  const enrolling = getEnrollingBatches().slice(0, 4);
+  const categories = [...new Set(courses.map((c) => c.category))];
+  const campusShowcase = galleryItems.slice(0, 6);
 
   return (
     <>
-      {/* ═════════════════════════════════════════════════════════
-          1. HERO SECTION (Building Pakistan's Tech Future)
-          ═════════════════════════════════════════════════════════ */}
-      <SmitHero />
+      {/* ═══════════════════════════════════════════
+          INTERACTIVE 3D HERO SECTION (Three.js + Live Code + Track Switcher)
+          ═══════════════════════════════════════════ */}
+      <InteractiveHero
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        ctaText={t("hero.cta")}
+        ctaSecondaryText={t("hero.ctaSecondary")}
+        tagline={tCommon("tagline")}
+      />
 
-      {/* ═════════════════════════════════════════════════════════
-          2. IMPACT STATS BAR (Blue to Green Continuous Gradient)
-          ═════════════════════════════════════════════════════════ */}
-      <section className="bg-gradient-to-r from-[#0284c7] via-[#059669] to-[#16a34a] text-white py-8 sm:py-10 shadow-lg relative z-20">
-        <div className="container-custom max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
-            <div className="pt-3 md:pt-0">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-                <AnimatedCounter end={200000} suffix="+" />
-              </p>
-              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-1 uppercase tracking-wider">
-                Students Enrolled
-              </p>
-            </div>
-
-            <div className="pt-3 md:pt-0">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-                <AnimatedCounter end={400} suffix="+" />
-              </p>
-              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-1 uppercase tracking-wider">
-                Certified Trainers
-              </p>
-            </div>
-
-            <div className="pt-3 md:pt-0">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-                <AnimatedCounter end={70} suffix="%" />
-              </p>
-              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-1 uppercase tracking-wider">
-                Employment Success
-              </p>
-            </div>
-
-            <div className="pt-3 md:pt-0">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-                <AnimatedCounter end={150} suffix="+" />
-              </p>
-              <p className="text-xs sm:text-sm text-white/90 font-semibold mt-1 uppercase tracking-wider">
-                Nationwide Campuses
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═════════════════════════════════════════════════════════
-          3. WHY CHOOSE SMIT (World-Class IT Training & Success)
-          ═════════════════════════════════════════════════════════ */}
-      <section className="section-padding bg-slate-50/70 dark:bg-slate-900/30">
-        <div className="container-custom max-w-6xl mx-auto space-y-12">
-          {/* Header */}
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <Badge className="bg-[#0284c7]/15 text-[#0284c7] border-[#0284c7]/30 text-xs px-3.5 py-1 font-bold uppercase tracking-wider">
-              WHY CHOOSE SMIT
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-              Empowering You with World-Class<br />
-              <span className="text-[#0284c7]">IT Training &amp; Proven Success</span>
-            </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Designed by industry veterans to take students from basics to job-ready software professionals.
-            </p>
-          </div>
-
-          {/* Symmetrical Feature Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* ═══════════════════════════════════════════
+          STATS SECTION — Floating Glass Cards
+          ═══════════════════════════════════════════ */}
+      <section className="relative z-20 -mt-14">
+        <div className="container-custom">
+          <StaggerContainer className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-5" staggerDelay={0.1}>
             {[
-              {
-                title: "Market-Aligned Syllabus",
-                desc: "Curriculum regularly updated with technologies demanded by global tech firms.",
-                icon: <BookOpen className="h-6 w-6" />,
-                gradient: "from-sky-500 to-blue-600",
-              },
-              {
-                title: "100% Free Tuition Fee",
-                desc: "Saylani Trust covers 100% of educational fees, making IT education accessible to all.",
-                icon: <Award className="h-6 w-6" />,
-                gradient: "from-emerald-500 to-teal-600",
-              },
-              {
-                title: "Hands-on Live Labs",
-                desc: "Learn by building production-level web apps, mobile apps, and machine learning models.",
-                icon: <Monitor className="h-6 w-6" />,
-                gradient: "from-violet-500 to-purple-600",
-              },
-              {
-                title: "Industry Expert Mentors",
-                desc: "Instructors with years of software engineering experience in multinational firms.",
-                icon: <Users className="h-6 w-6" />,
-                gradient: "from-amber-500 to-orange-600",
-              },
-              {
-                title: "Recognized Certifications",
-                desc: "Verifiable credentials that boost your CV and LinkedIn credibility with recruiters.",
-                icon: <ShieldCheck className="h-6 w-6" />,
-                gradient: "from-rose-500 to-pink-600",
-              },
-              {
-                title: "Nationwide Campus Network",
-                desc: "Over 150 campuses, high-tech computer laboratories, and uninterrupted power grids.",
-                icon: <Building2 className="h-6 w-6" />,
-                gradient: "from-teal-500 to-cyan-600",
-              },
-            ].map((feat) => (
-              <Card
-                key={feat.title}
-                className="group border-slate-200/80 dark:border-slate-800 shadow-float hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 rounded-3xl overflow-hidden bg-white dark:bg-slate-900"
-              >
-                <CardContent className="p-6 flex items-start gap-4">
-                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${feat.gradient} text-white shadow-md transition-transform duration-300 group-hover:scale-110`}>
-                    {feat.icon}
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-[#0284c7] transition-colors">
-                      {feat.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                      {feat.desc}
+              { value: siteConfig.stats.students, suffix: "+", label: t("stats.students"), icon: <GraduationCap className="h-5 w-5" />, color: "from-teal-500 to-emerald-500" },
+              { value: siteConfig.stats.trainers, suffix: "", label: t("stats.trainers"), icon: <Users className="h-5 w-5" />, color: "from-blue-500 to-indigo-500" },
+              { value: siteConfig.stats.programs, suffix: "", label: t("stats.programs"), icon: <BookOpen className="h-5 w-5" />, color: "from-violet-500 to-purple-500" },
+              { value: siteConfig.stats.batches, suffix: "+", label: t("stats.batches"), icon: <Layers className="h-5 w-5" />, color: "from-amber-500 to-orange-500" },
+            ].map((stat) => (
+              <StaggerItem key={stat.label}>
+                <Card className="text-center border-0 shadow-depth glass-card hover-lift">
+                  <CardContent className="p-5 lg:p-6">
+                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${stat.color} text-white mb-3 shadow-md`}>
+                      {stat.icon}
+                    </div>
+                    <p className="text-2xl font-extrabold tracking-tight lg:text-3xl text-foreground">
+                      <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                     </p>
-                  </div>
-                </CardContent>
-              </Card>
+                    <p className="text-xs text-muted-foreground mt-1 font-medium">{stat.label}</p>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          FEATURED COURSES — Image Cards
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-12">
+            <Badge variant="secondary" className="mb-3 px-3 py-1">
+              <Zap className="h-3 w-3 mr-1 text-brand" /> Career Tracks
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("featuredCourses.title")}</h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">{t("featuredCourses.subtitle")}</p>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.08}>
+            {featured.map((course) => (
+              <StaggerItem key={course.id}>
+                <Link href={`/courses/${course.slug}`}>
+                  <Card className="h-full group hover:shadow-lifted hover:-translate-y-1.5 transition-all duration-300 overflow-hidden border-0 shadow-float flex flex-col justify-between">
+                    <div>
+                      {/* High-Resolution Course Image */}
+                      <div className="relative h-44 w-full overflow-hidden bg-muted">
+                        <img
+                          src={course.image}
+                          alt={course.name}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                        
+                        {/* Top Badges */}
+                        <div className="absolute top-3 left-3">
+                          <Badge className="bg-black/60 text-white backdrop-blur-md border border-white/10 text-[10px] font-semibold">
+                            {course.duration}
+                          </Badge>
+                        </div>
+                        <div className="absolute top-3 right-3">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black/50 backdrop-blur-md text-white border border-white/10">
+                            {categoryIcons[course.category] || <Code className="h-4 w-4" />}
+                          </div>
+                        </div>
+
+                        {/* Bottom Tagline on Image */}
+                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                          <span className="text-[11px] font-medium bg-brand/90 px-2 py-0.5 rounded text-white shadow-xs">
+                            {tCourses(course.level as "beginner" | "intermediate" | "advanced")}
+                          </span>
+                          <span className="text-[11px] text-white/80">
+                            {course.totalClasses} Classes
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Course Card Body */}
+                      <CardContent className="p-5 space-y-3">
+                        <h3 className="font-bold text-base group-hover:text-brand transition-colors duration-200">
+                          {course.name}
+                        </h3>
+                        <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                          {course.shortDescription}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {course.skills.slice(0, 3).map((skill) => (
+                            <Badge key={skill} variant="secondary" className="text-[10px] font-normal">
+                              {skill}
+                            </Badge>
+                          ))}
+                          {course.skills.length > 3 && (
+                            <Badge variant="secondary" className="text-[10px] font-normal">
+                              +{course.skills.length - 3}
+                            </Badge>
+                          )}
+                        </div>
+                      </CardContent>
+                    </div>
+
+                    <div className="px-5 pb-5 pt-0">
+                      <div className="flex items-center justify-between text-xs font-semibold text-brand pt-3 border-t border-border/50">
+                        <span>Enroll Free</span>
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <AnimatedSection delay={0.3} className="text-center mt-10">
+            <Link href="/courses">
+              <Button variant="outline" size="lg" className="shadow-sm hover:shadow-md h-11 px-6 font-semibold">
+                {tCommon("viewAll")} {tCourses("title")} <ArrowRight className="ms-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          CAMPUS LIFE & FACILITIES — Visual Showcase
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding bg-muted/30 relative overflow-hidden">
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <Badge variant="secondary" className="mb-3 px-3 py-1">
+              <Camera className="h-3 w-3 mr-1 text-brand" /> Campus Highlights
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">State-of-the-Art Learning Environment</h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+              Explore our laboratories, campus facilities, hackathon competitions, and convocation ceremonies.
+            </p>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
+            {campusShowcase.map((item) => (
+              <StaggerItem key={item.id}>
+                <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-card shadow-float hover:shadow-lifted hover:-translate-y-1 transition-all duration-300">
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                    
+                    <div className="absolute top-3 left-3">
+                      <span className="capitalize text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/10">
+                        {item.category}
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 right-3 text-white space-y-1">
+                      <p className="text-xs text-white/70 font-mono">{item.date}</p>
+                      <h4 className="text-sm font-bold leading-tight">{item.title}</h4>
+                      <p className="text-[11px] text-white/80 line-clamp-1">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <AnimatedSection delay={0.3} className="text-center mt-10">
+            <Link href="/gallery">
+              <Button variant="outline" size="sm" className="h-9 px-5 text-xs font-semibold">
+                Explore Full Media Gallery <ArrowRight className="ms-2 h-3.5 w-3.5" />
+              </Button>
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          WHY CHOOSE US — Interactive Cards
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding gradient-mesh-light relative overflow-hidden">
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("whyChoose.title")}</h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">{t("whyChoose.subtitle")}</p>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.08}>
+            {[
+              { key: "free", icon: <Award className="h-6 w-6" />, gradient: "from-amber-500 to-orange-500" },
+              { key: "expert", icon: <Users className="h-6 w-6" />, gradient: "from-blue-500 to-indigo-500" },
+              { key: "practical", icon: <Code className="h-6 w-6" />, gradient: "from-emerald-500 to-teal-500" },
+              { key: "career", icon: <Briefcase className="h-6 w-6" />, gradient: "from-violet-500 to-purple-500" },
+              { key: "modern", icon: <Monitor className="h-6 w-6" />, gradient: "from-rose-500 to-pink-500" },
+              { key: "community", icon: <GraduationCap className="h-6 w-6" />, gradient: "from-cyan-500 to-sky-500" },
+            ].map((item) => (
+              <StaggerItem key={item.key}>
+                <Card className="border-0 shadow-float hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 group">
+                  <CardContent className="p-6 flex gap-4">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} text-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{t(`whyChoose.${item.key}.title`)}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{t(`whyChoose.${item.key}.description`)}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          HOW IT WORKS — Connected Timeline
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-14">
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("howItWorks.title")}</h2>
+            <p className="text-muted-foreground mt-2">{t("howItWorks.subtitle")}</p>
+          </AnimatedSection>
+
+          <div className="relative">
+            {/* Connecting line (desktop) */}
+            <div className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-brand/20 via-brand/40 to-brand/20 z-0" />
+
+            <StaggerContainer className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 relative z-10" staggerDelay={0.15}>
+              {[1, 2, 3, 4].map((step) => (
+                <StaggerItem key={step}>
+                  <div className="text-center space-y-4 group">
+                    <div className="relative inline-flex">
+                      <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-full gradient-brand text-white text-xl font-bold shadow-brand transition-all duration-300 group-hover:scale-110 group-hover:shadow-lifted relative z-10">
+                        {step}
+                      </div>
+                      {/* Pulse ring */}
+                      <div className="absolute inset-0 rounded-full gradient-brand opacity-20 animate-ping-slow" style={{ animationDelay: `${step * 0.5}s` }} />
+                    </div>
+                    <h3 className="font-semibold text-lg">{t(`howItWorks.step${step}.title`)}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(`howItWorks.step${step}.description`)}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
-      {/* ═════════════════════════════════════════════════════════
-          4. BROWSE OUR TOP COURSES (Tabbed Categories)
-          ═════════════════════════════════════════════════════════ */}
-      <SmitCourseTabs />
+      {/* ═══════════════════════════════════════════
+          LEARNING CATEGORIES — Interactive Grid
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("categories.title")}</h2>
+            <p className="text-muted-foreground mt-2">{t("categories.subtitle")}</p>
+          </AnimatedSection>
 
-      {/* ═════════════════════════════════════════════════════════
-          5. WHAT OUR STUDENTS SAY ABOUT US (Video Carousel)
-          ═════════════════════════════════════════════════════════ */}
-      <SmitVideoTestimonials />
+          <StaggerContainer className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6" staggerDelay={0.06}>
+            {categories.map((cat) => {
+              const course = courses.find((c) => c.category === cat);
+              return (
+                <StaggerItem key={cat}>
+                  <Link href={`/courses?category=${cat}`}>
+                    <Card className="text-center group hover:shadow-lifted hover:-translate-y-1 hover:border-brand/30 transition-all duration-300 cursor-pointer border-0 shadow-sm">
+                      <CardContent className="p-5 space-y-2.5">
+                        <div className="flex h-11 w-11 mx-auto items-center justify-center rounded-xl bg-brand/10 text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-brand">
+                          {categoryIcons[cat] || <Code className="h-5 w-5" />}
+                        </div>
+                        <p className="text-xs font-medium leading-tight group-hover:text-brand transition-colors">
+                          {course?.name || cat.replace(/-/g, " ")}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
 
-      {/* ═════════════════════════════════════════════════════════
-          6. FIND SAYLANI CAMPUSES NEAR YOU (Interactive Map)
-          ═════════════════════════════════════════════════════════ */}
-      <PakistanCampusMap />
+      {/* ═══════════════════════════════════════════
+          UPCOMING BATCHES — Enhanced Cards
+          ═══════════════════════════════════════════ */}
+      {enrolling.length > 0 && (
+        <section className="section-padding">
+          <div className="container-custom">
+            <AnimatedSection className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("upcomingBatches.title")}</h2>
+              <p className="text-muted-foreground mt-2">{t("upcomingBatches.subtitle")}</p>
+            </AnimatedSection>
 
-      {/* ═════════════════════════════════════════════════════════
-          7. ALUMNI SUCCESS STORIES (Mosaic Banner)
-          ═════════════════════════════════════════════════════════ */}
-      <AlumniMosaic />
-
-      {/* ═════════════════════════════════════════════════════════
-          8. SMIT VISION (10 Million+ IT Experts / $100 Billion)
-          ═════════════════════════════════════════════════════════ */}
-      <section className="section-padding bg-white dark:bg-slate-950">
-        <div className="container-custom max-w-5xl mx-auto space-y-10">
-          {/* Header */}
-          <div className="text-center space-y-2 max-w-xl mx-auto">
-            <Badge className="bg-[#0284c7]/15 text-[#0284c7] border-[#0284c7]/30 text-xs px-3.5 py-1 font-bold uppercase tracking-wider">
-              OUR VISION
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              SMIT <span className="text-[#0284c7]">Vision</span>
-            </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Targeting <strong className="text-slate-800 dark:text-slate-200">10 Million IT Experts</strong> and generating <strong className="text-slate-800 dark:text-slate-200">$100 Billion</strong> in digital economy for Pakistan.
-            </p>
+            <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
+              {enrolling.map((batch) => {
+                const course = courses.find((c) => c.id === batch.courseId);
+                const trainer = getTrainerById(batch.trainerId);
+                return (
+                  <StaggerItem key={batch.id}>
+                    <Card className="hover:shadow-lifted hover:-translate-y-1 transition-all duration-300 border-0 shadow-float group overflow-hidden">
+                      {/* Colored accent bar */}
+                      <div className="h-1 bg-gradient-to-r from-brand to-info" />
+                      <CardContent className="p-5 space-y-3">
+                        <Badge variant="secondary" className="text-xs bg-brand/10 text-brand border-brand/20">
+                          <span className="relative flex h-1.5 w-1.5 mr-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand" />
+                          </span>
+                          {batch.status === "enrolling" ? "Enrolling Now" : "Upcoming"}
+                        </Badge>
+                        <h3 className="font-semibold group-hover:text-brand transition-colors">{course?.name}</h3>
+                        <p className="text-sm text-muted-foreground">Batch: {batch.name}</p>
+                        <div className="text-xs text-muted-foreground space-y-1.5">
+                          <p className="flex items-center gap-1.5">
+                            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                            Starts: {new Date(batch.startDate).toLocaleDateString()}
+                          </p>
+                          <p className="flex items-center gap-1.5">
+                            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                            {batch.schedule.days.join(", ")}
+                          </p>
+                          <p className="flex items-center gap-1.5">
+                            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                            {batch.schedule.startTime} - {batch.schedule.endTime}
+                          </p>
+                          {trainer && (
+                            <p className="flex items-center gap-1.5">
+                              <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                              Trainer: {trainer.name}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-between text-xs pt-2 border-t border-border/50">
+                          {/* Progress bar for seats */}
+                          <div className="flex-1 mr-3">
+                            <div className="flex justify-between mb-1">
+                              <span className="text-muted-foreground">{batch.enrolledSeats}/{batch.totalSeats} seats</span>
+                            </div>
+                            <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                              <div
+                                className="h-full rounded-full bg-gradient-to-r from-brand to-info transition-all duration-1000"
+                                style={{ width: `${(batch.enrolledSeats / batch.totalSeats) * 100}%` }}
+                              />
+                            </div>
+                          </div>
+                          <Link href="/admissions">
+                            <Button size="sm" variant="glow" className="h-7 text-xs px-3">
+                              {tCommon("applyNow")}
+                            </Button>
+                          </Link>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
           </div>
+        </section>
+      )}
 
-          {/* Two Big Vision Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card 1: 10 Million */}
-            <Card className="rounded-3xl border-slate-200/80 dark:border-slate-800 shadow-float hover:shadow-lifted transition-all p-6 sm:p-8 bg-white dark:bg-slate-900">
-              <div className="space-y-4">
-                <div className="h-12 w-12 rounded-2xl bg-sky-500/10 text-[#0284c7] flex items-center justify-center">
-                  <GraduationCap className="h-7 w-7" />
-                </div>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                    10 Million+
-                  </h3>
-                  <p className="text-xs font-bold text-[#0284c7] uppercase tracking-wider mt-0.5">
-                    IT Experts Pipeline
-                  </p>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Equipping Pakistani youth from every province with cutting-edge skills in Web, Mobile, AI, Cloud, and Cyber Security to serve global markets.
-                </p>
-              </div>
-            </Card>
+      {/* ═══════════════════════════════════════════
+          TESTIMONIALS — Auto-scrolling Carousel
+          ═══════════════════════════════════════════ */}
+      <section className="section-padding gradient-mesh-light relative overflow-hidden">
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">{t("testimonials.title")}</h2>
+            <p className="text-muted-foreground mt-2">{t("testimonials.subtitle")}</p>
+          </AnimatedSection>
 
-            {/* Card 2: $100 Billion */}
-            <Card className="rounded-3xl border-slate-200/80 dark:border-slate-800 shadow-float hover:shadow-lifted transition-all p-6 sm:p-8 bg-white dark:bg-slate-900">
-              <div className="space-y-4">
-                <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-                  <TrendingUp className="h-7 w-7" />
-                </div>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                    $100 Billion
-                  </h3>
-                  <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider mt-0.5">
-                    Digital Economy Target
-                  </p>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Transforming Pakistan into an international IT superpower through freelance remittance, enterprise software exports, and high-value remote careers.
-                </p>
-              </div>
-            </Card>
-          </div>
+          <AnimatedSection delay={0.2}>
+            <TestimonialCarousel testimonials={successStories.slice(0, 6)} />
+          </AnimatedSection>
+        </div>
+      </section>
 
-          {/* ═════════════════════════════════════════════════════════
-              9. BE A PART OF THIS VISION (Contained Gradient CTA)
-              ═════════════════════════════════════════════════════════ */}
-          <div className="rounded-3xl bg-gradient-to-r from-[#0284c7] via-[#059669] to-[#16a34a] p-8 sm:p-12 text-center text-white space-y-6 shadow-xl relative overflow-hidden">
-            <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
+      {/* ═══════════════════════════════════════════
+          CTA — Interactive Particle Constellation
+          ═══════════════════════════════════════════ */}
+      <section className="gradient-mesh text-white section-padding relative overflow-hidden">
+        {/* Interactive canvas particle constellation */}
+        <ParticleConstellation
+          color="rgba(6, 182, 212, "
+          particleCount={40}
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+        />
 
-            <div className="relative z-10 space-y-3 max-w-2xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Be a Part of This Vision
-              </h2>
-              <p className="text-sm sm:text-base text-white/90 leading-relaxed">
-                Join thousands of students learning world-class IT skills today. 100% free tuition, world-class computer labs, and verified certificates.
-              </p>
-            </div>
+        {/* Decorative shapes */}
+        <div className="hero-shape hero-shape-1" style={{ opacity: 0.1 }} />
+        <div className="hero-shape hero-shape-2" style={{ opacity: 0.08 }} />
+        <div className="absolute inset-0 dot-grid" />
 
-            <div className="relative z-10 flex flex-wrap items-center justify-center gap-3.5 pt-2">
-              <Link href="/admissions">
-                <Button
-                  size="lg"
-                  className="bg-white text-[#0284c7] hover:bg-white/95 font-bold px-8 rounded-full text-sm h-11 shadow-lg hover:scale-105 transition-all"
-                >
-                  Start Free Admission Test <ArrowRight className="ms-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/about">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/40 text-white hover:bg-white/15 font-semibold px-8 rounded-full text-sm h-11 backdrop-blur-md"
-                >
-                  Learn About SMIT
-                </Button>
-              </Link>
-            </div>
-          </div>
+        <div className="container-custom text-center space-y-6 relative z-10">
+          <AnimatedSection>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t("cta.title")}</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.15}>
+            <p className="text-white/75 max-w-2xl mx-auto text-lg">{t("cta.subtitle")}</p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.3}>
+            <Link href="/admissions">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold px-8 shadow-depth hover:shadow-lifted transition-all duration-300 hover:-translate-y-0.5 text-base">
+                {t("cta.button")} <ArrowRight className="ms-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
     </>

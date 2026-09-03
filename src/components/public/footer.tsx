@@ -95,33 +95,23 @@ export function PublicFooter() {
       <div className="container-custom section-padding relative z-10 text-background/80">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="space-y-3.5">
+          <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-emerald-600 shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand shadow-brand">
                 <GraduationCap className="h-5 w-5 text-white" />
               </div>
-              <div>
-                <span className="font-extrabold text-base text-background tracking-tight">SMIT × MHIT</span>
-                <p className="text-[10px] text-emerald-400 font-semibold leading-none">Saylani Tech Initiative</p>
-              </div>
+              <span className="font-bold text-lg text-background">{tCommon("siteShortName")}</span>
             </div>
-            <p className="text-xs leading-relaxed text-background/70">
-              Transforming Pakistan&apos;s youth into global tech leaders through 100% free IT education, world-class labs, and market-aligned careers.
-            </p>
-            <div className="text-xs text-background/60 space-y-1 pt-1 font-mono">
-              <p>📍 A-25, Bahadurabad Chowrangi, Karachi</p>
-              <p>📞 UAN: (021) 111-729-526</p>
-              <p>✉️ support@saylaniwelfare.com</p>
-            </div>
-            <div className="flex items-center gap-2 pt-1">
+            <p className="text-sm leading-relaxed text-background/60">{t("description")}</p>
+            <div className="flex items-center gap-2.5">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-background/10 transition-all duration-300 hover:bg-[#0284c7] hover:text-white hover:scale-110"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-background/8 transition-all duration-300 hover:bg-brand hover:text-white hover:shadow-brand hover:scale-110 hover:-translate-y-0.5"
                 >
-                  <social.icon className="h-3.5 w-3.5" />
+                  <social.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
