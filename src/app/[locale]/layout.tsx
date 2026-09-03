@@ -8,7 +8,6 @@ import { AuthProvider } from "@/lib/auth/context";
 import { CustomCursor } from "@/components/shared/custom-cursor";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { BackToTop } from "@/components/shared/back-to-top";
-import { SmoothScrollProvider } from "@/components/shared/smooth-scroll-provider";
 import { getDirection } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 
@@ -67,12 +66,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <TooltipProvider>
-              <SmoothScrollProvider>
-                <ScrollProgress />
-                <CustomCursor />
-                {children}
-                <BackToTop />
-              </SmoothScrollProvider>
+              <ScrollProgress />
+              <CustomCursor />
+              {children}
+              <BackToTop />
             </TooltipProvider>
           </AuthProvider>
         </NextIntlClientProvider>
