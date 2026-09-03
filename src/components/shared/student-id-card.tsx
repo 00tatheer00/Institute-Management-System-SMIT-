@@ -6,14 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import {
   GraduationCap,
   Printer,
-  QrCode,
   RotateCcw,
   ShieldCheck,
-  Building2,
-  Calendar,
   User,
-  Heart,
-  Download,
   Sparkles,
 } from "lucide-react";
 
@@ -50,14 +45,14 @@ export function StudentIdCard({
 
   return (
     <div className="space-y-6">
-      {/* Action Bar (Hidden on Print) */}
+      {/* ─── Control Action Bar (Screen Only) ─── */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm print:hidden">
         <div className="flex items-center gap-2">
-          <Badge className="bg-emerald-500 text-white font-extrabold text-xs px-2.5 py-1">
-            PVC Smart Card
+          <Badge className="bg-[#0284c7] text-white font-extrabold text-xs px-2.5 py-1">
+            Portrait Smart Card
           </Badge>
           <span className="text-xs font-semibold text-slate-500">
-            Digital Biometric Attendance Enabled
+            Front: Details &amp; Photo • Back: Attendance QR
           </span>
         </div>
 
@@ -69,7 +64,7 @@ export function StudentIdCard({
             className="rounded-full text-xs font-bold gap-1.5 cursor-pointer"
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            <span>{isFlipped ? "Flip to Front" : "Flip to Back"}</span>
+            <span>{isFlipped ? "Flip to Front (Photo & Info)" : "Flip to Back (Attendance QR)"}</span>
           </Button>
 
           <Button
@@ -83,50 +78,50 @@ export function StudentIdCard({
         </div>
       </div>
 
-      {/* ─── INTERACTIVE CARD CONTAINER (Screen View) ─── */}
-      <div className="flex justify-center print:hidden perspective-1000">
+      {/* ─── INTERACTIVE 3D PORTRAIT CARD CONTAINER (Screen View) ─── */}
+      <div className="flex justify-center print:hidden perspective-1000 py-2">
         <div
-          className="relative w-full max-w-[420px] aspect-[1.586/1] transition-transform duration-500 transform-style-3d select-none"
+          className="relative w-[320px] sm:w-[340px] h-[520px] sm:h-[540px] transition-transform duration-700 transform-style-3d select-none"
           style={{ transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
         >
-          {/* ════════ FRONT SIDE ════════ */}
-          <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-800/80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white flex flex-col justify-between backface-hidden">
-            {/* Top Color Banner */}
-            <div className="relative bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#10b981] px-4 py-2 flex items-center justify-between border-b border-white/20">
-              {/* Holographic Security Ribbon */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 via-pink-400 to-cyan-300 opacity-90 animate-pulse" />
-
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[#0284c7] shadow-sm">
-                  <GraduationCap className="h-4 w-4" />
-                </div>
-                <div>
-                  <h4 className="text-[10px] font-black uppercase tracking-wider leading-none text-white">
-                    Saylani Welfare Trust
-                  </h4>
-                  <p className="text-[8px] font-extrabold text-emerald-100 uppercase tracking-tight">
-                    Mass IT Training Program (SMIT)
-                  </p>
-                </div>
+          {/* ═══════════════════════════════════════════════
+              FRONT SIDE: Sleek, Simple, Professional
+              (Lanyard Slot, Photo, Name, Program, Details)
+              ═══════════════════════════════════════════════ */}
+          <div className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white flex flex-col justify-between backface-hidden">
+            {/* Top Lanyard Slot & Brand Header */}
+            <div>
+              {/* Lanyard Hole Cutout Simulation */}
+              <div className="pt-2.5 pb-1 flex justify-center">
+                <div className="w-14 h-3 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-inner" />
               </div>
 
-              <div className="text-right">
-                <span className="text-[9px] font-mono font-bold bg-white/20 px-1.5 py-0.5 rounded text-white border border-white/30">
-                  {batchName}
-                </span>
+              {/* Institution Header Bar */}
+              <div className="px-5 pt-2 pb-3 text-center border-b border-slate-100 dark:border-slate-800/80 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900/50 dark:to-slate-950">
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-br from-[#0284c7] via-[#0ea5e9] to-[#10b981] text-white shadow-sm">
+                    <GraduationCap className="h-4 w-4" />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-xs font-black tracking-tight leading-none block">
+                      SMIT
+                    </span>
+                    <span className="text-[8px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 leading-none">
+                      Saylani Welfare Trust
+                    </span>
+                  </div>
+                  <Badge variant="outline" className="ml-auto text-[8.5px] font-mono font-bold px-1.5 py-0 h-4 border-slate-300 dark:border-slate-700">
+                    {batchName}
+                  </Badge>
+                </div>
               </div>
             </div>
 
-            {/* Card Body */}
-            <div className="flex-1 p-3.5 flex items-center justify-between gap-3 relative">
-              {/* Saylani Watermark Emblem */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
-                <GraduationCap className="w-48 h-48 text-white" />
-              </div>
-
-              {/* Student Photo with Hologram Badge */}
-              <div className="flex flex-col items-center shrink-0 space-y-1 z-10">
-                <div className="relative h-28 w-24 rounded-xl overflow-hidden border-2 border-emerald-400/80 bg-slate-800 shadow-md">
+            {/* Middle: Candidate Photo & Core Typography */}
+            <div className="px-5 py-2 flex flex-col items-center text-center space-y-3 flex-1 justify-center">
+              {/* Candidate Photograph with Verified Hologram Border */}
+              <div className="relative">
+                <div className="h-32 w-28 rounded-2xl overflow-hidden border-2 border-[#0284c7] shadow-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                   {photoUrl ? (
                     <img
                       src={photoUrl}
@@ -134,199 +129,207 @@ export function StudentIdCard({
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="h-full w-full flex flex-col items-center justify-center text-slate-400">
-                      <User className="h-10 w-10 text-slate-500" />
-                      <span className="text-[8px] uppercase font-bold text-slate-500 mt-1">Photo</span>
+                    <div className="flex flex-col items-center justify-center text-slate-400">
+                      <User className="h-10 w-10 text-slate-400 mb-1" />
+                      <span className="text-[8px] uppercase font-bold text-slate-400">
+                        Passport Photo
+                      </span>
                     </div>
                   )}
-                  {/* Verified Hologram Badge */}
-                  <div className="absolute bottom-0 inset-x-0 bg-emerald-600/90 text-white text-[7px] font-extrabold text-center py-0.5 uppercase tracking-wider backdrop-blur-xs">
-                    Verified
-                  </div>
                 </div>
 
-                {/* EMV Smart Chip Simulation */}
-                <div className="w-9 h-6 rounded-md bg-gradient-to-tr from-amber-300 via-amber-200 to-yellow-400 border border-amber-500/60 flex items-center justify-center shadow-xs">
-                  <div className="w-7 h-4 border border-amber-600/40 rounded-xs grid grid-cols-2 gap-0.5 opacity-70">
-                    <div className="border-r border-amber-600/40" />
-                    <div />
-                  </div>
+                {/* Verified Pill Badge */}
+                <div className="absolute -bottom-2 inset-x-2 bg-emerald-600 text-white text-[8px] font-black text-center py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                  Student • Verified
                 </div>
               </div>
 
-              {/* Center Student Details */}
-              <div className="flex-1 min-w-0 space-y-1 text-left z-10 pl-1">
-                <div>
-                  <span className="text-[8px] font-bold uppercase text-slate-400 tracking-wider">Candidate Name</span>
-                  <h3 className="text-sm font-black text-white leading-tight truncate uppercase">
-                    {fullName}
-                  </h3>
-                </div>
-
-                <div>
-                  <span className="text-[8px] font-bold uppercase text-slate-400 tracking-wider">Father&apos;s Name</span>
-                  <p className="text-[11px] font-bold text-slate-200 leading-tight truncate">
-                    {fatherName}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-[8px] font-bold uppercase text-slate-400 tracking-wider">Roll Number</span>
-                  <p className="text-xs font-black font-mono text-sky-400 leading-tight">
-                    {rollNumber}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-[8px] font-bold uppercase text-slate-400 tracking-wider">Program</span>
-                  <p className="text-[10px] font-extrabold text-emerald-400 leading-tight truncate">
-                    {courseName}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between text-[8px] text-slate-400 pt-0.5">
-                  <span>Campus: <strong className="text-white">{campusName.split("—")[0].trim()}</strong></span>
-                  <span>Blood: <strong className="text-red-400">{bloodGroup}</strong></span>
-                </div>
+              {/* Candidate Name */}
+              <div className="space-y-0.5 pt-1">
+                <h3 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase leading-tight line-clamp-1">
+                  {fullName}
+                </h3>
+                <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                  S/O {fatherName}
+                </p>
               </div>
 
-              {/* Right Attendance QR Code */}
-              <div className="flex flex-col items-center justify-center shrink-0 z-10 pl-1">
-                <div className="p-1.5 rounded-xl bg-white border border-slate-300 text-slate-900 shadow-sm text-center">
-                  {/* High-Resolution SVG Attendance QR Code */}
-                  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="72" height="72" fill="white" />
-                    {/* Finder 1 (Top Left) */}
-                    <rect x="4" y="4" width="22" height="22" fill="#0284c7" />
-                    <rect x="7" y="7" width="16" height="16" fill="white" />
-                    <rect x="10" y="10" width="10" height="10" fill="#0284c7" />
-                    {/* Finder 2 (Top Right) */}
-                    <rect x="46" y="4" width="22" height="22" fill="#0284c7" />
-                    <rect x="49" y="7" width="16" height="16" fill="white" />
-                    <rect x="52" y="10" width="10" height="10" fill="#0284c7" />
-                    {/* Finder 3 (Bottom Left) */}
-                    <rect x="4" y="46" width="22" height="22" fill="#0284c7" />
-                    <rect x="7" y="49" width="16" height="16" fill="white" />
-                    <rect x="10" y="52" width="10" height="10" fill="#0284c7" />
-                    {/* Data Matrix Dots */}
-                    <rect x="30" y="8" width="4" height="4" fill="#0284c7" />
-                    <rect x="38" y="12" width="4" height="4" fill="#0284c7" />
-                    <rect x="34" y="18" width="4" height="4" fill="#0284c7" />
-                    <rect x="30" y="26" width="4" height="4" fill="#0284c7" />
-                    <rect x="38" y="26" width="4" height="4" fill="#0284c7" />
-                    <rect x="8" y="32" width="4" height="4" fill="#0284c7" />
-                    <rect x="16" y="36" width="4" height="4" fill="#0284c7" />
-                    <rect x="22" y="32" width="4" height="4" fill="#0284c7" />
-                    <rect x="30" y="34" width="6" height="6" fill="#10b981" />
-                    <rect x="42" y="34" width="4" height="4" fill="#0284c7" />
-                    <rect x="50" y="32" width="4" height="4" fill="#0284c7" />
-                    <rect x="60" y="36" width="4" height="4" fill="#0284c7" />
-                    <rect x="34" y="44" width="4" height="4" fill="#0284c7" />
-                    <rect x="44" y="46" width="4" height="4" fill="#0284c7" />
-                    <rect x="54" y="50" width="4" height="4" fill="#0284c7" />
-                    <rect x="38" y="56" width="4" height="4" fill="#0284c7" />
-                    <rect x="48" y="60" width="4" height="4" fill="#0284c7" />
-                    <rect x="58" y="56" width="4" height="4" fill="#0284c7" />
-                  </svg>
-                  <p className="text-[6.5px] font-black uppercase tracking-tight text-[#0284c7] leading-none pt-1">
-                    ATTENDANCE QR
-                  </p>
-                </div>
-                <span className="text-[6px] text-slate-400 font-semibold tracking-tighter uppercase text-center mt-1">
-                  Biometric Scan
+              {/* Roll Number Pill */}
+              <div className="px-3.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-[#0284c7] dark:text-sky-300 font-mono font-extrabold text-xs">
+                {rollNumber}
+              </div>
+
+              {/* Course Title */}
+              <div className="px-2">
+                <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">
+                  Enrolled Program
                 </span>
+                <p className="text-xs font-black text-slate-800 dark:text-slate-200 leading-snug line-clamp-2">
+                  {courseName}
+                </p>
               </div>
             </div>
 
-            {/* Bottom ID Strip */}
-            <div className="bg-slate-900/90 border-t border-slate-800 px-4 py-1 flex items-center justify-between text-[8px] text-slate-400 font-mono">
-              <span>CNIC: {cnic}</span>
-              <span className="text-emerald-400 font-bold">VALID THRU: {validThrough}</span>
+            {/* Bottom Meta Information Grid */}
+            <div className="px-5 pb-4 pt-2 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/30">
+              <div className="grid grid-cols-2 gap-2 text-[9px] text-slate-600 dark:text-slate-400">
+                <div>
+                  <span className="text-slate-400 block text-[7.5px] uppercase font-bold">Campus</span>
+                  <span className="font-extrabold text-slate-800 dark:text-slate-200 truncate block">
+                    {campusName.split("—")[0].trim()}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[7.5px] uppercase font-bold">Blood Group</span>
+                  <span className="font-extrabold text-red-500 block">
+                    {bloodGroup}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[7.5px] uppercase font-bold">CNIC</span>
+                  <span className="font-mono font-bold text-slate-700 dark:text-slate-300 truncate block">
+                    {cnic}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-slate-400 block text-[7.5px] uppercase font-bold">Valid Thru</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400 block">
+                    {validThrough}
+                  </span>
+                </div>
+              </div>
+
+              {/* Micro Holographic Security Bar */}
+              <div className="mt-2.5 h-1 w-full rounded-full bg-gradient-to-r from-amber-400 via-pink-400 to-[#0284c7] opacity-80" />
             </div>
           </div>
 
-          {/* ════════ BACK SIDE ════════ */}
+          {/* ═══════════════════════════════════════════════
+              BACK SIDE: Attendance QR Code, Rules & Barcode
+              ═══════════════════════════════════════════════ */}
           <div
-            className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-800/80 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col justify-between backface-hidden"
+            className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white flex flex-col justify-between backface-hidden"
             style={{ transform: "rotateY(180deg)" }}
           >
-            {/* Top Bar */}
-            <div className="bg-slate-900 px-4 py-2 border-b border-slate-800 flex items-center justify-between text-[9px] font-bold text-slate-300">
-              <span>CARD RULES & TERMS</span>
-              <span className="text-emerald-400">SMIT OFFICIAL CREDENTIAL</span>
+            {/* Top Lanyard Slot & Title */}
+            <div>
+              {/* Lanyard Cutout */}
+              <div className="pt-2.5 pb-1 flex justify-center">
+                <div className="w-14 h-3 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-inner" />
+              </div>
+
+              <div className="px-5 pt-1.5 pb-2 text-center border-b border-slate-100 dark:border-slate-800">
+                <p className="text-[10px] font-black uppercase tracking-wider text-[#0284c7]">
+                  Digital Biometric Attendance Card
+                </p>
+                <p className="text-[8px] text-slate-400">
+                  Scan at campus turnstiles &amp; lab readers
+                </p>
+              </div>
             </div>
 
-            {/* Back Body */}
-            <div className="p-4 space-y-2 text-[8px] text-slate-300 leading-relaxed">
-              <ul className="list-decimal pl-3 space-y-1 text-slate-400">
-                <li>This card is non-transferable and remains property of Saylani Welfare Trust.</li>
-                <li>
-                  <strong className="text-emerald-400">Mandatory Attendance:</strong> The QR code on the front must be scanned at campus biometric gates for attendance marking.
-                </li>
-                <li>Minimum 75% attendance is required for examination and official certificate.</li>
-                <li>Loss of card must be reported immediately. Replacement fee applies.</li>
-              </ul>
+            {/* Center: Large High-Contrast Attendance QR Code */}
+            <div className="px-5 py-3 flex flex-col items-center justify-center space-y-2.5 flex-1">
+              {/* QR Code Container */}
+              <div className="p-3 rounded-2xl bg-white border-2 border-slate-900 shadow-md text-center">
+                <svg width="130" height="130" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="72" height="72" fill="white" />
+                  {/* Top-Left Finder */}
+                  <rect x="4" y="4" width="22" height="22" fill="#0f172a" />
+                  <rect x="7" y="7" width="16" height="16" fill="white" />
+                  <rect x="10" y="10" width="10" height="10" fill="#0f172a" />
+                  {/* Top-Right Finder */}
+                  <rect x="46" y="4" width="22" height="22" fill="#0f172a" />
+                  <rect x="49" y="7" width="16" height="16" fill="white" />
+                  <rect x="52" y="10" width="10" height="10" fill="#0f172a" />
+                  {/* Bottom-Left Finder */}
+                  <rect x="4" y="46" width="22" height="22" fill="#0f172a" />
+                  <rect x="7" y="49" width="16" height="16" fill="white" />
+                  <rect x="10" y="52" width="10" height="10" fill="#0f172a" />
+                  {/* Data Points */}
+                  <rect x="30" y="8" width="4" height="4" fill="#0f172a" />
+                  <rect x="38" y="12" width="4" height="4" fill="#0f172a" />
+                  <rect x="34" y="18" width="4" height="4" fill="#0f172a" />
+                  <rect x="30" y="26" width="4" height="4" fill="#0f172a" />
+                  <rect x="38" y="26" width="4" height="4" fill="#0f172a" />
+                  <rect x="8" y="32" width="4" height="4" fill="#0f172a" />
+                  <rect x="16" y="36" width="4" height="4" fill="#0f172a" />
+                  <rect x="22" y="32" width="4" height="4" fill="#0f172a" />
+                  {/* Saylani Center Marker */}
+                  <rect x="30" y="34" width="6" height="6" fill="#10b981" />
+                  <rect x="42" y="34" width="4" height="4" fill="#0f172a" />
+                  <rect x="50" y="32" width="4" height="4" fill="#0f172a" />
+                  <rect x="60" y="36" width="4" height="4" fill="#0f172a" />
+                  <rect x="34" y="44" width="4" height="4" fill="#0f172a" />
+                  <rect x="44" y="46" width="4" height="4" fill="#0f172a" />
+                  <rect x="54" y="50" width="4" height="4" fill="#0f172a" />
+                  <rect x="38" y="56" width="4" height="4" fill="#0f172a" />
+                  <rect x="48" y="60" width="4" height="4" fill="#0f172a" />
+                  <rect x="58" y="56" width="4" height="4" fill="#0f172a" />
+                </svg>
+                <div className="text-[7.5px] font-mono font-black uppercase tracking-tight text-slate-800 pt-1">
+                  {rollNumber}
+                </div>
+              </div>
 
-              {/* Barcode Graphic */}
-              <div className="pt-1 text-center">
-                <div className="h-6 w-full max-w-[200px] mx-auto bg-white p-1 rounded flex items-center justify-around">
-                  {Array.from({ length: 36 }).map((_, i) => (
+              <div className="text-center">
+                <span className="text-[9px] font-black uppercase text-emerald-600 dark:text-emerald-400 block tracking-wider">
+                  Scan for Attendance
+                </span>
+                <p className="text-[8px] text-slate-500 max-w-[220px] mx-auto leading-tight">
+                  Hold this QR code in front of gate scanner to log entry and exit.
+                </p>
+              </div>
+
+              {/* Barcode Strip */}
+              <div className="w-full max-w-[200px] pt-1">
+                <div className="h-5 w-full bg-slate-900 dark:bg-white p-0.5 rounded flex items-center justify-around">
+                  {Array.from({ length: 30 }).map((_, i) => (
                     <div
                       key={i}
-                      className="bg-black h-full"
+                      className="bg-white dark:bg-slate-900 h-full"
                       style={{ width: i % 3 === 0 ? "3px" : i % 2 === 0 ? "1px" : "2px" }}
                     />
                   ))}
                 </div>
-                <p className="text-[7.5px] font-mono font-bold tracking-widest text-slate-400 mt-0.5">
-                  *{rollNumber.replace(/-/g, "")}*
-                </p>
-              </div>
-
-              {/* Signatures & Support Info */}
-              <div className="flex items-end justify-between pt-1 border-t border-slate-800 text-[8px]">
-                <div>
-                  <span className="text-slate-500 block">Emergency Helpline:</span>
-                  <strong className="text-sky-400 font-mono">(021) 111-729-526</strong>
-                </div>
-                <div className="text-right">
-                  <div className="font-serif italic text-emerald-400 text-[9px]">Bashir Farooq</div>
-                  <span className="text-[7px] text-slate-400 block border-t border-slate-700 pt-0.5">
-                    Authorized Signatory (Patron)
-                  </span>
-                </div>
               </div>
             </div>
 
-            {/* Bottom Address */}
-            <div className="bg-slate-900/90 px-4 py-1 text-center text-[7.5px] text-slate-500">
-              A-25, Bahadurabad Chowrangi, Karachi • www.saylaniwelfare.com
+            {/* Bottom Rules & Helpline */}
+            <div className="px-5 pb-3 pt-2 border-t border-slate-100 dark:border-slate-800 text-[8px] text-slate-500 leading-tight space-y-1 bg-slate-50/50 dark:bg-slate-900/30">
+              <p>• Mandatory 75% attendance required for exam eligibility &amp; certificate.</p>
+              <p>• This card is non-transferable and property of Saylani Welfare Trust.</p>
+              <div className="flex items-center justify-between pt-1 text-slate-600 dark:text-slate-400 font-semibold border-t border-slate-200 dark:border-slate-800">
+                <span>Helpline: <strong>(021) 111-729-526</strong></span>
+                <span className="font-serif italic text-[9px] text-[#0284c7]">Bashir Farooq Qadri</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ─── DEDICATED HIGH-RESOLUTION PRINT CONTAINER ─── */}
-      {/* This renders only when printing, positioned at standard physical card size (85.6mm × 54mm) */}
-      <div className="hidden print:block space-y-6">
-        <div className="text-center pb-2">
-          <h2 className="text-sm font-bold uppercase">Saylani Mass IT Training (SMIT) — Official Student Card</h2>
-          <p className="text-[10px] text-gray-500">Print on Photo Paper or PVC Plastic Card Sheet (Front &amp; Back)</p>
+      {/* ─── DEDICATED PORTRAIT PRINT CONTAINER (@media print) ─── */}
+      {/* Exact standard physical portrait PVC dimensions (53.98mm width × 85.6mm height) */}
+      <div className="hidden print:block">
+        <div className="text-center pb-4">
+          <h2 className="text-xs font-bold uppercase">Saylani Mass IT Training (SMIT) — Student Smart Card</h2>
+          <p className="text-[8px] text-gray-500">Print on PVC Plastic Card Sheet or Photo Paper (Front &amp; Back)</p>
         </div>
 
-        <div className="flex flex-col items-center gap-6">
-          {/* Print: Front Side */}
-          <div className="w-[85.6mm] h-[53.98mm] rounded-lg overflow-hidden border border-black bg-white text-black flex flex-col justify-between p-2.5 box-border shadow-none">
-            <div className="flex items-center justify-between border-b pb-1 border-black">
-              <div className="flex items-center gap-1.5">
-                <GraduationCap className="h-4 w-4 text-black" />
-                <span className="text-[9px] font-black uppercase">SMIT • SAYLANI WELFARE</span>
+        <div className="flex flex-row justify-center items-start gap-8">
+          {/* PRINT: FRONT SIDE (PORTRAIT: 53.98mm × 85.6mm) */}
+          <div className="w-[53.98mm] h-[85.6mm] rounded-lg border border-black bg-white text-black flex flex-col justify-between p-2 box-border shadow-none">
+            {/* Header */}
+            <div className="text-center border-b pb-1 border-black">
+              <div className="flex items-center justify-center gap-1">
+                <GraduationCap className="h-3 w-3 text-black" />
+                <span className="text-[8px] font-black uppercase">SMIT • SAYLANI</span>
               </div>
-              <span className="text-[8px] font-bold font-mono">{batchName}</span>
+              <span className="text-[6.5px] font-mono font-bold block">{batchName}</span>
             </div>
 
-            <div className="flex items-center justify-between gap-2 py-1">
-              {/* Photo */}
+            {/* Photo & Details */}
+            <div className="flex flex-col items-center text-center space-y-1 py-1">
               <div className="h-20 w-16 border border-black rounded overflow-hidden shrink-0 bg-gray-100 flex items-center justify-center">
                 {photoUrl ? (
                   <img src={photoUrl} alt={fullName} className="h-full w-full object-cover" />
@@ -335,46 +338,78 @@ export function StudentIdCard({
                 )}
               </div>
 
-              {/* Details */}
-              <div className="flex-1 text-left text-[8px] leading-tight space-y-0.5">
-                <p><strong>NAME:</strong> {fullName.toUpperCase()}</p>
-                <p><strong>FATHER:</strong> {fatherName.toUpperCase()}</p>
-                <p><strong>ROLL NO:</strong> {rollNumber}</p>
-                <p><strong>PROGRAM:</strong> {courseName}</p>
-                <p><strong>CAMPUS:</strong> {campusName.split("—")[0]}</p>
-                <p><strong>BLOOD:</strong> {bloodGroup} | <strong>CNIC:</strong> {cnic}</p>
-              </div>
-
-              {/* QR Code */}
-              <div className="shrink-0 text-center border p-1 rounded border-black">
-                <QrCode className="h-12 w-12 text-black" />
-                <span className="text-[6px] font-bold block uppercase">ATTENDANCE</span>
+              <div className="space-y-0.5 pt-0.5">
+                <h4 className="text-[9px] font-black uppercase leading-tight">{fullName}</h4>
+                <p className="text-[7px] leading-none">S/O {fatherName}</p>
+                <p className="text-[7.5px] font-mono font-bold">{rollNumber}</p>
+                <p className="text-[7px] font-bold uppercase text-gray-800 line-clamp-1">{courseName}</p>
               </div>
             </div>
 
-            <div className="text-[7px] text-center border-t pt-0.5 border-black font-mono">
-              VALID THRU: {validThrough} • HELPLINE: (021) 111-729-526
+            {/* Meta */}
+            <div className="border-t pt-1 border-black text-[6.5px] leading-tight grid grid-cols-2 gap-0.5">
+              <span>CAMPUS: {campusName.split("—")[0]}</span>
+              <span>BLOOD: {bloodGroup}</span>
+              <span>CNIC: {cnic}</span>
+              <span>VALID: {validThrough}</span>
             </div>
           </div>
 
-          {/* Print: Back Side */}
-          <div className="w-[85.6mm] h-[53.98mm] rounded-lg overflow-hidden border border-black bg-white text-black flex flex-col justify-between p-2.5 box-border shadow-none">
-            <div className="border-b pb-1 border-black text-[8px] font-bold text-center">
-              RULES &amp; DIGITAL ATTENDANCE INSTRUCTIONS
+          {/* PRINT: BACK SIDE (PORTRAIT: 53.98mm × 85.6mm) */}
+          <div className="w-[53.98mm] h-[85.6mm] rounded-lg border border-black bg-white text-black flex flex-col justify-between p-2 box-border shadow-none text-center">
+            <div className="border-b pb-0.5 border-black text-[7px] font-black uppercase">
+              ATTENDANCE SMART CARD
             </div>
-            <ul className="text-[7px] list-decimal pl-3 space-y-0.5">
-              <li>Scan the front QR code at biometric turnstiles for attendance.</li>
-              <li>Minimum 75% attendance mandatory for exam &amp; certification.</li>
-              <li>This card is non-transferable property of Saylani Welfare.</li>
-              <li>If found, please return to nearest Saylani Campus.</li>
-            </ul>
-            <div className="text-center pt-1">
-              <div className="h-5 w-40 mx-auto bg-black" />
-              <p className="text-[7px] font-mono mt-0.5">{rollNumber}</p>
+
+            {/* Attendance QR Code */}
+            <div className="flex flex-col items-center justify-center space-y-1 py-1">
+              <div className="p-1 border border-black rounded bg-white">
+                <svg width="84" height="84" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="72" height="72" fill="white" />
+                  <rect x="4" y="4" width="22" height="22" fill="black" />
+                  <rect x="7" y="7" width="16" height="16" fill="white" />
+                  <rect x="10" y="10" width="10" height="10" fill="black" />
+                  <rect x="46" y="4" width="22" height="22" fill="black" />
+                  <rect x="49" y="7" width="16" height="16" fill="white" />
+                  <rect x="52" y="10" width="10" height="10" fill="black" />
+                  <rect x="4" y="46" width="22" height="22" fill="black" />
+                  <rect x="7" y="49" width="16" height="16" fill="white" />
+                  <rect x="10" y="52" width="10" height="10" fill="black" />
+                  <rect x="30" y="8" width="4" height="4" fill="black" />
+                  <rect x="38" y="12" width="4" height="4" fill="black" />
+                  <rect x="34" y="18" width="4" height="4" fill="black" />
+                  <rect x="30" y="26" width="4" height="4" fill="black" />
+                  <rect x="38" y="26" width="4" height="4" fill="black" />
+                  <rect x="8" y="32" width="4" height="4" fill="black" />
+                  <rect x="16" y="36" width="4" height="4" fill="black" />
+                  <rect x="22" y="32" width="4" height="4" fill="black" />
+                  <rect x="30" y="34" width="6" height="6" fill="black" />
+                  <rect x="42" y="34" width="4" height="4" fill="black" />
+                  <rect x="50" y="32" width="4" height="4" fill="black" />
+                  <rect x="60" y="36" width="4" height="4" fill="black" />
+                  <rect x="34" y="44" width="4" height="4" fill="black" />
+                  <rect x="44" y="46" width="4" height="4" fill="black" />
+                  <rect x="54" y="50" width="4" height="4" fill="black" />
+                  <rect x="38" y="56" width="4" height="4" fill="black" />
+                  <rect x="48" y="60" width="4" height="4" fill="black" />
+                  <rect x="58" y="56" width="4" height="4" fill="black" />
+                </svg>
+              </div>
+              <span className="text-[6px] font-bold uppercase block tracking-wider">
+                SCAN FOR ATTENDANCE
+              </span>
+              <span className="text-[6.5px] font-mono">{rollNumber}</span>
             </div>
-            <div className="flex justify-between items-end border-t pt-1 border-black text-[7px]">
-              <span>UAN: (021) 111-729-526</span>
-              <span>Authorized Signature: ____________</span>
+
+            {/* Rules */}
+            <div className="border-t pt-1 border-black text-[6px] text-left leading-tight space-y-0.5">
+              <p>• Mandatory turnstile scan for attendance.</p>
+              <p>• 75% attendance required for certificate.</p>
+              <p>• Property of Saylani Welfare Trust.</p>
+              <div className="flex justify-between items-end pt-0.5 text-[6px]">
+                <span>UAN: (021) 111-729-526</span>
+                <span>Sign: Bashir Farooq</span>
+              </div>
             </div>
           </div>
         </div>
