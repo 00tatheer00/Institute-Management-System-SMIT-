@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { adminNavGroups } from "@/lib/config/navigation";
+import { useAuth } from "@/lib/auth/context";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -46,12 +47,36 @@ function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavCl
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations();
+  const { user } = useAuth();
+  const isStaff = user?.role === "staff";
 
   const isActive = (href: string) => {
     const fullPath = `/${locale}${href}`;
     if (href === "/admin") return pathname === fullPath;
     return pathname.startsWith(fullPath);
   };
+
+  // Role-based navigation scoping: Staff sees only operational modules
+  const visibleGroups = adminNavGroups
+    .map((group) => {
+      if (!isStaff) return group;
+
+      const filteredItems = group.items.filter((item) => {
+        if (item.href === "/admin/roles") return false;
+        if (item.href === "/admin/audit-logs") return false;
+        if (item.href === "/admin/data-management") return false;
+        if (item.href === "/admin/settings") return false;
+        if (item.href === "/admin/finance") return false;
+        if (item.href === "/admin/import" || item.href === "/admin/imports") return false;
+        return true;
+      });
+
+      return {
+        ...group,
+        items: filteredItems,
+      };
+    })
+    .filter((group) => group.items.length > 0);
 
   return (
     <div className="flex flex-col h-full">
@@ -64,7 +89,9 @@ function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavCl
           {!collapsed && (
             <div className="overflow-hidden">
               <p className="text-xs font-bold text-sidebar-foreground leading-tight truncate">MHIT × SMIT</p>
-              <p className="text-[10px] text-sidebar-foreground/60 leading-tight">Admin Panel</p>
+              <p className="text-[10px] text-sidebar-foreground/60 leading-tight">
+                {isStaff ? "Staff Operations" : "Admin Panel"}
+              </p>
             </div>
           )}
         </Link>
@@ -73,7 +100,7 @@ function SidebarContent({ collapsed, onNavClick }: { collapsed: boolean; onNavCl
       {/* Navigation */}
       <ScrollArea className="flex-1 py-3">
         <nav className="space-y-4 px-2">
-          {adminNavGroups.map((group) => (
+          {visibleGroups.map((group) => (
             <div key={group.titleKey}>
               {!collapsed && (
                 <p className="px-3 mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-sidebar-foreground/40">

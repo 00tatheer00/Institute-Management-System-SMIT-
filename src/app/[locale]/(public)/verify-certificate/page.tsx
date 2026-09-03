@@ -89,17 +89,42 @@ function VerifyCertificateContent() {
         {/* Verification Result Section */}
         {searched && (
           result ? (
-            <Card className="border-2 border-emerald-500 shadow-xl overflow-hidden animate-in fade-in-50 duration-300">
-              <div className="p-4 bg-emerald-600 text-white flex items-center justify-between">
-                <div className="flex items-center gap-2 font-bold text-sm">
-                  <CheckCircle2 className="h-5 w-5" /> Authentic Certified Credential
+            result.status === "revoked" ? (
+              <Card className="border-2 border-rose-500 shadow-xl overflow-hidden animate-in fade-in-50 duration-300">
+                <div className="p-4 bg-rose-600 text-white flex items-center justify-between">
+                  <div className="flex items-center gap-2 font-bold text-sm">
+                    <XCircle className="h-5 w-5" /> Revoked / Cancelled Credential
+                  </div>
+                  <span className="text-xs bg-white/20 px-2.5 py-0.5 rounded-full font-mono font-semibold">
+                    STATUS: REVOKED
+                  </span>
                 </div>
-                <span className="text-xs bg-white/20 px-2.5 py-0.5 rounded-full font-mono font-semibold">
-                  STATUS: VERIFIED
-                </span>
-              </div>
+                <CardContent className="p-6 sm:p-8 space-y-4">
+                  <div className="text-center space-y-1.5 border-b pb-4">
+                    <h2 className="text-xl font-black text-rose-600">
+                      WARNING: This Certificate Has Been Revoked
+                    </h2>
+                    <p className="text-xs text-muted-foreground">
+                      Certificate Serial: <code className="font-mono font-bold text-foreground">{result.certificateId}</code>
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center max-w-lg mx-auto leading-relaxed">
+                    Official Notice: This credential was previously issued to <strong>{result.studentName}</strong> for <strong>{result.courseName}</strong> (Cohort {result.batchName}) but has been formally cancelled or invalidated by the SMIT Academic Governing Council. It is no longer valid.
+                  </p>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="border-2 border-emerald-500 shadow-xl overflow-hidden animate-in fade-in-50 duration-300">
+                <div className="p-4 bg-emerald-600 text-white flex items-center justify-between">
+                  <div className="flex items-center gap-2 font-bold text-sm">
+                    <CheckCircle2 className="h-5 w-5" /> Authentic Certified Credential
+                  </div>
+                  <span className="text-xs bg-white/20 px-2.5 py-0.5 rounded-full font-mono font-semibold">
+                    STATUS: VERIFIED
+                  </span>
+                </div>
 
-              <CardContent className="p-6 sm:p-8 space-y-6">
+                <CardContent className="p-6 sm:p-8 space-y-6">
                 <div className="text-center space-y-1.5 border-b pb-6">
                   <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold">
                     {result.institute}
@@ -155,8 +180,9 @@ function VerifyCertificateContent() {
                 </div>
               </CardContent>
             </Card>
-          ) : (
-            <Card className="border-rose-300 dark:border-rose-900/60 shadow-md">
+          )
+        ) : (
+          <Card className="border-rose-300 dark:border-rose-900/60 shadow-md">
               <CardContent className="p-8 text-center space-y-3">
                 <div className="h-12 w-12 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-600 flex items-center justify-center mx-auto">
                   <XCircle className="h-6 w-6" />

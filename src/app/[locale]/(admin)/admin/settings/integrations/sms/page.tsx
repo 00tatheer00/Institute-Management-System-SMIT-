@@ -96,8 +96,8 @@ export default function SmsIntegrationPage() {
                 <CardDescription className="text-xs">Provider: Twilio / Direct Telco Gateway</CardDescription>
               </div>
             </div>
-            <Badge variant="outline" className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 text-xs">
-              <ShieldCheck className="h-3 w-3 me-1" /> Architecture Ready
+            <Badge variant="outline" className="bg-amber-500/10 text-amber-600 border-amber-500/20 text-xs">
+              <ShieldCheck className="h-3 w-3 me-1" /> Credentials Pending
             </Badge>
           </div>
         </CardHeader>
@@ -105,7 +105,7 @@ export default function SmsIntegrationPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 rounded-xl bg-muted/40 border border-border">
             <div>
               <span className="text-[10px] text-muted-foreground uppercase font-bold block">Status</span>
-              <span className="font-semibold text-emerald-600">Active / Simulated Mock</span>
+              <span className="font-semibold text-amber-600">Not Configured — Requires Credentials</span>
             </div>
             <div>
               <span className="text-[10px] text-muted-foreground uppercase font-bold block">Sender ID</span>

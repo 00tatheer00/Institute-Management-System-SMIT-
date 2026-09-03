@@ -195,13 +195,13 @@ export default function AdminCommunicationsPage() {
                   <span className="text-xs font-bold capitalize">{p.channel}</span>
                 </div>
                 <Badge variant={p.isConfigured ? "default" : "secondary"} className="text-[10px] h-5">
-                  {p.isConfigured ? "Configured" : "Simulated"}
+                  {p.isConfigured ? "Configured" : "Not Configured"}
                 </Badge>
               </div>
               <p className="text-[11px] text-muted-foreground mt-2 truncate">{p.name}</p>
               <div className="mt-2 pt-2 border-t flex items-center justify-between text-[10px]">
-                <span className="text-emerald-600 font-medium flex items-center gap-1">
-                  <ShieldCheck className="h-3 w-3" /> Ready
+                <span className={p.isConfigured ? "text-emerald-600 font-medium flex items-center gap-1" : "text-amber-600 font-medium flex items-center gap-1"}>
+                  <ShieldCheck className="h-3 w-3" /> {p.isConfigured ? "Ready" : "Credentials Required"}
                 </span>
                 <Link
                   href={`/admin/settings/integrations/${p.channel === "in-app" ? "whatsapp" : p.channel}`}

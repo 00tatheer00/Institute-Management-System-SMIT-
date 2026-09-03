@@ -69,6 +69,7 @@ Database definitions and security rules are organized in [`supabase/migrations/`
 2. `002_row_level_security.sql` — Row Level Security policies for Student, Trainer, Staff, and Admin roles.
 3. `003_storage_buckets.sql` — Storage bucket provisioning and access control policies.
 4. `004_seed_data.sql` — Curriculum, instructor, lab, and student cohort seed data.
+5. `005_communications_and_automation.sql` — Multi-channel notifications, bilingual templates, delivery logs, user preferences, and automation triggers.
 
 Execute these SQL scripts in numerical sequence within the Supabase SQL Editor.
 
@@ -88,17 +89,21 @@ npm run start
 
 ## 🔒 Security & Compliance
 
-- **Role-Based Isolation**: Database policies strictly confine students to their own submissions and trainers to their assigned batches.
+- **Role-Based Isolation**: Database policies strictly confine students to their own submissions and trainers to their assigned batches. Staff access is scoped to operational functions.
 - **Service Role Protection**: `SUPABASE_SERVICE_ROLE_KEY` is exclusively consumed on the server (`admin.ts`) and is never leaked to browser bundles.
 - **Audit Ledger**: Critical operations (status changes, grade entries, imports, certificate issuance) write immutable records to `audit_logs`.
 - **Sanitized Quizzes**: Correct answers are stripped from questions prior to transmission to student browsers to prevent DOM inspection cheating.
+- **Search Engine Blocking**: `robots.txt` strictly disallows search engine indexing across all private portal routes (`/admin/*`, `/trainer/*`, `/student/*`, `/api/*`).
 
 ---
 
-## 📄 Documentation
+## 📄 Operational & Handover Documentation
 
-- [Deployment Guide](./DEPLOYMENT.md) — Step-by-step production rollout guide.
-- [Phase 6 Summary](./supabase/) — Backend transition audit.
+- [Administrator Handover Guide](./ADMIN_HANDOVER.md) — Operational manual for institute administrators.
+- [Trainer Handover Guide](./TRAINER_HANDOVER.md) — Guide for instructors and teaching assistants.
+- [Student User Guide](./STUDENT_HANDOVER.md) — Guide for enrolled students.
+- [Disaster Recovery & Backup Runbook](./BACKUP_RECOVERY.md) — Procedures for PostgreSQL snapshots, cold offsite backups, and emergency recovery.
+- [Deployment Guide](./DEPLOYMENT.md) — Step-by-step production deployment guide for Vercel + Supabase.
 
 ---
 

@@ -751,9 +751,16 @@ export const defaultPermissions: Record<UserRole, Permission[]> = {
   ],
   staff: [
     { action: "view", resource: "students" },
+    { action: "edit", resource: "students" },
     { action: "view", resource: "admissions" },
+    { action: "manage", resource: "admissions" },
     { action: "view", resource: "courses" },
     { action: "view", resource: "batches" },
+    { action: "view", resource: "classes" },
+    { action: "view", resource: "attendance" },
+    { action: "view", resource: "rooms" },
+    { action: "manage", resource: "rooms" },
+    { action: "view", resource: "reports" },
   ],
 };
 

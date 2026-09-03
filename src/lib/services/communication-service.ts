@@ -118,11 +118,11 @@ const whatsappDriver: CommunicationDriver = {
       }
     }
 
-    // Architecture-Ready Simulated Delivery (Mock Mode when credentials not provided)
+    // External credentials required: return explicit failure
     return {
-      success: true,
-      status: "delivered",
-      externalMessageId: `wa-sim-${Date.now()}`,
+      success: false,
+      status: "failed",
+      error: "NOT CONFIGURED — REQUIRES EXTERNAL CREDENTIALS (WHATSAPP_API_TOKEN, WHATSAPP_PHONE_NUMBER_ID)",
     };
   },
 };
@@ -175,11 +175,11 @@ const emailDriver: CommunicationDriver = {
       }
     }
 
-    // Architecture-Ready Simulated Delivery (Mock Mode)
+    // External credentials required: return explicit failure
     return {
-      success: true,
-      status: "delivered",
-      externalMessageId: `email-sim-${Date.now()}`,
+      success: false,
+      status: "failed",
+      error: "NOT CONFIGURED — REQUIRES EXTERNAL CREDENTIALS (RESEND_API_KEY)",
     };
   },
 };
@@ -228,11 +228,11 @@ const smsDriver: CommunicationDriver = {
       }
     }
 
-    // Architecture-Ready Simulated Delivery (Mock Mode)
+    // External credentials required: return explicit failure
     return {
-      success: true,
-      status: "delivered",
-      externalMessageId: `sms-sim-${Date.now()}`,
+      success: false,
+      status: "failed",
+      error: "NOT CONFIGURED — REQUIRES EXTERNAL CREDENTIALS (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)",
     };
   },
 };
@@ -348,8 +348,8 @@ export function getProviderConfigs(): ProviderConfig[] {
       isEnabled: true,
       providerId: "meta-cloud-api",
       webhookUrl: "https://portal.mhit.edu.pk/api/webhooks/whatsapp",
-      lastTestStatus: "success",
-      lastTestAt: "2026-03-02 12:00",
+      lastTestStatus: whatsappDriver.isConfigured() ? "success" : "failed",
+      lastTestAt: whatsappDriver.isConfigured() ? "2026-03-02 12:00" : undefined,
     },
     {
       channel: "email",
@@ -358,8 +358,8 @@ export function getProviderConfigs(): ProviderConfig[] {
       isEnabled: true,
       providerId: "resend-smtp",
       webhookUrl: "https://portal.mhit.edu.pk/api/webhooks/email",
-      lastTestStatus: "success",
-      lastTestAt: "2026-03-02 12:00",
+      lastTestStatus: emailDriver.isConfigured() ? "success" : "failed",
+      lastTestAt: emailDriver.isConfigured() ? "2026-03-02 12:00" : undefined,
     },
     {
       channel: "sms",
@@ -368,8 +368,8 @@ export function getProviderConfigs(): ProviderConfig[] {
       isEnabled: true,
       providerId: "twilio-sms",
       webhookUrl: "https://portal.mhit.edu.pk/api/webhooks/sms",
-      lastTestStatus: "success",
-      lastTestAt: "2026-03-02 12:00",
+      lastTestStatus: smsDriver.isConfigured() ? "success" : "failed",
+      lastTestAt: smsDriver.isConfigured() ? "2026-03-02 12:00" : undefined,
     },
   ];
 }

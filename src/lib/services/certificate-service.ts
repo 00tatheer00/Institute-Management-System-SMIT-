@@ -59,12 +59,12 @@ export function verifyCertificate(certificateId: string): PublicVerifiedCertific
     (c) => c.certificateId.trim().toLowerCase() === certificateId.trim().toLowerCase()
   );
 
-  if (!cert || cert.status !== "issued") {
+  if (!cert) {
     return null;
   }
 
   return {
-    isValid: true,
+    isValid: cert.status === "issued",
     certificateId: cert.certificateId,
     studentName: cert.studentName,
     courseName: cert.courseName,
