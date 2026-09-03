@@ -6,19 +6,10 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import {
   Menu,
   X,
-  ChevronDown,
   GraduationCap,
   Sparkles,
   ArrowRight,
@@ -51,15 +42,16 @@ export function PublicHeader() {
 
   const mainNav = [
     { label: t("home"), href: "/" },
-    { label: t("about"), href: "/about" },
     { label: t("courses"), href: "/courses" },
-    { label: t("trainers"), href: "/trainers" },
-    { label: t("batches"), href: "/batches" },
     {
       label: t("admissions"),
       href: "/admissions",
       badge: "BATCH 2026",
     },
+    { label: t("batches"), href: "/batches" },
+    { label: t("trainers"), href: "/trainers" },
+    { label: t("about"), href: "/about" },
+    { label: t("contact"), href: "/contact" },
   ];
 
   const moreNavCategories = [
@@ -185,59 +177,19 @@ export function PublicHeader() {
                 </Link>
               );
             })}
-
-            {/* Rich "More" Dropdown Menu */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-all duration-200 flex items-center gap-1 outline-none cursor-pointer">
-                <span>{t("more")}</span>
-                <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-80 p-2.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl rounded-2xl"
-              >
-                {moreNavCategories.map((cat, idx) => (
-                  <div key={cat.title}>
-                    {idx > 0 && <DropdownMenuSeparator className="my-1.5 bg-slate-100 dark:bg-slate-800" />}
-                    <DropdownMenuLabel className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2 py-1">
-                      {cat.title}
-                    </DropdownMenuLabel>
-                    <div className="space-y-0.5">
-                      {cat.items.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <DropdownMenuItem
-                            key={item.href}
-                            className="p-0 rounded-xl cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-800/70"
-                          >
-                            <Link
-                              href={item.href}
-                              className="flex items-start gap-2.5 p-2 w-full rounded-xl transition-colors cursor-pointer group"
-                            >
-                              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 group-hover:bg-[#0284c7] group-hover:text-white transition-colors shrink-0">
-                                <Icon className="h-3.5 w-3.5" />
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-[#0284c7] dark:group-hover:text-sky-400 transition-colors">
-                                  {item.label}
-                                </span>
-                                <span className="text-[10px] text-slate-500 dark:text-slate-400 leading-tight">
-                                  {item.desc}
-                                </span>
-                              </div>
-                            </Link>
-                          </DropdownMenuItem>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
           </nav>
 
           {/* Right Actions Suite */}
           <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {/* Verify Certificate Quick Pill */}
+            <Link
+              href="/verify-certificate"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#0284c7] hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-colors cursor-pointer"
+            >
+              <ShieldCheck className="h-3.5 w-3.5 text-sky-500" />
+              <span>Verify</span>
+            </Link>
+
             {/* Language Switcher */}
             <div className="cursor-pointer">
               <LanguageSwitcher />

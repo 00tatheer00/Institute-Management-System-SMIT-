@@ -3,24 +3,11 @@ import type { NavItem, NavGroup } from "@/lib/types";
 // --- Public Website Navigation ---
 export const publicNavItems: NavItem[] = [
   { titleKey: "nav.home", href: "/" },
-  { titleKey: "nav.about", href: "/about" },
   { titleKey: "nav.courses", href: "/courses" },
-  { titleKey: "nav.trainers", href: "/trainers" },
-  { titleKey: "nav.batches", href: "/batches" },
   { titleKey: "nav.admissions", href: "/admissions" },
-  {
-    titleKey: "nav.more",
-    href: "#",
-    children: [
-      { titleKey: "nav.events", href: "/events" },
-      { titleKey: "nav.gallery", href: "/gallery" },
-      { titleKey: "nav.projects", href: "/projects" },
-      { titleKey: "nav.successStories", href: "/success-stories" },
-      { titleKey: "nav.announcements", href: "/announcements" },
-      { titleKey: "nav.faq", href: "/faq" },
-      { titleKey: "nav.verifyCertificate", href: "/verify-certificate" },
-    ],
-  },
+  { titleKey: "nav.batches", href: "/batches" },
+  { titleKey: "nav.trainers", href: "/trainers" },
+  { titleKey: "nav.about", href: "/about" },
   { titleKey: "nav.contact", href: "/contact" },
 ];
 
