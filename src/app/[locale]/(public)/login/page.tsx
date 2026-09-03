@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ThreeParticleMesh } from "@/components/public/three-particle-mesh";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { motion } from "framer-motion";
 import {
@@ -81,8 +82,11 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[90vh] flex relative overflow-hidden">
-      {/* ─── Left Side: Animated Gradient ─── */}
-      <div className="hidden lg:flex lg:w-[45%] gradient-mesh relative items-center justify-center p-12">
+      {/* ─── Left Side: Animated 3D Gradient Mesh ─── */}
+      <div className="hidden lg:flex lg:w-[45%] gradient-mesh relative items-center justify-center p-12 overflow-hidden">
+        {/* Three.js interactive wave grid */}
+        <ThreeParticleMesh color="#38bdf8" className="absolute inset-0 w-full h-full pointer-events-none opacity-40" />
+
         {/* Decorative shapes */}
         <div className="hero-shape hero-shape-1" />
         <div className="hero-shape hero-shape-2" />
